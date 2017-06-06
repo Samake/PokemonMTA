@@ -15,7 +15,9 @@ function Arena_S:constructor(parent, arenaProperties)
 	self.y = arenaProperties.y
 	self.z = arenaProperties.z
 	self.player = arenaProperties.player
+	self.playerClass = arenaProperties.playerClass
 	self.opponent = arenaProperties.opponent
+	self.opponentClass = arenaProperties.opponentClass
 	
 	self.spot1Player = {x = self.x - 8, y = self.y, z = self.z}
 	self.spot1Pokemon = {x = self.x - 7, y = self.y + 1, z = self.z}
@@ -30,7 +32,7 @@ function Arena_S:constructor(parent, arenaProperties)
 	self.radius = 20
 	
 	self.spectators = {}
-
+	
 	self:init()
 
 	mainOutput("Arena_S " .. self.name .. ":" .. self.id .. " was started.")
@@ -39,16 +41,19 @@ end
 
 function Arena_S:init()
 	
-	self:addSpectators()
-	self:addEffects()
-	self:setOpponents()
+	self.isLoaded = self.fight and isElement(self.player) and self.playerClass and isElement(self.opponent) and self.opponentClass
 	
-	self.isLoaded = self.fight
+	if (not self.isLoaded) then
+		self.fight.fightManager:stopFight(self.id)
+	else
+		self:addSpectators()
+		self:addEffects()
+		self:setOpponents()
+	end
 end
 
 
 function Arena_S:addSpectators()
-	
 	local step = 360 / self.maxSpectors
 	
 	for i = 1, self.maxSpectors do
@@ -90,62 +95,92 @@ end
 
 
 function Arena_S:setOpponents()
-	if (isElement(self.player)) and (isElement(self.opponent)) then
-		self.playerPositionSaved = self.player:getPosition()
-		self.playerRotationSaved = self.player:getRotation()
-		self.opponentPositionSaved = self.opponent:getPosition()
-		self.opponentRotationSaved = self.opponent:getRotation()
-		
-		local rotZ = findRotation(self.spot1Player.x, self.spot1Player.y, self.x, self.y)
-		local playerRot = self.player:getRotation()
-		
-		self.player:setPosition(self.spot1Player.x, self.spot1Player.y, self.spot1Player.z)
-		self.player:setRotation(playerRot.x, playerRot.y, rotZ)
-		self.player:setDimension(self.arenaDimension)
-		
-		local rotZ = findRotation(self.spot2Opponent.x, self.spot2Opponent.y, self.x, self.y)
-		local opponentRot = self.opponent:getRotation()
-		
-		self.opponent:setPosition(self.spot2Opponent.x, self.spot2Opponent.y, self.spot2Opponent.z)
-		self.opponent:setRotation(opponentRot.x, opponentRot.y, rotZ)
-		self.opponent:setDimension(self.arenaDimension)
+	self:savePositions()
+	self:spawnPlayer()
+	self:spawnOpponent()
+end
+
+
+function Arena_S:savePositions()
+	self.playerPositionSaved = self.player:getPosition()
+	self.playerRotationSaved = self.player:getRotation()
+	self.opponentPositionSaved = self.opponent:getPosition()
+	self.opponentRotationSaved = self.opponent:getRotation()	
+end
+
+
+function Arena_S:spawnPlayer()
+	local rotZ = findRotation(self.spot1Player.x, self.spot1Player.y, self.x, self.y)
+	local playerRot = self.player:getRotation()
+	
+	self.player:setDimension(self.arenaDimension)
+	self.player:setPosition(self.spot1Player.x, self.spot1Player.y, self.spot1Player.z)
+	self.player:setRotation(playerRot.x, playerRot.y, rotZ)
+	self.player:setFrozen(true, true)
+end
+
+
+function Arena_S:resetPlayer()
+	if (self.playerPositionSaved) and (self.playerRotationSaved) then
+		self.player:setDimension(self.defaultDimension)
+		self.player:setPosition(self.playerPositionSaved.x, self.playerPositionSaved.y, self.playerPositionSaved.z)
+		self.player:setRotation(self.playerRotationSaved.x, self.playerRotationSaved.y, self.playerRotationSaved.z)
+		self.player:setFrozen(false, false)
+	end
+end
+
+
+function Arena_S:spawnOpponent()
+	local rotZ = findRotation(self.spot2Opponent.x, self.spot2Opponent.y, self.x, self.y)
+	local opponentRot = self.opponent:getRotation()
+
+	self.opponent:setDimension(self.arenaDimension)
+	self.opponent:setPosition(self.spot2Opponent.x, self.spot2Opponent.y, self.spot2Opponent.z)
+	self.opponent:setRotation(opponentRot.x, opponentRot.y, rotZ)
+	self.opponent:setFrozen(true)
+end
+
+
+function Arena_S:resetOpponent()
+	if (self.opponentPositionSaved) and (self.opponentRotationSaved) then
+		self.opponent:setDimension(self.defaultDimension)
+		self.opponent:setPosition(self.opponentPositionSaved.x, self.opponentPositionSaved.y, self.opponentPositionSaved.z)
+		self.opponent:setRotation(self.opponentRotationSaved.x, self.opponentRotationSaved.y, self.opponentRotationSaved.z)
+		self.opponent:setFrozen(false)
 	end
 end
 
 
 function Arena_S:update()
 	if (self.isLoaded) then
-	
+		self:setRotations()
 	end
 end
 
 
-function Arena_S:resetPositions()
-	if (isElement(self.player)) and (isElement(self.opponent)) then
-		if (self.playerPositionSaved) and (self.playerRotationSaved) then
-			self.player:setDimension(self.defaultDimension)
-			self.player:setPosition(self.playerPositionSaved.x, self.playerPositionSaved.y, self.playerPositionSaved.z)
-			self.player:setRotation(self.playerRotationSaved.x, self.playerRotationSaved.y, self.playerRotationSaved.z)
-		end
-		
-		if (self.opponentPositionSaved) and (self.opponentRotationSaved) then
-			self.opponent:setDimension(self.defaultDimension)
-			self.opponent:setPosition(self.opponentPositionSaved.x, self.opponentPositionSaved.y, self.opponentPositionSaved.z)
-			self.opponent:setRotation(self.opponentRotationSaved.x, self.opponentRotationSaved.y, self.opponentRotationSaved.z)
-		end
-	end
+function Arena_S:setRotations()
+	local rotZ = findRotation(self.spot1Player.x, self.spot1Player.y, self.x, self.y)
+	local playerRot = self.player:getRotation()
+	
+	self.player:setRotation(playerRot.x, playerRot.y, rotZ)
+	
+	local rotZ = findRotation(self.spot2Opponent.x, self.spot2Opponent.y, self.x, self.y)
+	local opponentRot = self.opponent:getRotation()
+	
+	self.opponent:setRotation(opponentRot.x, opponentRot.y, rotZ)
 end
 
 
 function Arena_S:clear()
+	self:resetPlayer()
+	self:resetOpponent()
+	
 	for index, spectator in pairs(self.spectators) do
 		if (spectator) then
 			spectator:destroy()
 			spectator = nil
 		end
 	end
-	
-	self:resetPositions()
 	
 	triggerClientEvent(self.player, "DELETECLIENTMASSEFFECT", self.player, self.name .. ":" .. self.id)
 end

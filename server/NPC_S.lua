@@ -67,16 +67,18 @@ end
 function NPC_S:update()
 	self.currentTime = getTickCount()
 	
-	self:streamNPC()
-	
-	if (isElement(self.model)) then
-		if (self.destX) and (self.destY) then
-			self.distanceToTarget = getDistanceBetweenPoints2D(self.destX, self.destY, self.x, self.y)
-		end
+	if (self.isInFight ~= "true") then
+		self:streamNPC()
+		
+		if (isElement(self.model)) then
+			if (self.destX) and (self.destY) then
+				self.distanceToTarget = getDistanceBetweenPoints2D(self.destX, self.destY, self.x, self.y)
+			end
 			
-		self:handleJobs()
-		self:updateCoords()
-		self:updateData()
+			self:handleJobs()
+			self:updateCoords()
+			self:updateData()
+		end
 	end
 end
 

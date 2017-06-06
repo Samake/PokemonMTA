@@ -22,6 +22,7 @@ function Fight_S:constructor(parent, fightProperties)
 	self.currentTime = 0
 	
 	self.isPrepared = false
+	self.isArena = false
 	self.isStarted = false
 
 	self:init()
@@ -31,15 +32,23 @@ end
 
 
 function Fight_S:init()
+
+	self.isLoaded = isElement(self.player) and self.playerClass and isElement(self.opponent) and self.opponentClass
 	
+	if (not self.isLoaded) then
+		self.fightManager:stopFight(self.id)
+	end
+end
+
+
+function Fight_S:prepareArena()
 	fadeCamera(self.player, false, 3.0, 255, 255, 255)
 	triggerClientEvent(self.player, "CLIENTSTARTTILEFADE", self.player)
 	
 	self:buildArena()
 	self:prepareOpponents()
 	
-	self.isLoaded = self.arena and self.player and self.playerClass and self.opponent and self.opponentClass
-	
+	self.isPrepared = true
 end
 
 
@@ -48,7 +57,9 @@ function Fight_S:buildArena()
 		local arenaProperties = ArenaList[1]
 		arenaProperties.id = self.id
 		arenaProperties.player = self.player
+		arenaProperties.playerClass = self.playerClass
 		arenaProperties.opponent = self.opponent
+		arenaProperties.opponentClass = self.opponentClass
 		
 		self.arena = new(Arena_S, self, arenaProperties)
 	end
@@ -103,11 +114,17 @@ function Fight_S:update()
 	if (self.isLoaded) then
 		self.currentTime = getTickCount()
 		
-		self.arena:update()
+		if (self.arena) then
+			self.arena:update()
+		end
 		
-		if (self.currentTime > self.startTime + 3000) and (self.isPrepared == false) then
+		if (self.currentTime > self.startTime + 1000) and (self.isPrepared == false) then
+			self:prepareArena()
+		end
+		
+		if (self.currentTime > self.startTime + 4000) and (self.isArena == false) then
 			self:rotateCamera()
-			self.isPrepared = true
+			self.isArena = true
 		end
 		
 		if (self.currentTime > self.startTime + 15000) and (self.isStarted == false) then
