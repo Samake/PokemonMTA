@@ -1,0 +1,166 @@
+<meta>
+	<info name="PokemonMTA" description="Pokemon MTA" version="PreAlpha" type="script" author="Sam@ke"/>
+	<min_mta_version client="1.5.4" server="1.5.4"/>
+	<oop>true</oop>
+	
+	<!-- server scripts -->
+	<script src="server/settings/Settings_S.lua" type="server"/>
+	<script src="server/settings/Colors_S.lua" type="server"/>
+	<script src="server/settings/SpawnList_S.lua" type="server"/>
+	<script src="server/settings/ArenaList_S.lua" type="server"/>
+	<script src="server/settings/ItemsList_S.lua" type="server"/>
+	<script src="server/settings/Pokedex_S.lua" type="server"/>
+	
+	<script src="server/Core_S.lua" type="server"/>
+	<script src="server/PlayerManager_S.lua" type="server"/>
+	<script src="server/Player_S.lua" type="server"/>
+	<script src="server/SpawnManager_S.lua" type="server"/>
+	<script src="server/ItemManager_S.lua" type="server"/>
+	<script src="server/FightManager_S.lua" type="server"/>
+	<script src="server/PokeSpawn_S.lua" type="server"/>
+	<script src="server/Bikes_S.lua" type="server"/>
+	<script src="server/Chest_S.lua" type="server"/>
+	<script src="server/Pokemon_S.lua" type="server"/>
+	<script src="server/NPC_S.lua" type="server"/>
+	<script src="server/Fight_S.lua" type="server"/>
+	<script src="server/Arena_S.lua" type="server"/>
+	
+	<!-- client scripts -->
+	<script src="client/dev/DevTools_C.lua" type="client" cache="false"/>
+	<script src="client/dev/Debug_C.lua" type="client" cache="false"/>
+	
+	<script src="client/settings/Bindings_C.lua" type="client" cache="false"/>
+	
+	<script src="client/Core_C.lua" type="client" cache="false"/>
+	<script src="client/ModelHandler_C.lua" type="client" cache="false"/>
+	<script src="client/Textures_C.lua" type="client" cache="false"/>
+	<script src="client/EffectManager_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderManager_C.lua" type="client" cache="false"/>
+	<script src="client/Renderer_C.lua" type="client" cache="false"/>
+	<script src="client/HUD_C.lua" type="client" cache="false"/>
+	<script src="client/Camera_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderPeds_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderObjects_C.lua" type="client" cache="false"/>
+	<script src="client/Player_C.lua" type="client" cache="false"/>
+	<script src="client/NameTags_C.lua" type="client" cache="false"/>
+	<script src="client/Text3D_C.lua" type="client" cache="false"/>
+	
+	<!-- shared scripts -->
+	<script src="shared/classlib.lua" type="shared"/>
+	<script src="shared/utils.lua" type="shared"/>
+	
+	<!-- shaders -->
+	<file src="res/shader/mta-helper.hlsl" type="client"/>
+	<file src="res/shader/shader_peds.hlsl" type="client"/>
+	<file src="res/shader/shader_objects.hlsl" type="client"/>
+	<file src="res/shader/shader_pp_render.hlsl" type="client"/>
+	
+	<!-- fonts -->
+	<file src="res/fonts/pokemon_gb.ttf" type="client"/>
+	
+	<!-- textures -->
+	<file src="res/textures/pokeNameTag.png" type="client"/>
+	<file src="res/textures/pokeNameTagBG.png" type="client"/>
+	
+	<!-- models -->
+	<file src="res/models/skins/calem.dff" type="client"/>
+	<file src="res/models/skins/calem.txd" type="client"/>
+	
+	<file src="res/models/npc/selene.dff" type="client"/>
+	<file src="res/models/npc/selene.txd" type="client"/>
+	<file src="res/models/npc/acerola.dff" type="client"/>
+	<file src="res/models/npc/acerola.txd" type="client"/>
+	<file src="res/models/npc/luna.dff" type="client"/>
+	<file src="res/models/npc/luna.txd" type="client"/>
+	<file src="res/models/npc/elio.dff" type="client"/>
+	<file src="res/models/npc/elio.txd" type="client"/>
+	<file src="res/models/npc/may.dff" type="client"/>
+	<file src="res/models/npc/may.txd" type="client"/>
+	<file src="res/models/npc/brendan.dff" type="client"/>
+	<file src="res/models/npc/brendan.txd" type="client"/>
+	<file src="res/models/npc/wally.dff" type="client"/>
+	<file src="res/models/npc/wally.txd" type="client"/>
+	<file src="res/models/npc/cynthia.dff" type="client"/>
+	<file src="res/models/npc/cynthia.txd" type="client"/>
+	<file src="res/models/npc/serena.dff" type="client"/>
+	<file src="res/models/npc/serena.txd" type="client"/>
+	<file src="res/models/npc/guzma.dff" type="client"/>
+	<file src="res/models/npc/guzma.txd" type="client"/>
+	<file src="res/models/npc/plumeria.dff" type="client"/>
+	<file src="res/models/npc/plumeria.txd" type="client"/>
+	<file src="res/models/npc/teamskull_f.dff" type="client"/>
+	<file src="res/models/npc/teamskull_f.txd" type="client"/>
+	<file src="res/models/npc/teamskull_m.dff" type="client"/>
+	<file src="res/models/npc/teamskull_m.txd" type="client"/>
+	<file src="res/models/npc/lillie.dff" type="client"/>
+	<file src="res/models/npc/lillie.txd" type="client"/>
+	<file src="res/models/npc/mallow.dff" type="client"/>
+	<file src="res/models/npc/mallow.txd" type="client"/>
+	<file src="res/models/npc/gladion.dff" type="client"/>
+	<file src="res/models/npc/gladion.txd" type="client"/>
+	<file src="res/models/npc/laxxter.dff" type="client"/>
+	<file src="res/models/npc/laxxter.txd" type="client"/>
+	<file src="res/models/npc/lysandre.dff" type="client"/>
+	<file src="res/models/npc/lysandre.txd" type="client"/>
+	<file src="res/models/npc/misty.dff" type="client"/>
+	<file src="res/models/npc/misty.txd" type="client"/>
+	<file src="res/models/npc/corni.dff" type="client"/>
+	<file src="res/models/npc/corni.txd" type="client"/>
+	<file src="res/models/npc/clemont.dff" type="client"/>
+	<file src="res/models/npc/clemont.txd" type="client"/>
+	<file src="res/models/npc/bonnie.dff" type="client"/>
+	<file src="res/models/npc/bonnie.txd" type="client"/>
+	<file src="res/models/npc/ash.dff" type="client"/>
+	<file src="res/models/npc/ash.txd" type="client"/>
+	<file src="res/models/npc/mei.dff" type="client"/>
+	<file src="res/models/npc/mei.txd" type="client"/>
+	
+	<file src="res/models/pokemon/rowlet.dff" type="client"/>
+	<file src="res/models/pokemon/rowlet.txd" type="client"/>
+	<file src="res/models/pokemon/pikachu.dff" type="client"/>
+	<file src="res/models/pokemon/pikachu.txd" type="client"/>
+	<file src="res/models/pokemon/torchic.dff" type="client"/>
+	<file src="res/models/pokemon/torchic.txd" type="client"/>
+	<file src="res/models/pokemon/shayminsky.dff" type="client"/>
+	<file src="res/models/pokemon/shayminsky.txd" type="client"/>
+	<file src="res/models/pokemon/fennekin.dff" type="client"/>
+	<file src="res/models/pokemon/fennekin.txd" type="client"/>
+	<file src="res/models/pokemon/mimikyu.dff" type="client"/>
+	<file src="res/models/pokemon/mimikyu.txd" type="client"/>
+	<file src="res/models/pokemon/greninja.dff" type="client"/>
+	<file src="res/models/pokemon/greninja.txd" type="client"/>
+	<file src="res/models/pokemon/squishy.dff" type="client"/>
+	<file src="res/models/pokemon/squishy.txd" type="client"/>
+	<file src="res/models/pokemon/gible.dff" type="client"/>
+	<file src="res/models/pokemon/gible.txd" type="client"/>
+	<file src="res/models/pokemon/glalie.dff" type="client"/>
+	<file src="res/models/pokemon/glalie.txd" type="client"/>
+	<file src="res/models/pokemon/braixen.dff" type="client"/>
+	<file src="res/models/pokemon/braixen.txd" type="client"/>
+	<file src="res/models/pokemon/lopunny.dff" type="client"/>
+	<file src="res/models/pokemon/lopunny.txd" type="client"/>
+	<file src="res/models/pokemon/magearna.dff" type="client"/>
+	<file src="res/models/pokemon/magearna.txd" type="client"/>
+	<file src="res/models/pokemon/sharpedo.dff" type="client"/>
+	<file src="res/models/pokemon/sharpedo.txd" type="client"/>
+	<file src="res/models/pokemon/swampert.dff" type="client"/>
+	<file src="res/models/pokemon/swampert.txd" type="client"/>
+	<file src="res/models/pokemon/mewtwo.dff" type="client"/>
+	<file src="res/models/pokemon/mewtwo.txd" type="client"/>
+	<file src="res/models/pokemon/dragonite.dff" type="client"/>
+	<file src="res/models/pokemon/dragonite.txd" type="client"/>
+	<file src="res/models/pokemon/hydreigon.dff" type="client"/>
+	<file src="res/models/pokemon/hydreigon.txd" type="client"/>
+	<file src="res/models/pokemon/substitute.dff" type="client"/>
+	<file src="res/models/pokemon/substitute.txd" type="client"/>
+	<file src="res/models/pokemon/mega_mewtwo.dff" type="client"/>
+	<file src="res/models/pokemon/mega_mewtwo.txd" type="client"/>
+	<file src="res/models/pokemon/ninetales.dff" type="client"/>
+	<file src="res/models/pokemon/ninetales.txd" type="client"/>
+	
+	<file src="res/models/items/item_chest_body.dff" type="client"/>
+	<file src="res/models/items/item_chest_body.col" type="client"/>
+	<file src="res/models/items/item_chest_cover.dff" type="client"/>
+	<file src="res/models/items/item_chest_cover.col" type="client"/>
+	<file src="res/models/items/item_chest.txd" type="client"/>
+</meta>
