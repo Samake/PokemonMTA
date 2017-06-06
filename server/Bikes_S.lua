@@ -25,6 +25,10 @@ function Bikes_S:constructor(parent, bikeProperties)
 	self.drz = bikeProperties.rz
 
 	self.modelID = 481
+	self.color1 = {r = 0, g = 0, b = 0}
+	self.color2 = {r = 0, g = 0, b = 0}
+	self.color3 = {r = 0, g = 0, b = 0}
+	self.color4 = {r = 0, g = 0, b = 0}
 	
 	self.currentTime = getTickCount()
 	self.aloneTime = nil
@@ -41,21 +45,29 @@ end
 
 
 function Bikes_S:createBikeAtDefault()
-	if (not self.element) then
+	if (not self.bike) then
 		self.x = self.dx
 		self.y = self.dy
 		self.z = self.dz
 		self.rx = self.drx
 		self.ry = self.dry
 		self.rz = self.drz
-		self.element = createVehicle(self.modelID , self.x, self.y, self.z , self.rx, self.ry, self.rz)
+		self.bike = createVehicle(self.modelID , self.x, self.y, self.z , self.rx, self.ry, self.rz)
+		
+		if (self.bike) then
+			self.color1.r, self.color1.g, self.color1.b, self.color2.r, self.color2.g, self.color2.b, self.color3.r, self.color3.g, self.color3.b, self.color4.r, self.color4.g, self.color4.b = self.bike:getColor()
+		end
 	end
 end
 
 
 function Bikes_S:createBike()
-	if (not self.element) then
-		self.element = createVehicle(self.modelID , self.x, self.y, self.z , self.rx, self.ry, self.rz)
+	if (not self.bike) then
+		self.bike = createVehicle(self.modelID , self.x, self.y, self.z , self.rx, self.ry, self.rz)
+		
+		if (self.bike) then
+			self.bike:setColor(self.color1.r, self.color1.g, self.color1.b, self.color2.r, self.color2.g, self.color2.b, self.color3.r, self.color3.g, self.color3.b, self.color4.r, self.color4.g, self.color4.b)
+		end
 	end
 end
 
@@ -65,7 +77,7 @@ function Bikes_S:update()
 	
 	self:streamBike()
 	
-	if (self.element) then
+	if (self.bike) then
 		self.aloneTime = nil
 		self:updateData()
 	else
@@ -81,14 +93,14 @@ end
 
 
 function Bikes_S:updateData()
-	if (self.element) then
-		local bikePos = self.element:getPosition()
+	if (self.bike) then
+		local bikePos = self.bike:getPosition()
 		
 		self.x = bikePos.x
 		self.y = bikePos.y
 		self.z = bikePos.z
 		
-		local bikeRot = self.element:getRotation()
+		local bikeRot = self.bike:getRotation()
 		
 		self.rx = bikeRot.x
 		self.ry = bikeRot.y
@@ -115,9 +127,9 @@ end
 
 
 function Bikes_S:deleteBike()
-	if (self.element) then
-		self.element:destroy()
-		self.element = nil
+	if (self.bike) then
+		self.bike:destroy()
+		self.bike = nil
 	end
 end
 
