@@ -30,13 +30,22 @@ SpawnList.playerSpawn[1] = {x = 405.93780517578, y = 2540.3994140625, z = 16.546
 -- // Bikes // --
 SpawnList.bikes = {}
 SpawnList.bikes[1] = {x = 399.96484375, y = 2538.5649414063, z = 16.544788360596, rx = 0, ry = 0, rz = 150.14813232422}
+SpawnList.bikes[2] = {x = 546.93286132813, y = 2362.3933105469, z = 31.170185089111, rx = 0, ry = 0, rz = 183.38507080078}
+SpawnList.bikes[3] = {x = 260.40228271484, y = 2891.0163574219, z = 11.01969909668, rx = 0, ry = 0, rz = 203.41525268555}
+SpawnList.bikes[4] = {x = -9.0652866363525, y = 2343.5517578125, z = 24.140625, rx = 0, ry = 0, rz = 91.264282226563}
 
 
 -- // Pokespawns // --
 SpawnList.pokespawn= {}
-SpawnList.pokespawn[1] = {x = 235.5164642334, y = 2410.6762695313, z = 15.47479057312, radius = 25, type = "ground", count = 3}
-SpawnList.pokespawn[2] = {x = 168.72946166992, y = 2614.8212890625, z = 15.477983474731, radius = 15, type = "ground", count = 2}
-SpawnList.pokespawn[3] = {x = 265.66949462891, y = 2788.9470214844, z = 31.75863456726, radius = 15, type = "ground", count = 2}
+SpawnList.pokespawn[1] = {x = 235.5164642334, y = 2410.6762695313, z = 15.47479057312, radius = 30, type = "ground", count = 2}
+SpawnList.pokespawn[2] = {x = 168.72946166992, y = 2614.8212890625, z = 15.477983474731, radius = 20, type = "ground", count = 2}
+SpawnList.pokespawn[3] = {x = 265.66949462891, y = 2788.9470214844, z = 31.75863456726, radius = 20, type = "ground", count = 2}
+SpawnList.pokespawn[4] = {x = 54.1223487854, y = 2582.9680175781, z = 16.484375, radius = 45, type = "ground", count = 2}
+SpawnList.pokespawn[5] = {x = 28.52560043335, y = 2408.9270019531, z = 16.484375, radius = 55, type = "ground", count = 2}
+SpawnList.pokespawn[6] = {x = 170.20095825195, y = 2324.3063964844, z = 17.635257720947, radius = 55, type = "ground", count = 3}
+SpawnList.pokespawn[7] = {x = 346.3166809082, y = 2389.458984375, z = 16.48437, radius = 15, type = "ground", count = 1}
+SpawnList.pokespawn[8] = {x = 455.75289916992, y = 2412.21875, z = 22.887273788452, radius = 25, type = "ground", count = 2}
+
 
 --[[
 Pokedex[1] = {modelID = 213, name = "Pikachu", pokedexID = 25, legendary = false, size = 0.8, type = "electric", rate = 24.8, color = Colors.yellow}
@@ -75,12 +84,16 @@ SpawnList.chests[7] = {x = 315.54241943359, y = 2540.3935546875, z = 15.81246376
 SpawnList.chests[8] = {x = 268.69430541992, y = 2895.2504882813, z = 9.233081817627, rx = 0, ry = 0, rz = 301.44293212891}
 SpawnList.chests[9] = {x = 170.66436767578, y = 2632.1906738281, z = 15.4765625, rx = 0, ry = 0, rz = 128.19134521484}
 SpawnList.chests[10] = {x = 77.370513916016, y = 2450.7331542969, z = 15.476619720459, rx = 0, ry = 0, rz = 140.72479248047}
+SpawnList.chests[11] = {x = 544.08679199219, y = 2364.76953125, z = 30.012561798096, rx = 0, ry = 0, rz = 95.604125976563}
+
 
 -- // NPCs & Trainer // --
 SpawnList.npcs = {}
 SpawnList.npcs[1] = {modelID = 12, name = "Selene", sex = "female", isTrainer = true, isVendor = false, x = 428.31134033203, y = 2526.3989257813, z = 16.558265686035, rx = 0, ry = 0, rz = 109.7279052734}
 SpawnList.npcs[2] = {modelID = 13, name = "Acerola", sex = "female", isTrainer = true, isVendor = false, x = 261.17065429688, y = 2908.0715332031, z = 6.7388572692871, rx = 0, ry = 0, rz = 10.376892089844}
 SpawnList.npcs[3] = {modelID = 15, name = "Elio", sex = "male", isTrainer = true, isVendor = false, x = -34.495552062988, y = 2333.4694824219, z = 24.134738922119, rx = 0, ry = 0, rz = 300.8392944335}
+SpawnList.npcs[4] = {modelID = 22, name = "Plumeria", sex = "female", isTrainer = true, isVendor = false, x = 541.71630859375, y = 2351.7583007813, z = 31.324481964111, rx = 0, ry = 0, rz = 43.59027099609}
+
 
 --[[
 SpawnList.npcs[1] = {modelID = 12, name = "Selene", sex = "female", x = 370.5, y = 2465.266, z = 16.50, rx = 0, ry = 0, rz = 0}
