@@ -29,7 +29,10 @@ end
 
 
 function PokeSpawn_S:init()
-	self.element = createElement("PokeSpawn_S", self.id)
+	if (not self.element) then
+		self.element = createElement("POKESPAWN", self.id)
+	end
+
 	self.startTime = getTickCount()
  
 	if (self.element) then

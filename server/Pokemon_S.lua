@@ -40,6 +40,10 @@ end
 
 
 function Pokemon_S:init()
+	if (not self.element) then
+		self.element = createElement("POKEMON", self.id)
+	end
+	
 	self:createPokemon()
 end
 
@@ -68,6 +72,10 @@ end
 function Pokemon_S:update()
 	self.currentTime = getTickCount()
 	
+	if (self.element) then
+		self.element:setPosition(self.x, self.y, self.z)
+	end
+		
 	self:streamPokemon()
 	
 	if (isElement(self.model)) then
@@ -342,6 +350,11 @@ end
 
 function Pokemon_S:destructor()
 	self:deletePokemon()
+	
+	if (self.element) then
+		self.element:destroy()
+		self.element = nil
+	end
 	
 	--mainOutput("Pokemon_S " .. self.id .. " was deleted.")
 end

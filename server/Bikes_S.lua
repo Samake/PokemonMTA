@@ -35,7 +35,7 @@ function Bikes_S:constructor(parent, bikeProperties)
 	
 	self:init()
 	
-	mainOutput("Bikes_S " .. self.id .. " was started.")
+	--mainOutput("Bikes_S " .. self.id .. " was started.")
 end
 
 
@@ -137,5 +137,5 @@ end
 function Bikes_S:destructor()
 	self:deleteBike()
 	
-	mainOutput("Bikes_S " .. self.id .. " was deleted.")
+	--mainOutput("Bikes_S " .. self.id .. " was deleted.")
 end

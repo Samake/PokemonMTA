@@ -25,7 +25,7 @@ function NameTags_C:constructor(parent)
 	self.nameTagWidth = self.screenWidth * 0.15
 	self.nameTagHeight = self.nameTagWidth * 0.3
 	
-	self.drawLevel = 2 -- // 0 off, 1 on, 2 debug
+	self.drawLevel = 1 -- // 0 off, 1 on, 2 debug
 	self.isDebug = false
 	
 	self:init()
@@ -44,7 +44,7 @@ end
 function NameTags_C:changeDrawLevel()
 	self.drawLevel = self.drawLevel + 1
 	
-	if (self.drawLevel > 2) then
+	if (self.drawLevel > 1) then
 		self.drawLevel = 0
 	end
 end
@@ -65,7 +65,7 @@ function NameTags_C:drawNameTags()
 			if (isElement(ped)) then
 				if (ped:getDimension() == self.player:getDimension()) then
 					if (ped:getData("isPokemon") == true) then
-						self:drawPokemonNameTags(ped)
+						self:drawPokemonNameTag(ped)
 					elseif (ped:getData("isNPC") == true) then
 						self:drawNPCNameTag(ped)
 					end
@@ -76,7 +76,7 @@ function NameTags_C:drawNameTags()
 end
 
 
-function NameTags_C:drawPokemonNameTags(ped)
+function NameTags_C:drawPokemonNameTag(ped)
 
 	local pokeName = ped:getData("POKEMON:NAME") or "Unknown"
 	local pokeLevel = ped:getData("POKEMON:LEVEL") or "Unknown"

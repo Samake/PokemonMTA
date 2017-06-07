@@ -39,6 +39,10 @@ end
 
 
 function NPC_S:init()
+	if (not self.element) then
+		self.element = createElement("NPC", self.id)
+	end
+	
 	self:createNPC()
 end
 
@@ -68,6 +72,11 @@ function NPC_S:update()
 	self.currentTime = getTickCount()
 	
 	if (self.isInFight ~= "true") then
+	
+		if (self.element) then
+			self.element:setPosition(self.x, self.y, self.z)
+		end
+	
 		self:streamNPC()
 		
 		if (isElement(self.model)) then
@@ -334,6 +343,11 @@ end
 
 function NPC_S:destructor()
 	self:deleteNPC()
+	
+	if (self.element) then
+		self.element:destroy()
+		self.element = nil
+	end
 	
 	--mainOutput("NPC_S " .. self.id .. " was deleted.")
 end

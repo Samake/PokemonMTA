@@ -44,6 +44,7 @@
 	<script src="client/Player_C.lua" type="client" cache="false"/>
 	<script src="client/NameTags_C.lua" type="client" cache="false"/>
 	<script src="client/Text3D_C.lua" type="client" cache="false"/>
+	<script src="client/Radar_C.lua" type="client" cache="false"/>
 	
 	<!-- shared scripts -->
 	<script src="shared/classlib.lua" type="shared"/>
@@ -54,6 +55,7 @@
 	<file src="res/shader/shader_peds.hlsl" type="client"/>
 	<file src="res/shader/shader_objects.hlsl" type="client"/>
 	<file src="res/shader/shader_pp_render.hlsl" type="client"/>
+	<file src="res/shader/shader_mask.hlsl" type="client"/>
 	
 	<!-- fonts -->
 	<file src="res/fonts/pokemon_gb.ttf" type="client"/>
@@ -61,6 +63,11 @@
 	<!-- textures -->
 	<file src="res/textures/pokeNameTag.png" type="client"/>
 	<file src="res/textures/pokeNameTagBG.png" type="client"/>
+	<file src="res/textures/radar_bg.png" type="client"/>
+	<file src="res/textures/default_blip.png" type="client"/>
+	<file src="res/textures/player_blip.png" type="client"/>
+	<file src="res/textures/radar_mask.png" type="client"/>
+	<file src="res/textures/radar_mask_bg.png" type="client"/>
 	
 	<!-- models -->
 	<file src="res/models/skins/calem.dff" type="client"/>

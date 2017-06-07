@@ -29,6 +29,10 @@ function HUD_C:init()
 		self.text3D = new(Text3D_C, self)
 	end
 	
+	if (not self.radar) then
+		self.radar = new(Radar_C, self)
+	end
+	
 	self.isLoaded = self.font and self.fontBold
 end
 
@@ -42,6 +46,10 @@ function HUD_C:update(delta, renderTarget)
 		
 		if (self.text3D) then
 			self.text3D:update(delta, renderTarget)
+		end
+		
+		if (self.radar) then
+			self.radar:update(delta, renderTarget)
 		end
 		
 		dxSetRenderTarget(renderTarget, false)
@@ -61,6 +69,11 @@ function HUD_C:clear()
 	if (self.text3D) then
 		delete(self.text3D)
 		self.text3D = nil
+	end
+	
+	if (self.radar) then
+		delete(self.radar)
+		self.radar = nil
 	end
 	
 	if (self.font) then

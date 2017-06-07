@@ -47,6 +47,11 @@ end
 
 
 function Chest_S:createChest()
+
+	if (not self.element) then
+		self.element = createElement("CHEST", self.id)
+	end
+	
 	if (not self.model) then
 		self.model = createObject(self.modelIDBody, self.x, self.y, self.z, self.rx, self.ry, self.rz, false)
 	end
@@ -60,7 +65,7 @@ function Chest_S:createChest()
 		self.actionCol = createColSphere(self.x, self.y, self.z, self.actionRadius)
 	end
 	
-	if (self.model) and (self.cover) and (self.actionCol) then
+	if (self.element) and (self.model) and (self.cover) and (self.actionCol) then
 		self.actionCol:attach(self.model)
 		
 		self.m_OnColShapeHit = bind(self.onColShapeHit, self)
@@ -105,6 +110,10 @@ end
 
 function Chest_S:update()
 	self.currentTime = getTickCount()
+	
+	if (self.element) then
+		self.element:setPosition(self.x, self.y, self.z)
+	end
 	
 	self:streamChest()
 	self:handleCover()
@@ -249,6 +258,11 @@ end
 
 function Chest_S:destructor()
 	self:deleteChest()
+	
+	if (self.element) then
+		self.element:destroy()
+		self.element = nil
+	end
 	
 	--mainOutput("Chest_S " .. self.id .. " was deleted.")
 end
