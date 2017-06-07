@@ -9,6 +9,9 @@ local keyShader = "M"
 local keyNameTags = "N"
 local keyCompanion = "1"
 
+local keyMapZoomIn = "num_8"
+local keyMapZoomOut = "num_2"
+
 function Bindings:getCompanionKey()
 	return keyCompanion
 end
@@ -19,6 +22,14 @@ end
 
 function Bindings:getNameTagsKey()
 	return keyNameTags
+end
+
+function Bindings:getKeyMapZoomIn()
+	return keyMapZoomIn
+end
+
+function Bindings:getKeyMapZoomOut()
+	return keyMapZoomOut
 end
 
 -- // DEV SRUFF // -- 

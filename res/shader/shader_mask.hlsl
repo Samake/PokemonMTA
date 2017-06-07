@@ -1,33 +1,40 @@
 /* 
-    Author: 50p 
-    Version: v1.0 
-    Description: 
-     This shader allows you to mask a texture with a mask texture (black and white). 
+    Authors: 50p, Sam@ke
 */ 
   
-  
+ 
+ 
+texture bgTexture; 
+sampler BackgroundSampler = sampler_state 
+{ 
+    Texture = <bgTexture>; 
+};
+
 texture inTexture; 
-sampler implicitInputTexture = sampler_state 
+sampler TextureSampler = sampler_state 
 { 
     Texture = <inTexture>; 
 }; 
   
 texture maskTexture; 
-sampler implicitMaskTexture = sampler_state 
+sampler MaskSampler = sampler_state 
 { 
     Texture = <maskTexture>; 
 }; 
   
   
-float4 MaskTextureMain( float2 uv : TEXCOORD0 ) : COLOR0 
+float4 MaskTextureMain(float2 texCoords : TEXCOORD0) : COLOR0 
 { 
-    float4 sampledTexture = tex2D( implicitInputTexture, uv ); 
-    float4 maskSampled = tex2D( implicitMaskTexture, uv ); 
-    sampledTexture.a = (maskSampled.r + maskSampled.g + maskSampled.b) / 3.0f; 
-    return sampledTexture; 
+	float4 backColor = tex2D(BackgroundSampler, texCoords);
+    float4 mainColor = tex2D(TextureSampler, texCoords); 
+    float4 maskColor = tex2D(MaskSampler, texCoords); 
+	
+    mainColor *= maskColor * backColor; 
+    
+	return mainColor; 
 } 
   
-technique Technique1 
+technique MaskShader 
 { 
     pass Pass1 
     { 

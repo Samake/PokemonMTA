@@ -68,6 +68,7 @@
 	<file src="res/textures/player_blip.png" type="client"/>
 	<file src="res/textures/radar_mask.png" type="client"/>
 	<file src="res/textures/radar_mask_bg.png" type="client"/>
+	<file src="res/textures/radar_frame.png" type="client"/>
 	
 	<!-- models -->
 	<file src="res/models/skins/calem.dff" type="client"/>

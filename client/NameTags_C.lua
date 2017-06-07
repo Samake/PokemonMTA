@@ -96,9 +96,14 @@ function NameTags_C:drawPokemonNameTag(ped)
 		local scale = self:getNameTagScale(distance)
 		local alpha = self:getNameTagAlpha(distance)
 		local shadowOffset = 1.5 * scale
-		local nameColor = tocolor(255, 255, 255, alpha)
 
-		if (ntx) and (nty) and (isLineOfSightClear(cx, cy, cz - 1.2, px, py, pz + 1.2, true)) then
+		if (ntx) and (nty) and (isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, false)) then
+			
+			if (not isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, true)) then
+				alpha = alpha * 0.35
+			end
+			
+			local nameColor = tocolor(255, 255, 255, alpha)
 			
 			if (isCompanion == "true") then
 				nameColor = tocolor(0, 255, 0, alpha)
@@ -187,9 +192,14 @@ function NameTags_C:drawNPCNameTag(ped)
 		local scale = self:getNameTagScale(distance)
 		local alpha = self:getNameTagAlpha(distance)
 		local shadowOffset = 1.5 * scale
-		local nameColor = tocolor(255, 255, 255, alpha)
-		
-		if (ntx) and (nty) and (isLineOfSightClear(cx, cy, cz, px, py, pz + 1.5, true)) then
+
+		if (ntx) and (nty) and (isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, false)) then
+			
+			if (not isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, true)) then
+				alpha = alpha * 0.35
+			end
+			
+			local nameColor = tocolor(255, 255, 255, alpha)
 			
 			local width = self.nameTagWidth * scale
 			local height = (self.nameTagHeight / 4) * scale
