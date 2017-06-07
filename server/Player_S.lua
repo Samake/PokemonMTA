@@ -131,6 +131,28 @@ function Player_S:sendCompanion()
 			effectSettings.duration = 3000
 			
 			triggerClientEvent("DOCLIENTEFFECT", root, effectSettings)
+			
+			local soundSettings = {} 
+			soundSettings.sound = "res/sounds/effects/whoosh.wav"
+			soundSettings.x = x
+			soundSettings.y = y
+			soundSettings.z = z
+			soundSettings.distance = 25
+			soundSettings.volume = 0.25
+			
+			triggerClientEvent("POKEMONPLAY3DSOUND", root, soundSettings)
+			
+			if (rawPokemon.sound) then
+				local soundSettings = {} 
+				soundSettings.sound = rawPokemon.sound
+				soundSettings.x = x
+				soundSettings.y = y
+				soundSettings.z = z
+				soundSettings.distance = 25
+				soundSettings.volume = 0.25
+				
+				triggerClientEvent("POKEMONPLAY3DSOUND", root, soundSettings)
+			end
 		end
 		
 		mainOutput("SERVER || Companion send out!")
@@ -153,6 +175,16 @@ function Player_S:callCompanion()
 		effectSettings.duration = 1000
 		
 		triggerClientEvent("DOCLIENTEFFECT", root, effectSettings)
+		
+		local soundSettings = {} 
+		soundSettings.sound = "res/sounds/effects/whoosh.wav"
+		soundSettings.x = self.companion.x
+		soundSettings.y = self.companion.y
+		soundSettings.z = self.companion.z - 0.5
+		soundSettings.distance = 25
+		soundSettings.volume = 0.25
+		
+		triggerClientEvent("POKEMONPLAY3DSOUND", root, soundSettings)
 		
 		delete(self.companion)
 		self.companion = nil

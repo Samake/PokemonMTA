@@ -285,8 +285,6 @@ function NPC_S:onColShapeHit(element)
 					fightProperties.opponentID = self.id
 					
 					triggerEvent("POKEMONSTARTFIGHT", root, fightProperties)
-					
-					outputChatBox("NPC " .. self.id .. " receives you!")
 				end
 			end
 		end
@@ -302,8 +300,6 @@ function NPC_S:onColShapeLeave(element)
 					self.player = nil
 					
 					self:job_idle()
-					
-					outputChatBox("You leave npc " .. self.id .. "!")
 				end
 			end
 		end

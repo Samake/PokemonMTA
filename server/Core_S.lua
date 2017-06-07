@@ -18,6 +18,8 @@ end
 
 function Core_S:initServer()
 	setFPSLimit(Settings.fpsLimit)
+	setGameType(Settings.resName)
+	setTime(20, 30)
 	
 	self.m_Update = bind(self.update, self)
 	

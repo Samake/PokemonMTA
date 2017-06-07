@@ -5,8 +5,8 @@
 
 Settings = {}
 
-Settings.resName = "PokemonMTA"
-Settings.resVersion = "0.0.32"
+Settings.resName = "Pokemon"
+Settings.resVersion = "0.0.33"
 Settings.fpsLimit = 60
 Settings.serverUpdateInterval = 50
 

@@ -35,6 +35,7 @@
 	<script src="client/ModelHandler_C.lua" type="client" cache="false"/>
 	<script src="client/Textures_C.lua" type="client" cache="false"/>
 	<script src="client/EffectManager_C.lua" type="client" cache="false"/>
+	<script src="client/SoundManager_C.lua" type="client" cache="false"/>
 	<script src="client/ShaderManager_C.lua" type="client" cache="false"/>
 	<script src="client/Renderer_C.lua" type="client" cache="false"/>
 	<script src="client/HUD_C.lua" type="client" cache="false"/>
@@ -69,6 +70,17 @@
 	<file src="res/textures/radar_mask.png" type="client"/>
 	<file src="res/textures/radar_mask_bg.png" type="client"/>
 	<file src="res/textures/radar_frame.png" type="client"/>
+	
+	<!-- sounds -->
+	<file src="res/sounds/music/music_1_11_battle.mp3" type="client"/>
+	<file src="res/sounds/music/music_1_03_kalos.mp3" type="client"/>
+	
+	<file src="res/sounds/pokemon/pikachu.wav" type="client"/>
+	
+	<file src="res/sounds/effects/empty_chest.wav" type="client"/>
+	<file src="res/sounds/effects/open_chest.wav" type="client"/>
+	<file src="res/sounds/effects/pickup_item.ogg" type="client"/>
+	<file src="res/sounds/effects/whoosh.wav" type="client"/>
 	
 	<!-- models -->
 	<file src="res/models/skins/calem.dff" type="client"/>

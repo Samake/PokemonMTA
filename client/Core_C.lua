@@ -31,6 +31,10 @@ function Core_C:init()
 		self.effectManager = new(EffectManager_C)
 	end
 	
+	if (not self.soundManager) then
+		self.soundManager = new(SoundManager_C)
+	end
+	
 	if (not self.shaderManager) then
 		self.shaderManager = new(ShaderManager_C)
 	end
@@ -72,6 +76,10 @@ function Core_C:update(deltaTime)
 		self.effectManager:update(self.delta)
 	end
 	
+	if (self.soundManager) then
+		self.soundManager:update(self.delta)
+	end
+	
 	if (self.shaderManager) then
 		self.shaderManager:update(self.delta)
 	end
@@ -103,6 +111,11 @@ function Core_C:clear()
 	if (self.effectManager) then
 		delete(self.effectManager)
 		self.effectManager = nil
+	end
+	
+	if (self.soundManager) then
+		delete(self.soundManager)
+		self.soundManager = nil
 	end
 	
 	if (self.shaderManager) then

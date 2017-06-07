@@ -188,6 +188,18 @@ function Chest_S:onColShapeHit(element)
 			if (element:getType() == "player") then
 				if (not self.player) then
 					if (self.state ~= "opened") then
+						if (self.state ~= "wait") then
+							local soundSettings = {} 
+							soundSettings.sound = "res/sounds/effects/open_chest.wav"
+							soundSettings.x = self.x
+							soundSettings.y = self.y
+							soundSettings.z = self.z
+							soundSettings.distance = 5
+							soundSettings.volume = 0.3
+			
+							triggerClientEvent("POKEMONPLAY3DSOUND", root, soundSettings)
+						end
+						
 						self.state = "opened"
 						
 						self.player = element

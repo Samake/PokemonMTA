@@ -20,7 +20,7 @@ function Radar_C:constructor(parent)
 	self.x = self.screenWidth - self.size
 	self.y = 0
 	
-	self.zoom = 0.45
+	self.zoom = 0.35
 	self.minZoom = 0.15
 	self.maxZoom = 0.95
 	self.zoomStep = 0.025

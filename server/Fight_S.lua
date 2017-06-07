@@ -83,6 +83,8 @@ function Fight_S:rotateCamera()
 	cameraSettings.speed = 0.25
 
 	triggerClientEvent(self.player, "CLIENTROTATECAMERA", self.player, cameraSettings)
+	triggerClientEvent(self.player, "POKEMONSTARTBATTLESOUND", self.player)
+	
 	fadeCamera (self.player, true, 0.5)
 end
 
@@ -96,12 +98,14 @@ end
 function Fight_S:startFight()
 	self.isStarted = true
 	self:resetCamera()
+	
 	mainOutput("SERVER || Fight started: " .. self.player:getName() .. " vs. " .. self.opponentClass.name .. " at Arena: " .. self.arena.name)
 end
 
 
 function Fight_S:stopFight()
 	triggerEvent("POKEMONSTOPFIGHT", root, self.id)
+	triggerClientEvent(self.player, "POKEMONSTOPBATTLESOUND", self.player)
 	
 	self.isStarted = false
 	self:resetCamera()

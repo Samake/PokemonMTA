@@ -7,7 +7,7 @@ EffectManager_C = {}
 
 function EffectManager_C:constructor(parent)
 
-	self.parent = parent
+	self.coreClass = parent
 	
 	self:init()
 	self.singleEffects = {}
