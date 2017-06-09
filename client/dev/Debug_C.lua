@@ -23,7 +23,7 @@ end
 
 function Debug_C:update(delta)
 	if (self.coreClass.isDebug == true) then
-		for index, pokeSpawn in pairs(getElementsByType("PokeSpawn_S")) do
+		for index, pokeSpawn in pairs(getElementsByType("POKESPAWN")) do
 			if (pokeSpawn) then
 				self:drawPokeSpawn(pokeSpawn)
 			end

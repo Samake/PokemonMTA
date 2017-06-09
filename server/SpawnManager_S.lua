@@ -110,7 +110,18 @@ function SpawnManager_S:spawnNPCs()
 			npcProperties.isTrainer = npc:getData("isTrainer") or "false"
 			npcProperties.isVendor = npc:getData("isVendor") or "false"
 			npcProperties.reputation = npc:getData("reputation") or "good"
-			npcProperties.name = NPC_Helper:getRandomName(npcProperties.modelID) or "UNKNOWN"
+			
+			local prefix = ""
+			
+			if (npcProperties.isTrainer == "true") then
+				prefix = "Trainer"
+			end
+			
+			if (npcProperties.isVendor == "true") then
+				prefix = "Vendor"
+			end
+			
+			npcProperties.name = prefix .. " " .. NPC_Helper:getRandomName(npcProperties.modelID) or "UNKNOWN"
 			npcProperties.sex = NPC_Helper:getSex(npcProperties.modelID) or "female"
 			
 			if (not self.npcs[npcProperties.id]) then

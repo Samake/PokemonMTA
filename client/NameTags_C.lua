@@ -182,7 +182,10 @@ function NameTags_C:drawNPCNameTag(ped)
 	local npcName = ped:getData("NPC:NAME") or "Unknown"
 	local npcJob = ped:getData("NPC:JOB") or "Unknown"
 	local npcState = ped:getData("NPC:STATE") or "Unknown"
-
+	local npcIsTrainer = ped:getData("NPC:ISTRAINER") or "Unknown"
+	local npcIsVendor = ped:getData("NPC:ISVENDOR") or "Unknown"
+	local npcReputation= ped:getData("NPC:REPUTATION") or "Unknown"
+	
 	local cx, cy, cz, clx, cly, clz = getCameraMatrix()
 	local px, py, pz = getElementPosition(ped)
 	local distance = getDistanceBetweenPoints3D(cx, cy, cz, px, py, pz)
@@ -201,6 +204,15 @@ function NameTags_C:drawNPCNameTag(ped)
 			
 			local nameColor = tocolor(255, 255, 255, alpha)
 			
+			if (npcIsTrainer == "true") then
+				nameColor = tocolor(220, 90, 45, alpha)
+			end
+			
+			if (npcIsVendor == "true") then
+				nameColor = tocolor(90, 150, 220, alpha)
+			end
+			
+			
 			local width = self.nameTagWidth * scale
 			local height = (self.nameTagHeight / 4) * scale
 
@@ -217,8 +229,8 @@ function NameTags_C:drawNPCNameTag(ped)
 				x = ntx
 				y = nty - height * 0.1
 				
-				dxDrawText(npcState .. " : " .. npcJob, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha), scale * 1.5, self.hud.fontBold, "center", "center", false, false, false, true, true)
-				dxDrawText(npcState .. " : " .. npcJob, x, y, x, y, tocolor(220, 45, 45, alpha), scale * 1.5, self.hud.fontBold, "center", "center", false, false, false, true, true)
+				dxDrawText(npcState .. " : " .. npcJob, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha), scale * 1.1, self.hud.fontBold, "center", "center", false, false, false, true, true)
+				dxDrawText(npcState .. " : " .. npcJob, x, y, x, y, tocolor(220, 45, 45, alpha), scale * 1.1, self.hud.fontBold, "center", "center", false, false, false, true, true)
 			end
 		end
 	end

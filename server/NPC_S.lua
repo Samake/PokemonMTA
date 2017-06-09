@@ -161,6 +161,9 @@ function NPC_S:updateData()
 		self.model:setData("NPC:NAME", self.name, true)
 		self.model:setData("NPC:STATE", self.state, true)
 		self.model:setData("NPC:JOB", self.job, true)
+		self.model:setData("NPC:ISTRAINER", self.isTrainer, true)
+		self.model:setData("NPC:ISVENDOR", self.isVendor, true)
+		self.model:setData("NPC:REPUTATION", self.reputation, true)
 	end
 end
 
@@ -277,20 +280,22 @@ function NPC_S:onColShapeHit(element)
 	if (element) then
 		if (isElement(element)) then
 			if (element:getType() == "player") then
-				if (not self.player) and (self.isInFight == "false") then
-					self.player = element
-					
-					self:job_talk_to_player()
-					
-					local fightProperties = {}
-					fightProperties.x = self.x
-					fightProperties.y = self.y
-					fightProperties.z = self.z
-					fightProperties.player = self.player
-					fightProperties.opponent = self.model
-					fightProperties.opponentID = self.id
-					
-					triggerEvent("POKEMONSTARTFIGHT", root, fightProperties)
+				if (self.isTrainer == "true") then
+					if (not self.player) and (self.isInFight == "false") then
+						self.player = element
+						
+						self:job_talk_to_player()
+						
+						local fightProperties = {}
+						fightProperties.x = self.x
+						fightProperties.y = self.y
+						fightProperties.z = self.z
+						fightProperties.player = self.player
+						fightProperties.opponent = self.model
+						fightProperties.opponentID = self.id
+						
+						triggerEvent("POKEMONSTARTFIGHT", root, fightProperties)
+					end
 				end
 			end
 		end

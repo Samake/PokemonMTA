@@ -62,6 +62,12 @@ end
 
 function Core_C:toggleDebug()
 	self.isDebug = not self.isDebug
+	
+	if (self.isDebug) then
+		mainOutput("CLIENT || Debug mode enabled!")
+	else
+		mainOutput("CLIENT || Debug mode disabled!")
+	end
 end
 
 

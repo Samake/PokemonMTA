@@ -57,12 +57,12 @@ function Arena_S:addSpectators()
 	local step = 360 / self.maxSpectors
 	
 	for i = 1, self.maxSpectors do
-		if (not self.spectators[i]) and (SpawnList.npcs) then
+		if (not self.spectators[i]) then
 			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, self.radius, step * i, 1)
 			local rot = findRotation(x, y, self.x, self.y)
-			local randomPed = SpawnList.npcs[math.random(1, #SpawnList.npcs)]
+			local randomPedID = NPC_Helper:getRandomPed()
 			
-			self.spectators[i] = createPed(randomPed.modelID, x, y, z, rot, true)
+			self.spectators[i] = createPed(randomPedID, x, y, z, rot, true)
 		end
 	end
 	

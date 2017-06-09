@@ -14,6 +14,27 @@ local femaleIDs = {12, 13, 14, 16, 18, 19, 20, 22, 23, 25, 26, 30, 31, 33, 35}
 names["male"] = {"Elio", "Brendan", "Guzma", "Gladion", "Laxxter", "Lysandre", "Clemont", "Ash"}
 names["female"] = {"Selene", "Acerola", "Luna", "May", "Wally", "Cynthia", "Serena", "Plumeria", "Lillie", "Mallow", "Misty", "Corni", "Bonnie", "Mei"}
 
+
+function NPC_Helper:getRandomPed()
+	local sex = math.random(1, 2)
+	
+	if (sex == 1) then
+		local randomID = math.random(0, #maleIDs)
+		
+		if (maleIDs[randomID]) then
+			return maleIDs[randomID]
+		end
+	else
+		local randomID = math.random(0, #femaleIDs)
+		
+		if (femaleIDs[randomID]) then
+			return femaleIDs[randomID]
+		end
+	end
+	
+	return 12
+end
+
 function NPC_Helper:getRandomName(id)
 	if (id) then
 		local sex = NPC_Helper:getSex(id)
