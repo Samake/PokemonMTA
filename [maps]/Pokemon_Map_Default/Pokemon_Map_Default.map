@@ -1,0 +1,11 @@
+<map edf:definitions="PokemonMTAEditor">
+    <PLAYERSPAWN id="PLAYERSPAWN (1)" posX="2410.7" posY="-5.4" posZ="27.7" rotX="0" rotY="0" rotZ="0"></PLAYERSPAWN>
+    <CHESTSPAWN id="CHESTSPAWN (4)" isLocked="false" posX="2418.8" posY="5.4" posZ="25.5" rotX="0" rotY="0" rotZ="270"></CHESTSPAWN>
+    <CHESTSPAWN id="CHESTSPAWN (5)" isLocked="false" posX="2419.6001" posY="-11.3" posZ="26" rotX="0" rotY="0" rotZ="0"></CHESTSPAWN>
+    <BIKESPAWN id="BIKESPAWN (1)" posX="2416.6001" posY="2" posZ="26.1" rotX="0" rotY="0" rotZ="0"></BIKESPAWN>
+    <NPCSPAWN id="NPCSPAWN (1)" radius="0" isTrainer="false" skin="16" isVendor="false" reputation="good" posX="2374.7998" posY="-8.7002" posZ="28.4" rotX="0" rotY="0" rotZ="269.996"></NPCSPAWN>
+    <CHESTSPAWN id="CHESTSPAWN (6)" isLocked="false" posX="2369.1001" posY="-14" posZ="26.8" rotX="0" rotY="0" rotZ="90"></CHESTSPAWN>
+    <POKESPAWN id="POKESPAWN (1)" radius="15" count="1" type="ground" posX="2551.8" posY="-69.4" posZ="42.1" rotX="0" rotY="0" rotZ="0"></POKESPAWN>
+    <NPCSPAWN id="NPCSPAWN (2)" radius="0" isTrainer="true" skin="20" isVendor="false" reputation="neutral" posX="2397.6001" posY="-38.6" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
+    <NPCSPAWN id="NPCSPAWN (3)" radius="3" isTrainer="false" skin="28" isVendor="true" reputation="good" posX="2404.3999" posY="13.2" posZ="26.5" rotX="0" rotY="0" rotZ="88"></NPCSPAWN>
+</map>

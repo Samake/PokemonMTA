@@ -1,0 +1,41 @@
+<def name="PokemonMTA">
+	<element name="PLAYERSPAWN" friendlyname="Player spawn" icon="edf/icon_player.png">
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<ped model=258 rotation="!rotation!"/>
+	</element>
+	
+	<element name="NPCSPAWN" friendlyname="NPC spawn" icon="edf/icon_npc.png">
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<data name="skin" type="selection:12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35" default=12 />
+		<ped model="!skin!" rotation="!rotation!"/>
+		<data name="radius" type="natural" description="Move radius" default="0" />
+		<data name="isTrainer" type="selection:true,false" default="true" />
+		<data name="isVendor" type="selection:true,false" default="false" />
+		<data name="reputation" type="selection:good,neutral,bad" default="good" />
+	</element>
+	
+	<element name="CHESTSPAWN" friendlyname="Chest spawn" icon="edf/icon_chest.png">
+		<object editorOnly="true" model="1851" />
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<data name="isLocked" type="selection:true,false" default="false" />
+	</element>
+	
+	<element name="BIKESPAWN" friendlyname="Bike spawn" icon="edf/icon_bike.png">
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<vehicle model=481 rotation="!rotation!"/>
+	</element>
+	
+	<element name="POKESPAWN" friendlyname="Pokespawn place" icon="edf/icon_pokespawn.png">
+		<object editorOnly="true" model="3534" />
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<data name="radius" type="natural" description="Spawn place radius" default="15" />
+		<data name="count" type="integer" description="Count of pokemon" default="1" />
+		<data name="type" type="selection:dark,dragon,electric,fairy,fight,fire,flying,ghost,ground,ice,normal,plant,psychic,steel,water" default="ground" />
+	</element>
+</def>
+

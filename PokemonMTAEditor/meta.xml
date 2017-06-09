@@ -1,0 +1,80 @@
+<meta>
+	<info name="PokemonMTAEditor" description="PokemonMTA Editor" version="v1" type="script" author="Sam@ke" edf:definition="edf/pokemon.edf" />
+	<min_mta_version client="1.5.4" server="1.5.4"/>
+	<oop>true</oop>
+	
+	<!-- includes -->
+	<include resource="editor" />
+	
+	<!-- client scripts --> 
+	<script src="client/Core_C.lua" type="client" cache="false"/>
+	<script src="client/ModelHandler_C.lua" type="client" cache="false"/>
+	
+	<!-- shared scripts -->
+	<script src="shared/classlib.lua" type="shared"/>
+	<script src="shared/utils.lua" type="shared"/>
+	
+	<!-- edf stuff -->
+	<file src="edf/icon_chest.png" type="client"/>
+	<file src="edf/icon_player.png" type="client"/>
+	<file src="edf/icon_npc.png" type="client"/>
+	<file src="edf/icon_pokespawn.png" type="client"/>
+	<file src="edf/icon_bike.png" type="client"/>
+	
+	<!-- models -->
+	<file src="res/models/skins/calem.dff" type="client"/>
+	<file src="res/models/skins/calem.txd" type="client"/>
+	
+	<file src="res/models/npc/selene.dff" type="client"/>
+	<file src="res/models/npc/selene.txd" type="client"/>
+	<file src="res/models/npc/acerola.dff" type="client"/>
+	<file src="res/models/npc/acerola.txd" type="client"/>
+	<file src="res/models/npc/luna.dff" type="client"/>
+	<file src="res/models/npc/luna.txd" type="client"/>
+	<file src="res/models/npc/elio.dff" type="client"/>
+	<file src="res/models/npc/elio.txd" type="client"/>
+	<file src="res/models/npc/may.dff" type="client"/>
+	<file src="res/models/npc/may.txd" type="client"/>
+	<file src="res/models/npc/brendan.dff" type="client"/>
+	<file src="res/models/npc/brendan.txd" type="client"/>
+	<file src="res/models/npc/wally.dff" type="client"/>
+	<file src="res/models/npc/wally.txd" type="client"/>
+	<file src="res/models/npc/cynthia.dff" type="client"/>
+	<file src="res/models/npc/cynthia.txd" type="client"/>
+	<file src="res/models/npc/serena.dff" type="client"/>
+	<file src="res/models/npc/serena.txd" type="client"/>
+	<file src="res/models/npc/guzma.dff" type="client"/>
+	<file src="res/models/npc/guzma.txd" type="client"/>
+	<file src="res/models/npc/plumeria.dff" type="client"/>
+	<file src="res/models/npc/plumeria.txd" type="client"/>
+	<file src="res/models/npc/teamskull_f.dff" type="client"/>
+	<file src="res/models/npc/teamskull_f.txd" type="client"/>
+	<file src="res/models/npc/teamskull_m.dff" type="client"/>
+	<file src="res/models/npc/teamskull_m.txd" type="client"/>
+	<file src="res/models/npc/lillie.dff" type="client"/>
+	<file src="res/models/npc/lillie.txd" type="client"/>
+	<file src="res/models/npc/mallow.dff" type="client"/>
+	<file src="res/models/npc/mallow.txd" type="client"/>
+	<file src="res/models/npc/gladion.dff" type="client"/>
+	<file src="res/models/npc/gladion.txd" type="client"/>
+	<file src="res/models/npc/laxxter.dff" type="client"/>
+	<file src="res/models/npc/laxxter.txd" type="client"/>
+	<file src="res/models/npc/lysandre.dff" type="client"/>
+	<file src="res/models/npc/lysandre.txd" type="client"/>
+	<file src="res/models/npc/misty.dff" type="client"/>
+	<file src="res/models/npc/misty.txd" type="client"/>
+	<file src="res/models/npc/corni.dff" type="client"/>
+	<file src="res/models/npc/corni.txd" type="client"/>
+	<file src="res/models/npc/clemont.dff" type="client"/>
+	<file src="res/models/npc/clemont.txd" type="client"/>
+	<file src="res/models/npc/bonnie.dff" type="client"/>
+	<file src="res/models/npc/bonnie.txd" type="client"/>
+	<file src="res/models/npc/ash.dff" type="client"/>
+	<file src="res/models/npc/ash.txd" type="client"/>
+	<file src="res/models/npc/mei.dff" type="client"/>
+	<file src="res/models/npc/mei.txd" type="client"/>
+	
+	<file src="res/models/items/chest_full.dff" type="client"/>
+	<file src="res/models/items/chest_full.col" type="client"/>
+	<file src="res/models/items/item_chest.txd" type="client"/>
+</meta>
