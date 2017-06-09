@@ -6,7 +6,7 @@
 Settings = {}
 
 Settings.resName = "Pokemon"
-Settings.resVersion = "0.0.33"
+Settings.resVersion = "0.0.34"
 Settings.fpsLimit = 60
 Settings.serverUpdateInterval = 50
 
