@@ -29,16 +29,8 @@ end
 
 
 function PokeSpawn_S:init()
-	if (not self.element) then
-		self.element = createElement("POKESPAWN", self.id)
-	end
-
 	self.startTime = getTickCount()
  
-	if (self.element) then
-		self.element:setPosition(self.x, self.y, self.z)
-		self.element:setData("radius", self.radius, true)
-	end
 end
 
 
@@ -79,22 +71,18 @@ end
 
  
 function PokeSpawn_S:update()
-	if (self.element) then
-		self.currentTime = getTickCount()
-		
-		if (self.isActive == "false") then
-			if (self.currentTime >= self.startTime + self.spawnTime) then
-				self:spawnPokemon()
-			end
+	self.currentTime = getTickCount()
+	
+	if (self.isActive == "false") then
+		if (self.currentTime >= self.startTime + self.spawnTime) then
+			self:spawnPokemon()
 		end
-		
-		for index, pokemonClass in pairs(self.pokemon) do
-			if (pokemonClass) then
-				pokemonClass:update()
-			end
+	end
+	
+	for index, pokemonClass in pairs(self.pokemon) do
+		if (pokemonClass) then
+			pokemonClass:update()
 		end
-	else
-		self.parent:deletePokeSpawn(self.id)
 	end
 end
 
@@ -113,31 +101,22 @@ end
 
 
 function PokeSpawn_S:activate()
-	if (self.element) then
 	
-	end
 end
 
 
 function PokeSpawn_S:clear()
-
-	if (self.element) then
-		self.element:destroy()
-		self.element = nil
-	end
-	
 	for index, pokemonClass in pairs(self.pokemon) do
 		if (pokemonClass) then
 			delete(pokemonClass)
 			pokemonClass = nil
 		end
 	end
-
-	--mainOutput("PokeSpawn_S " .. self.id .. " was deleted.")
 end
 
 
 function PokeSpawn_S:destructor()
 	self:clear()
 	
+	--mainOutput("PokeSpawn_S " .. self.id .. " was deleted.")
 end

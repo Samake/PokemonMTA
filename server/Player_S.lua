@@ -16,19 +16,6 @@ function Player_S:constructor(id, player)
 	self.ry = 0
 	self.rz = 0
 	
-	if (SpawnList.playerSpawn) then
-		local randomSpawn = SpawnList.playerSpawn[math.random(1, #SpawnList.playerSpawn)]
-		
-		if (randomSpawn) then
-			self.x = randomSpawn.x
-			self.y = randomSpawn.y
-			self.z = randomSpawn.z
-			self.rx = randomSpawn.rx
-			self.ry = randomSpawn.ry
-			self.rz = randomSpawn.rz
-		end
-	end
-	
 	self.skinID = 258
 	
 	self.companion = nil
@@ -45,7 +32,30 @@ function Player_S:init()
 	addEvent("DOTOGGLECOMPANION", true)
 	addEventHandler("DOTOGGLECOMPANION", root, self.m_ToggleCompanion)
 	
+	self:initSpawn()
 	self:spawn()
+end
+
+
+function Player_S:initSpawn()
+	local playerSpawns = getElementsByType("PLAYERSPAWN")
+		
+	if (playerSpawns) then
+		local randomSpawn = playerSpawns[math.random(1, #playerSpawns)]
+		
+		if (randomSpawn) then
+			
+			local pos = randomSpawn.position
+			local rot = randomSpawn.rotation
+			
+			self.x = pos.x
+			self.y = pos.y
+			self.z = pos.z
+			self.rx = rot.x
+			self.ry = rot.y
+			self.rz = rot.z
+		end
+	end
 end
 
 

@@ -3,10 +3,13 @@
 	<min_mta_version client="1.5.4" server="1.5.4"/>
 	<oop>true</oop>
 	
+	<!-- includes -->
+	<include resource="Pokemon_Map_Default" />
+	
 	<!-- server scripts -->
 	<script src="server/settings/Settings_S.lua" type="server"/>
 	<script src="server/settings/Colors_S.lua" type="server"/>
-	<script src="server/settings/SpawnList_S.lua" type="server"/>
+	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
 	<script src="server/settings/ArenaList_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
 	<script src="server/settings/Pokedex_S.lua" type="server"/>

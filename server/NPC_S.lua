@@ -11,16 +11,20 @@ function NPC_S:constructor(parent, npcProperties)
 	self.id = npcProperties.id
 	self.modelID = npcProperties.modelID
 	self.name = npcProperties.name
+	self.sex = npcProperties.sex
 	self.x = npcProperties.x
 	self.y = npcProperties.y
 	self.z = npcProperties.z
 	self.rx = npcProperties.rx
 	self.ry = npcProperties.ry
 	self.rz = npcProperties.rz
+	self.radius = npcProperties.radius
+	self.isTrainer = npcProperties.isTrainer
+	self.isVendor = npcProperties.isVendor
+	self.reputation = npcProperties.reputation
 	
 	self.spawn = {x = self.x, y = self.y, z = self.z}
-	
-	self.actionRadius = 6
+
 	self.distanceToTarget = 0
 	
 	self.state = nil
@@ -34,7 +38,7 @@ function NPC_S:constructor(parent, npcProperties)
 	
 	self:init()
 	
-	--mainOutput("NPC_S " .. self.id .. " was started.")
+	mainOutput("NPC_S " .. self.id .. " was started.")
 end
 
 
@@ -53,7 +57,7 @@ function NPC_S:createNPC()
 	end
 	
 	if (not self.actionCol) then
-		self.actionCol = createColSphere(self.x, self.y, self.z, self.actionRadius / 2)
+		self.actionCol = createColSphere(self.x, self.y, self.z, 2.5)
 	end
 	
 	if (self.model) and (self.actionCol) then
@@ -118,7 +122,9 @@ function NPC_S:handleJobs()
 		if (self.state == "idle") then
 			if (self.job == "stand") then
 				if (self.currentTime >= self.jobStartTime + self.thinkTime) then
-					self:job_idle_pos_change()
+					if (self.radius > 1) then
+						self:job_idle_pos_change()
+					end
 				end
 			elseif (self.job == "walk") then
 				if (self:arrivePosition() == true) then
@@ -228,10 +234,10 @@ end
 
 function NPC_S:getInsideSpawnPos()
 	if (self.spawn) then
-		local x, y, z = getAttachedPosition(self.spawn.x, self.spawn.y, self.spawn.z, 0, 0, 0, math.random(0, self.actionRadius / 2), math.random(0, 360), 1)
+		local x, y, z = getAttachedPosition(self.spawn.x, self.spawn.y, self.spawn.z, 0, 0, 0, math.random(0, self.radius / 2), math.random(0, 360), 1)
 		
 		while self:isPositionInside(x, y) == false do
-			x, y, z = getAttachedPosition(self.spawn.x, self.spawn.y, self.spawn.z, 0, 0, 0, math.random(0, self.actionRadius / 2), math.random(0, 360), 1)
+			x, y, z = getAttachedPosition(self.spawn.x, self.spawn.y, self.spawn.z, 0, 0, 0, math.random(0, self.radius / 2), math.random(0, 360), 1)
 		end
 		
 		return x, y
@@ -256,8 +262,8 @@ end
 
 function NPC_S:isPositionInside(x, y)
 	if (x) and (y) then
-		if (x >= self.spawn.x - self.actionRadius / 2) and (x <= self.spawn.x + self.actionRadius / 2) then
-			if (y >= self.spawn.y - self.actionRadius / 2) and (y <= self.spawn.y + self.actionRadius / 2) then
+		if (x >= self.spawn.x - self.radius / 2) and (x <= self.spawn.x + self.radius / 2) then
+			if (y >= self.spawn.y - self.radius / 2) and (y <= self.spawn.y + self.radius / 2) then
 				return true
 			end
 		end

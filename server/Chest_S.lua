@@ -14,7 +14,7 @@ function Chest_S:constructor(parent, chestProperties)
 	self.z = chestProperties.z
 	self.rx = chestProperties.rx
 	self.ry = chestProperties.ry
-	self.rz = (chestProperties.rz + 180)%360
+	self.rz = chestProperties.rz
 	
 	self.minCoverRot = chestProperties.rx + 42 -- closed chest
 	self.maxCoverRot = self.rx  -- opened chest
