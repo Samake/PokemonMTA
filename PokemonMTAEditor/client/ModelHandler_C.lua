@@ -40,9 +40,9 @@ myModels[172] = {id = 33, pathTXD = "res/models/npc/bonnie.txd", pathDFF = "res/
 myModels[173] = {id = 34, pathTXD = "res/models/npc/ash.txd", pathDFF = "res/models/npc/ash.dff", pathCOL = nil}
 myModels[174] = {id = 35, pathTXD = "res/models/npc/mei.txd", pathDFF = "res/models/npc/mei.dff", pathCOL = nil}
 
+
 -- // Items // --
 myModels[1004] = {id = 1851, pathTXD = "res/models/items/item_chest.txd", pathDFF = "res/models/items/chest_full.dff", pathCOL = "res/models/items/chest_full.col"}
-
 
 function ModelHandler:init()
 	for index, modelInfo in pairs(myModels) do

@@ -6,9 +6,17 @@
 	<!-- includes -->
 	<include resource="editor" />
 	
-	<!-- client scripts --> 
+	<!-- client scripts -->
+	<script src="client/dev/Debug_C.lua" type="client" cache="false"/>
+	
+	<script src="client/settings/Bindings_C.lua" type="client" cache="false"/>
+
 	<script src="client/Core_C.lua" type="client" cache="false"/>
 	<script src="client/ModelHandler_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderManager_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderPeds_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderPlayer_C.lua" type="client" cache="false"/>
+	<script src="client/ShaderObjects_C.lua" type="client" cache="false"/>
 	
 	<!-- shared scripts -->
 	<script src="shared/classlib.lua" type="shared"/>
@@ -20,6 +28,12 @@
 	<file src="edf/icon_npc.png" type="client"/>
 	<file src="edf/icon_pokespawn.png" type="client"/>
 	<file src="edf/icon_bike.png" type="client"/>
+	
+	<!-- shaders -->
+	<file src="res/shader/mta-helper.hlsl" type="client"/>
+	<file src="res/shader/shader_peds.hlsl" type="client"/>
+	<file src="res/shader/shader_player.hlsl" type="client"/>
+	<file src="res/shader/shader_objects.hlsl" type="client"/>
 	
 	<!-- models -->
 	<file src="res/models/skins/calem.dff" type="client"/>
