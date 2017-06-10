@@ -25,7 +25,7 @@ function Radar_C:constructor(parent)
 	self.maxZoom = 0.95
 	self.zoomStep = 0.025
 	
-	self.blipSize = self.size * 0.25
+	self.blipSize = self.size * 0.2
 	
 	self:init()
 	
