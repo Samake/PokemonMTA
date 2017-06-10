@@ -19,13 +19,13 @@ function NPC_Helper:getRandomPed()
 	local sex = math.random(1, 2)
 	
 	if (sex == 1) then
-		local randomID = math.random(0, #maleIDs)
+		local randomID = math.random(1, #maleIDs)
 		
 		if (maleIDs[randomID]) then
 			return maleIDs[randomID]
 		end
 	else
-		local randomID = math.random(0, #femaleIDs)
+		local randomID = math.random(1, #femaleIDs)
 		
 		if (femaleIDs[randomID]) then
 			return femaleIDs[randomID]
@@ -41,7 +41,7 @@ function NPC_Helper:getRandomName(id)
 		
 		if (sex) then
 			if (names[sex]) then
-				return names[sex][math.random(0, #names[sex])]
+				return names[sex][math.random(1, #names[sex])]
 			end
 		end
 		

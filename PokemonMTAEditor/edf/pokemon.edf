@@ -15,6 +15,7 @@
 		<data name="radius" type="natural" description="Move radius" default="0" />
 		<data name="isTrainer" type="selection:true,false" default="true" />
 		<data name="isVendor" type="selection:true,false" default="false" />
+		<data name="walkAround" type="selection:true,false" default="false" />
 		<data name="reputation" type="selection:good,neutral,bad" default="good" />
 	</element>
 	

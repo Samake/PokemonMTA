@@ -25,7 +25,7 @@ function Radar_C:constructor(parent)
 	self.maxZoom = 0.95
 	self.zoomStep = 0.025
 	
-	self.blipSize = self.size * 0.2
+	self.blipSize = self.size * 0.15
 	
 	self:init()
 	
@@ -148,7 +148,7 @@ function Radar_C:drawBlips()
 				local x = pos.x / (self.gtaMapSize / self.gtaMapSize)  + self.gtaMapSize / 2
 				local y = pos.y / (-self.gtaMapSize / self.gtaMapSize) + self.gtaMapSize / 2
 				
-				dxDrawImage(x - (self.blipSize * 2), y - (self.blipSize * 2), self.blipSize * 4, self.blipSize * 4, self.textureDefaultBlip, 0, 0, 0, tocolor(255, 90, 90, (alpha)%255))
+				dxDrawImage(x - (self.blipSize * 4), y - (self.blipSize * 4), self.blipSize * 8, self.blipSize * 8, self.textureDefaultBlip, 0, 0, 0, tocolor(255, 90, 90, (alpha)%255))
 			end
 		end
 	end
@@ -219,7 +219,7 @@ function Radar_C:drawPlayer()
 	dxSetRenderTarget(self.renderTargetRadar, false)
 	dxSetBlendMode("modulate_add")
 	
-	dxDrawImage((self.size / 2) - (self.blipSize / 3), (self.size / 2) - (self.blipSize / 3), self.blipSize / 1.5, self.blipSize / 1.5, self.texturePlayerBlip, 0, 0, 0, tocolor(255, 255, 255, 255))
+	dxDrawImage((self.size / 2) - (self.blipSize / 2), (self.size / 2) - (self.blipSize / 2), self.blipSize, self.blipSize, self.texturePlayerBlip, 0, 0, 0, tocolor(255, 255, 255, 255))
 
 	dxSetBlendMode("blend")
 	dxSetRenderTarget()

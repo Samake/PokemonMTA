@@ -13,6 +13,7 @@
 	<script src="server/settings/ArenaList_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
 	<script src="server/settings/Pokedex_S.lua" type="server"/>
+	<script src="server/settings/WayPoints_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
 	<script src="server/PlayerManager_S.lua" type="server"/>

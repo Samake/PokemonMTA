@@ -54,14 +54,20 @@ end
 
 function Fight_S:buildArena()
 	if (not self.arena) then
-		local arenaProperties = ArenaList[1]
-		arenaProperties.id = self.id
-		arenaProperties.player = self.player
-		arenaProperties.playerClass = self.playerClass
-		arenaProperties.opponent = self.opponent
-		arenaProperties.opponentClass = self.opponentClass
+		local arenaProperties = Arena:getNearest(self.x, self.y, self.z)
 		
-		self.arena = new(Arena_S, self, arenaProperties)
+		if (arenaProperties) then
+			arenaProperties.id = self.id
+			arenaProperties.player = self.player
+			arenaProperties.playerClass = self.playerClass
+			arenaProperties.opponent = self.opponent
+			arenaProperties.opponentClass = self.opponentClass
+			
+			self.arena = new(Arena_S, self, arenaProperties)
+		else
+			mainOutput("ERROR || Fight " .. self.id .. " failed to start!")
+			self:stopFight()
+		end
 	end
 end
 

@@ -21,6 +21,7 @@ function NPC_S:constructor(parent, npcProperties)
 	self.radius = npcProperties.radius
 	self.isTrainer = npcProperties.isTrainer
 	self.isVendor = npcProperties.isVendor
+	self.walkAround = npcProperties.walkAround
 	self.reputation = npcProperties.reputation
 	
 	self.spawn = {x = self.x, y = self.y, z = self.z}
@@ -35,6 +36,7 @@ function NPC_S:constructor(parent, npcProperties)
 	
 	self.player = nil
 	self.isInFight = "false"
+	self.zone = nil
 	
 	self:init()
 	
@@ -74,6 +76,7 @@ end
 
 function NPC_S:update()
 	self.currentTime = getTickCount()
+	self.zone = getZoneName(self.x, self.y, self.z)
 	
 	if (self.isInFight ~= "true") then
 	
@@ -115,7 +118,7 @@ end
 
 function NPC_S:handleJobs()
 	if (not self.state) then
-		self:job_idle()
+		self:job_setDefault()
 	end
 	
 	if (not self.player) then
@@ -130,6 +133,10 @@ function NPC_S:handleJobs()
 				if (self:arrivePosition() == true) then
 					self:job_idle()
 				end
+			end
+		elseif (self.state == "route") then
+			if (self:arrivePosition() == true) then
+				self:job_setWayPoint()
 			end
 		end
 	else
@@ -168,6 +175,15 @@ function NPC_S:updateData()
 end
 
 
+function NPC_S:job_setDefault()
+	if (self.walkAround ~= "true")then
+		self:job_idle()
+	else
+		self:job_route()
+	end
+end
+
+
 function NPC_S:job_idle()
 	if (isElement(self.model)) then
 		if (self.spawn) then
@@ -184,6 +200,53 @@ function NPC_S:job_idle()
 		
 		self.jobStartTime = getTickCount()
 		self.thinkTime = math.random(2000, 8000)
+	end
+end
+
+
+function NPC_S:job_route()
+	if (isElement(self.model)) then
+		self.state = "route"
+		self.job = "walk"
+		
+		self:job_setWayPoint()
+	end
+end
+
+
+function NPC_S:job_setWayPoint()
+	if (isElement(self.model)) then
+		if (not self.wayPoints) and (self.zone) then
+			if (WayPoints) then
+				if (WayPoints[self.zone]) then
+					if (WayPoints[self.zone][1]) then
+						self.wayPoints = WayPoints[self.zone][1]
+						self.currentDestination = 1
+					end
+				end
+			end
+			
+			if (self.wayPoints[self.currentDestination]) then
+				self.destX, self.destY = self.wayPoints[self.currentDestination].x, self.wayPoints[self.currentDestination].y
+			end
+		else
+			if (self:arrivePosition() == true) then
+				self.currentDestination = self.currentDestination + 1
+				
+				if (self.currentDestination > #self.wayPoints) then
+					self.currentDestination = 1
+				end
+			end
+			
+			if (self.wayPoints[self.currentDestination]) then
+				self.destX, self.destY = self.wayPoints[self.currentDestination].x, self.wayPoints[self.currentDestination].y
+			end
+		end
+		
+		if (self.destX) and (self.destY) then
+			self.model:setRotation(0, 0, findRotation(self.x, self.y, self.destX, self.destY))
+			self.model:setAnimation("ped", "woman_walksexy")
+		end
 	end
 end
 
@@ -280,12 +343,13 @@ function NPC_S:onColShapeHit(element)
 	if (element) then
 		if (isElement(element)) then
 			if (element:getType() == "player") then
-				if (self.isTrainer == "true") then
-					if (not self.player) and (self.isInFight == "false") then
+				if (not self.player) and (self.isInFight == "false") then
+					
+					self.player = element
+					
+					if (self.isTrainer == "true") then
 						self.player = element
-						
-						self:job_talk_to_player()
-						
+
 						local fightProperties = {}
 						fightProperties.x = self.x
 						fightProperties.y = self.y
@@ -295,6 +359,10 @@ function NPC_S:onColShapeHit(element)
 						fightProperties.opponentID = self.id
 						
 						triggerEvent("POKEMONSTARTFIGHT", root, fightProperties)
+					elseif (self.isVendor == "true") then
+						self:job_talk_to_player()
+					else
+						self:job_talk_to_player()
 					end
 				end
 			end
@@ -310,7 +378,7 @@ function NPC_S:onColShapeLeave(element)
 				if (self.player == element) then
 					self.player = nil
 					
-					self:job_idle()
+					self:job_setDefault()
 				end
 			end
 		end

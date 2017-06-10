@@ -3,10 +3,11 @@
     <CHESTSPAWN id="CHESTSPAWN (4)" isLocked="false" dimension="0" posX="2418.7998" posY="5.40039" posZ="25.5" rotX="0" rotY="0" rotZ="270"></CHESTSPAWN>
     <CHESTSPAWN id="CHESTSPAWN (5)" isLocked="false" dimension="0" posX="2419.6006" posY="-11.2998" posZ="26" rotX="0" rotY="0" rotZ="0"></CHESTSPAWN>
     <BIKESPAWN id="BIKESPAWN (1)" dimension="0" posX="2416.6006" posY="2" posZ="26.1" rotX="0" rotY="0" rotZ="0"></BIKESPAWN>
-    <NPCSPAWN id="NPCSPAWN (1)" radius="0" isTrainer="false" reputation="good" skin="16" isVendor="false" dimension="0" posX="2374.7998" posY="-8.7002" posZ="28.4" rotX="0" rotY="0" rotZ="265.984"></NPCSPAWN>
+    <NPCSPAWN id="NPCSPAWN (1)" walkAround="false" radius="0" reputation="good" skin="16" isTrainer="false" isVendor="false" dimension="0" posX="2374.7998" posY="-8.7002" posZ="28.4" rotX="0" rotY="0" rotZ="265.984"></NPCSPAWN>
     <CHESTSPAWN id="CHESTSPAWN (6)" isLocked="false" dimension="0" posX="2369.1006" posY="-14" posZ="26.8" rotX="0" rotY="0" rotZ="90"></CHESTSPAWN>
     <POKESPAWN id="POKESPAWN (1)" radius="35" count="3" type="ground" dimension="0" posX="2551.7998" posY="-69.40039" posZ="42.1" rotX="0" rotY="0" rotZ="0"></POKESPAWN>
-    <NPCSPAWN id="NPCSPAWN (2)" radius="0" isTrainer="true" reputation="neutral" skin="20" isVendor="false" dimension="0" posX="2397.6006" posY="-38.59961" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
-    <NPCSPAWN id="NPCSPAWN (3)" radius="3" isTrainer="false" reputation="good" skin="28" isVendor="true" dimension="0" posX="2401.7002" posY="17.90039" posZ="26.5" rotX="0" rotY="0" rotZ="83.984"></NPCSPAWN>
+    <NPCSPAWN id="NPCSPAWN (2)" walkAround="false" radius="0" reputation="neutral" skin="20" isTrainer="true" isVendor="false" dimension="0" posX="2397.6006" posY="-38.59961" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
+    <NPCSPAWN id="NPCSPAWN (3)" walkAround="false" radius="3" reputation="good" skin="28" isTrainer="false" isVendor="true" dimension="0" posX="2401.7002" posY="17.90039" posZ="26.5" rotX="0" rotY="0" rotZ="83.984"></NPCSPAWN>
     <object id="object (noodlecart_prop) (1)" breakable="true" interior="0" collisions="true" alpha="255" model="1342" doublesided="false" scale="1" dimension="0" posX="2400" posY="18" posZ="26.5" rotX="0" rotY="0" rotZ="0"></object>
+    <NPCSPAWN id="NPCSPAWN (4)" walkAround="true" radius="0" reputation="good" skin="30" isTrainer="false" isVendor="false" dimension="0" posX="2401.6001" posY="-19.6" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
 </map>

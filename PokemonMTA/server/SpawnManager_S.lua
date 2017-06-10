@@ -109,6 +109,7 @@ function SpawnManager_S:spawnNPCs()
 			npcProperties.radius = tonumber(npc:getData("radius") or 0)
 			npcProperties.isTrainer = npc:getData("isTrainer") or "false"
 			npcProperties.isVendor = npc:getData("isVendor") or "false"
+			npcProperties.walkAround = npc:getData("walkAround") or "false"
 			npcProperties.reputation = npc:getData("reputation") or "good"
 			
 			local prefix = ""
@@ -121,7 +122,9 @@ function SpawnManager_S:spawnNPCs()
 				prefix = "Vendor"
 			end
 			
-			npcProperties.name = prefix .. " " .. NPC_Helper:getRandomName(npcProperties.modelID) or "UNKNOWN"
+			local name = NPC_Helper:getRandomName(npcProperties.modelID) or "UNKNOWN"
+			
+			npcProperties.name = prefix .. " " .. name
 			npcProperties.sex = NPC_Helper:getSex(npcProperties.modelID) or "female"
 			
 			if (not self.npcs[npcProperties.id]) then

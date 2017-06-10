@@ -14,19 +14,17 @@ function NameTags_C:constructor(parent)
 	self.screenWidth, self.screenHeight = guiGetScreenSize()
 	self.player = getLocalPlayer()
 	
-	self.maxNameTagDistance = 75
-	self.minNameTagScale = 0.5
-	self.maxNameTagScale = 5.0
-	self.minNameTagAlpha = 128
+	self.maxNameTagDistance = 150
+	self.minNameTagScale = 0.3
+	self.maxNameTagScale = 8.0
+	self.minNameTagAlpha = 35
 	self.maxNameTagAlpha = 255
-	self.lifeBarWidth = 90
-	self.lifeBarHeight = 10
 	
 	self.nameTagWidth = self.screenWidth * 0.15
 	self.nameTagHeight = self.nameTagWidth * 0.3
 	
 	self.drawLevel = 1 -- // 0 off, 1 on, 2 debug
-	self.isDebug = false
+	self.isDebug = true
 	
 	self:init()
 	
@@ -100,7 +98,7 @@ function NameTags_C:drawPokemonNameTag(ped)
 		if (ntx) and (nty) and (isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, false)) then
 			
 			if (not isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, true)) then
-				alpha = alpha * 0.35
+				alpha = alpha * 0.4
 			end
 			
 			local nameColor = tocolor(255, 255, 255, alpha)
@@ -194,12 +192,12 @@ function NameTags_C:drawNPCNameTag(ped)
 		local ntx, nty = getScreenFromWorldPosition(px, py, pz + 1.5)
 		local scale = self:getNameTagScale(distance)
 		local alpha = self:getNameTagAlpha(distance)
-		local shadowOffset = 1.5 * scale
+		local shadowOffset = 2 * scale
 
 		if (ntx) and (nty) and (isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, false)) then
 			
 			if (not isLineOfSightClear(cx, cy, cz - 1, px, py, pz + 1, true, true, true)) then
-				alpha = alpha * 0.35
+				alpha = alpha * 0.4
 			end
 			
 			local nameColor = tocolor(255, 255, 255, alpha)
@@ -229,8 +227,8 @@ function NameTags_C:drawNPCNameTag(ped)
 				x = ntx
 				y = nty - height * 0.1
 				
-				dxDrawText(npcState .. " : " .. npcJob, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha), scale * 1.1, self.hud.fontBold, "center", "center", false, false, false, true, true)
-				dxDrawText(npcState .. " : " .. npcJob, x, y, x, y, tocolor(220, 45, 45, alpha), scale * 1.1, self.hud.fontBold, "center", "center", false, false, false, true, true)
+				dxDrawText(npcState .. " : " .. npcJob, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha), scale, self.hud.fontBold, "center", "center", false, false, false, true, true)
+				dxDrawText(npcState .. " : " .. npcJob, x, y, x, y, tocolor(220, 45, 45, alpha), scale, self.hud.fontBold, "center", "center", false, false, false, true, true)
 			end
 		end
 	end

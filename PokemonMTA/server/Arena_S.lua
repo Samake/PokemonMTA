@@ -27,9 +27,9 @@ function Arena_S:constructor(parent, arenaProperties)
 	self.defaultDimension = 0
 	self.arenaDimension = self.id
 	
-	self.maxSpectors = 35
-	self.maxEffects = 18
-	self.radius = 20
+	self.maxSpectors = 20
+	self.maxEffects = 12
+	self.radius = 13
 	
 	self.spectators = {}
 	
@@ -85,7 +85,7 @@ function Arena_S:addEffects()
 	effectsTable.effects = {}
 	
 	for i = 1, self.maxEffects do
-		local ex, ey, ez = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, self.radius + 5, step * i, 0)
+		local ex, ey, ez = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, self.radius + 2, step * i, 0)
 		
 		effectsTable.effects[i] = {x = ex, y = ey, z = ez - 0.5}
 	end
