@@ -70,6 +70,14 @@ function Text3D_C:draw3DTexts()
 		if (textSlot) then
 			local cx, cy, cz = getCameraMatrix()
 			local distance = getDistanceBetweenPoints3D(cx, cy, cz, textSlot.x, textSlot.y, textSlot.z)
+			
+			textSlot.offset = textSlot.offset + 1.25
+			textSlot.a = textSlot.a - 0.005
+			
+			if (textSlot.a <= 0) then
+				textSlot.a = 0
+				table.remove(self.texts3D, index)
+			end
 					
 			if (distance <= self.maxTextDistance) then
 				local ntx, nty = getScreenFromWorldPosition(textSlot.x, textSlot.y, textSlot.z)
@@ -84,15 +92,7 @@ function Text3D_C:draw3DTexts()
 					local y = nty - textSlot.offset
 					
 					dxDrawText(textSlot.text, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha * textSlot.a), scale, self.hud.fontBold, "center", "center", false, false, false, true, true)
-					dxDrawText(textSlot.text, x, y, x, y, textColor, scale, self.hud.fontBold, "center", "center", false, false, false, true, true)
-					
-					textSlot.offset = textSlot.offset + 1.25
-					textSlot.a = textSlot.a - 0.005
-					
-					if (textSlot.a <= 0) then
-						textSlot.a = 0
-						table.remove(self.texts3D, index)
-					end	
+					dxDrawText(textSlot.text, x, y, x, y, textColor, scale, self.hud.fontBold, "center", "center", false, false, false, true, true)	
 				end
 			end
 		end

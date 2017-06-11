@@ -13,7 +13,6 @@
 	<script src="server/settings/ArenaList_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
 	<script src="server/settings/Pokedex_S.lua" type="server"/>
-	<script src="server/settings/WayPoints_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
 	<script src="server/PlayerManager_S.lua" type="server"/>
@@ -54,6 +53,7 @@
 	<!-- shared scripts -->
 	<script src="shared/classlib.lua" type="shared"/>
 	<script src="shared/utils.lua" type="shared"/>
+	<script src="shared/settings/WayPoints_Shared.lua" type="shared"/>
 	
 	<!-- shaders -->
 	<file src="res/shader/mta-helper.hlsl" type="client"/>

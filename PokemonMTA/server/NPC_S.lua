@@ -36,7 +36,9 @@ function NPC_S:constructor(parent, npcProperties)
 	
 	self.player = nil
 	self.isInFight = "false"
-	self.zone = nil
+	
+	self.zone = getZoneName(self.x, self.y, self.z)
+	self.wayPoints = nil
 	
 	self:init()
 	
@@ -70,6 +72,8 @@ function NPC_S:createNPC()
 		
 		addEventHandler("onColShapeHit", self.actionCol, self.m_OnColShapeHit)
 		addEventHandler("onColShapeLeave", self.actionCol, self.m_OnColShapeLeave)
+		
+		--self:job_setDefault()
 	end
 end
 

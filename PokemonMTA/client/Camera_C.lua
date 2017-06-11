@@ -7,7 +7,7 @@ Camera_C = {}
 
 function Camera_C:constructor(parent)
 
-	self.shaderManager = parent
+	self.coreClass = parent
 	
 	self.player = getLocalPlayer()
 	

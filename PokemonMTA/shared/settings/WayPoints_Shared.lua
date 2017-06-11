@@ -1,5 +1,5 @@
 --[[
-	Filename: WayPoints_S.lua
+	Filename: WayPoints_Shared.lua
 	Authors: Sam@ke
 --]]
 

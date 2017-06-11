@@ -22,10 +22,31 @@ end
 
 
 function Debug_C:update(delta)
-	if (self.coreClass.isDebug == true) then
-		for index, pokeSpawn in pairs(getElementsByType("POKESPAWN")) do
-			if (pokeSpawn) then
-				self:drawPokeSpawn(pokeSpawn)
+	if (isElement(self.player)) then
+		self.playerPos = self.player:getPosition()
+		self.zone = getZoneName(self.playerPos.x, self.playerPos.y, self.playerPos.z)
+		
+		if (self.coreClass.isDebug == true) then
+			for index, pokeSpawn in pairs(getElementsByType("POKESPAWN")) do
+				if (pokeSpawn) then
+					self:drawPokeSpawn(pokeSpawn)
+				end
+			end
+			
+			if (self.zone) and (WayPoints) then
+				if (WayPoints[self.zone]) then
+					for index, route in pairs(WayPoints[self.zone]) do
+						if (route) then
+							self:drawRoute(route)
+						end
+					end
+				end
+			end
+			
+			for index, ped in pairs(getElementsByType("NPC")) do
+				if (ped) then
+					self:drawPeds(ped)
+				end
 			end
 		end
 	end
@@ -59,6 +80,46 @@ function Debug_C:drawPokeSpawn(pokeSpawn)
 			dxDrawLine3D(corner3.x, corner3.y, corner3.z, top.x, top.y, top.z, color, thickness, true)
 			dxDrawLine3D(corner4.x, corner4.y, corner4.z, top.x, top.y, top.z, color, thickness, true)
 		end
+	end
+end
+
+
+function Debug_C:drawRoute(route)
+	if (route) then
+		
+		local thickness = 5
+			
+		for i = 1, #route do
+			if (route[i]) then
+				dxDrawLine3D(route[i].x, route[i].y, route[i].z - 1, route[i].x, route[i].y, route[i].z + 1, tocolor(45, 90, 255, 255), thickness, true)
+				dxDrawLine3D(route[i].x - 0.25, route[i].y, route[i].z + 0.5, route[i].x + 0.25, route[i].y, route[i].z + 0.5, tocolor(45, 255, 45, 255), thickness, true)
+				dxDrawLine3D(route[i].x, route[i].y - 0.25, route[i].z + 0.5, route[i].x, route[i].y + 0.25, route[i].z + 0.5, tocolor(255, 45, 45, 255), thickness, true)
+				
+				local x1, y1, z1 = route[i].x, route[i].y, route[i].z
+				local x2, y2, z2
+				
+				if (route[i + 1]) then
+					x2, y2, z2 = route[i + 1].x, route[i + 1].y, route[i + 1].z
+				else
+					x2, y2, z2 = route[1].x, route[1].y, route[1].z
+				end
+				
+				if (x1) and (y1) and (z1) and (x2) and (y2) and (z2) then
+					dxDrawLine3D(x1, y1, z1 + 0.5, x2, y2, z2 + 0.5, tocolor(220, 220, 45, 255), thickness * 0.5, true)
+				end
+			end
+		end
+	end
+end
+
+
+function Debug_C:drawPeds(ped)
+	if (isElement(ped)) then
+		local pos = ped:getPosition()
+		local color = tocolor(255, 255, 255, 255)
+		local thickness = 8
+		
+		dxDrawLine3D(pos.x, pos.y, pos.z - 1, pos.x, pos.y, pos.z + 15, color, thickness, true)
 	end
 end
 
