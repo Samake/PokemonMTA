@@ -126,6 +126,7 @@ if (not self.companion) and (Pokedex) then
 			pokemonBluePrint.rot = math.random(0, 360)
 			pokemonBluePrint.radius = 4
 			pokemonBluePrint.sound = rawPokemon.sound
+			pokemonBluePrint.dimension = 0
 			
 			PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
 			self.companion = pokemonBluePrint.id

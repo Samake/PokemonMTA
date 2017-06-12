@@ -39,9 +39,15 @@ function Debug_C:update(delta)
 				end
 			end
 			
-			for index, ped in pairs(getElementsByType("NPC")) do
-				if (ped) then
-					self:drawPeds(ped)
+			for index, npc in pairs(getElementsByType("NPC")) do
+				if (npc) then
+					self:drawPeds(npc)
+				end
+			end
+			
+			for index, pokemon in pairs(getElementsByType("POKEMON")) do
+				if (pokemon) then
+					self:drawPokemon(pokemon)
 				end
 			end
 		end
@@ -109,10 +115,21 @@ function Debug_C:drawRoute(route)
 end
 
 
-function Debug_C:drawPeds(ped)
-	if (isElement(ped)) then
-		local pos = ped:getPosition()
+function Debug_C:drawPeds(npc)
+	if (isElement(npc)) then
+		local pos = npc:getPosition()
 		local color = tocolor(255, 255, 255, 255)
+		local thickness = 8
+		
+		dxDrawLine3D(pos.x, pos.y, pos.z - 1, pos.x, pos.y, pos.z + 15, color, thickness, true)
+	end
+end
+
+
+function Debug_C:drawPokemon(pokemon)
+	if (isElement(pokemon)) then
+		local pos = pokemon:getPosition()
+		local color = tocolor(45, 45, 220, 255)
 		local thickness = 8
 		
 		dxDrawLine3D(pos.x, pos.y, pos.z - 1, pos.x, pos.y, pos.z + 15, color, thickness, true)

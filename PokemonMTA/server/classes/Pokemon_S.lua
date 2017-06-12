@@ -10,20 +10,21 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self.owner = pokemonBluePrint.owner
 	self.id = pokemonBluePrint.id
 	self.modelID = pokemonBluePrint.modelID
-	self.name = pokemonBluePrint.name
-	self.type = pokemonBluePrint.type
-	self.legendary = pokemonBluePrint.legendary
-	self.size =	pokemonBluePrint.size
-	self.level = pokemonBluePrint.level
-	self.power = pokemonBluePrint.power
-	self.x = pokemonBluePrint.x
-	self.y = pokemonBluePrint.y
-	self.z = pokemonBluePrint.z
+	self.name = pokemonBluePrint.name or "UNKNOWN"
+	self.type = pokemonBluePrint.type or "ground"
+	self.legendary = pokemonBluePrint.legendary or "false"
+	self.size =	pokemonBluePrint.size or 1
+	self.level = pokemonBluePrint.level or 1
+	self.power = pokemonBluePrint.power or 100
+	self.x = pokemonBluePrint.x or 0
+	self.y = pokemonBluePrint.y or 0
+	self.z = pokemonBluePrint.z or 0
 	self.rx = 0
 	self.ry = 0
-	self.rz = pokemonBluePrint.rot
-	self.radius = pokemonBluePrint.radius
+	self.rz = pokemonBluePrint.rot or 0
+	self.radius = pokemonBluePrint.radius or 1
 	self.sound = pokemonBluePrint.sound
+	self.dimension = pokemonBluePrint.dimension or 0
 	
 	self.spawn = {x = self.x, y = self.y, z = self.z}
 	
@@ -68,6 +69,10 @@ function Pokemon_S:createPokemon()
 			
 			addEventHandler("onColShapeHit", self.actionCol, self.m_OnColShapeHit)
 			addEventHandler("onColShapeLeave", self.actionCol, self.m_OnColShapeLeave)
+			
+			self.element:setDimension(self.dimension)
+			self.actionCol:setDimension(self.dimension)
+			self.model:setDimension(self.dimension)
 			
 			self:doSpawnEffects()
 		end
@@ -143,17 +148,19 @@ function Pokemon_S:update()
 	if (self.element) then
 		self.element:setPosition(self.x, self.y, self.z)
 	end
-		
-	self:streamPokemon()
 	
-	if (isElement(self.model)) then
-		if (self.destX) and (self.destY) then
-			self.distanceToTarget = getDistanceBetweenPoints2D(self.destX, self.destY, self.x, self.y)
+	if (self.dimension == 0) then
+		self:streamPokemon()
+	
+		if (isElement(self.model)) then
+			if (self.destX) and (self.destY) then
+				self.distanceToTarget = getDistanceBetweenPoints2D(self.destX, self.destY, self.x, self.y)
+			end
+				
+			self:handleJobs()
+			self:updateCoords()
+			self:updateData()
 		end
-			
-		self:handleJobs()
-		self:updateCoords()
-		self:updateData()
 	end
 end
 

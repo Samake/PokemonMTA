@@ -56,6 +56,7 @@ function PokeSpawn_S:spawnPokemon()
 				pokemonBluePrint.rot = math.random(0, 360)
 				pokemonBluePrint.radius = self.radius
 				pokemonBluePrint.sound = rawPokemon.sound
+				pokemonBluePrint.dimension = 0
 				
 				PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
 			end

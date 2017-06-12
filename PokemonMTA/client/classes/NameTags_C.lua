@@ -34,7 +34,7 @@ end
 function NameTags_C:changeDrawLevel()
 	self.drawLevel = self.drawLevel + 1
 	
-	if (self.drawLevel > 2) then
+	if (self.drawLevel > 1) then
 		self.drawLevel = 0
 	end
 end
@@ -67,7 +67,7 @@ end
 
 
 function NameTags_C:drawPokemonNameTag(ped)
-
+	
 	local pokeName = ped:getData("POKEMON:NAME") or "Unknown"
 	local pokeLevel = ped:getData("POKEMON:LEVEL") or "Unknown"
 	local pokeSize = ped:getData("POKEMON:SIZE") or 1
@@ -152,7 +152,7 @@ function NameTags_C:drawPokemonNameTag(ped)
 				dxDrawText(pokeName, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha), scale * 0.8, Fonts["pokemon_gb_8_bold"], "left", "center", false, false, false, true, true)
 				dxDrawText(pokeName, x, y, x, y, nameColor, scale * 0.8, Fonts["pokemon_gb_8_bold"], "left", "center", false, false, false, true, true)
 				
-				if (self.drawLevel > 1) and (Settings.debugEnabled == true) then
+				if (self.drawLevel > 0) and (Settings.debugEnabled == true) then
 					-- // debug info // --
 					
 					x = ntx + width * 0.5
@@ -213,7 +213,7 @@ function NameTags_C:drawNPCNameTag(ped)
 			dxDrawText(npcName, x + shadowOffset, y + shadowOffset, x + shadowOffset, y + shadowOffset, tocolor(0, 0, 0, alpha), scale * 1.5, Fonts["pokemon_gb_8_bold"], "center", "center", false, false, false, true, true)
 			dxDrawText(npcName, x, y, x, y, nameColor, scale * 1.5, Fonts["pokemon_gb_8_bold"], "center", "center", false, false, false, true, true)
 			
-			if (self.drawLevel > 1) and (Settings.debugEnabled == true) then
+			if (self.drawLevel > 0) and (Settings.debugEnabled == true) then
 				-- // debug info // --
 				
 				x = ntx

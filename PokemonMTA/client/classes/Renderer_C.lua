@@ -8,9 +8,9 @@ function Renderer_C:constructor()
 	self.maxTiles = 256
 	self.isTiled = "false"
 	
-	self.saturation = 1.3
-	self.contrast = 1.3
-	self.brightness = 1.05
+	self.saturation = 1.35
+	self.contrast = 1.2
+	self.brightness = 1.1
 			
 	self:initRenderer()
 	

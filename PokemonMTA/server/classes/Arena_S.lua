@@ -93,6 +93,8 @@ function Arena_S:setOpponents()
 	self:savePositions()
 	self:spawnPlayer()
 	self:spawnOpponent()
+	self:setRotations()
+	self:spawnPokemon()
 end
 
 
@@ -146,23 +148,75 @@ function Arena_S:resetOpponent()
 end
 
 
+function Arena_S:spawnPokemon()
+	
+	local rawPokemon = Pokedex[math.random(1, #Pokedex)]
+	local rot = findRotation(self.spot1Pokemon.x, self.spot1Pokemon.y, self.spot2Pokemon.x, self.spot2Pokemon.y)
+
+	local pokemonBluePrint = {}
+	pokemonBluePrint.spawn = nil
+	pokemonBluePrint.owner = self.player
+	pokemonBluePrint.id = "POKEFIGHTTEST1"
+	pokemonBluePrint.modelID = rawPokemon.modelID
+	pokemonBluePrint.name = rawPokemon.name
+	pokemonBluePrint.type = rawPokemon.type
+	pokemonBluePrint.legendary = rawPokemon.legendary
+	pokemonBluePrint.size = rawPokemon.size
+	pokemonBluePrint.level = 1
+	pokemonBluePrint.power = math.random(5, 100)
+	pokemonBluePrint.x = self.spot1Pokemon.x
+	pokemonBluePrint.y = self.spot1Pokemon.y
+	pokemonBluePrint.z = self.spot1Pokemon.z
+	pokemonBluePrint.rot = rot
+	pokemonBluePrint.radius = 1
+	pokemonBluePrint.sound = rawPokemon.sound
+	pokemonBluePrint.dimension = self.arenaDimension
+	
+	PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
+	
+	local rawPokemon = Pokedex[math.random(1, #Pokedex)]
+	local rot = findRotation(self.spot2Pokemon.x, self.spot2Pokemon.y, self.spot1Pokemon.x, self.spot1Pokemon.y)
+
+	local pokemonBluePrint = {}
+	pokemonBluePrint.spawn = nil
+	pokemonBluePrint.owner = self.opponent
+	pokemonBluePrint.id = "POKEFIGHTTEST2"
+	pokemonBluePrint.modelID = rawPokemon.modelID
+	pokemonBluePrint.name = rawPokemon.name
+	pokemonBluePrint.type = rawPokemon.type
+	pokemonBluePrint.legendary = rawPokemon.legendary
+	pokemonBluePrint.size = rawPokemon.size
+	pokemonBluePrint.level = 1
+	pokemonBluePrint.power = math.random(5, 100)
+	pokemonBluePrint.x = self.spot2Pokemon.x
+	pokemonBluePrint.y = self.spot2Pokemon.y
+	pokemonBluePrint.z = self.spot2Pokemon.z
+	pokemonBluePrint.rot = rot
+	pokemonBluePrint.radius = 1
+	pokemonBluePrint.sound = rawPokemon.sound
+	pokemonBluePrint.dimension = self.arenaDimension
+	
+	PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
+	
+end
+
+
 function Arena_S:update()
 	if (self.isLoaded) then
-		self:setRotations()
+		
 	end
 end
 
 
 function Arena_S:setRotations()
-	local rotZ = findRotation(self.spot1Player.x, self.spot1Player.y, self.x, self.y)
-	local playerRot = self.player:getRotation()
+	local playerPos = self.player:getPosition()
+	local opponentPos = self.opponent:getPosition()
+
+	local playerRotZ = findRotation(playerPos.x, playerPos.y, opponentPos.x, opponentPos.y)
+	setPedRotation(self.player, playerRotZ, true)   
 	
-	self.player:setRotation(playerRot.x, playerRot.y, rotZ)
-	
-	local rotZ = findRotation(self.spot2Opponent.x, self.spot2Opponent.y, self.x, self.y)
-	local opponentRot = self.opponent:getRotation()
-	
-	self.opponent:setRotation(opponentRot.x, opponentRot.y, rotZ)
+	local opponentRotZ = findRotation(opponentPos.x, opponentPos.y, playerPos.x, playerPos.y)
+	setPedRotation(self.opponent, opponentRotZ, true)   
 end
 
 
@@ -176,6 +230,9 @@ function Arena_S:clear()
 			spectator = nil
 		end
 	end
+	
+	PokemonManager_S:getSingleton():deletePokemon("POKEFIGHTTEST1")
+	PokemonManager_S:getSingleton():deletePokemon("POKEFIGHTTEST2")
 	
 	triggerClientEvent(self.player, "DELETECLIENTMASSEFFECT", self.player, self.name .. ":" .. self.id)
 end
