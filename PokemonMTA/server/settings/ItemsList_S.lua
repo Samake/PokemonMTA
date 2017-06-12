@@ -1,8 +1,3 @@
---[[
-	Filename: ItemsList_S.lua
-	Authors: Sam@ke
---]]
-
 ItemList = {}
 
 ItemList[1] = {name = "Pokeball"}

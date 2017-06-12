@@ -1,9 +1,3 @@
---[[
-	Filename: Colors_S.lua
-	Authors: Sam@ke
---]]
-
-
 Colors = {}
 
 Colors.yellow = {r = 255, g = 255, b = 90}

@@ -1,8 +1,3 @@
---[[
-	Filename: ArenaList_S.lua
-	Authors: Sam@ke
---]]
-
 ArenaList = {}
 Arena = {}
 

@@ -1,9 +1,3 @@
---[[
-	Filename: Pokedex_S.lua
-	Authors: Sam@ke
---]]
-
-
 Pokedex = {}
 
 Pokedex[1] = {modelID = 213, name = "Pikachu", pokedexID = 25, legendary = false, size = 0.8, type = "electric", rate = 24.8, color = Colors.yellow, sound = "res/sounds/pokemon/pikachu.wav"}

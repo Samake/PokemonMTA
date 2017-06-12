@@ -1,16 +1,12 @@
---[[
-	Filename: Core_S.lua
-	Authors: Sam@ke
---]]
-
-local Instance = nil
-
-Core_S = {}
+Core_S = inherit(Singleton)
 
 function Core_S:constructor()
 	mainOutput("SERVER || ***** " .. Settings.resName .. " was started! " .. Settings.resVersion .. " *****")
-	mainOutput("Core_S was loaded.")
 
+	if (Settings.showCoreDebugInfo == true) then
+		mainOutput("Core_S was loaded.")
+	end
+	
 	self:initServer()
 	self:initComponents()
 end
@@ -19,8 +15,7 @@ end
 function Core_S:initServer()
 	setFPSLimit(Settings.fpsLimit)
 	setGameType(Settings.resName)
-	setTime(20, 30)
-	
+
 	self.m_Update = bind(self.update, self)
 	
 	if (not self.updateTimer) then
@@ -30,40 +25,26 @@ end
 
 
 function Core_S:initComponents()
-	if (not self.playerManager) then
-		self.playerManager = new(PlayerManager_S, self)
-	end
-
-	if (not self.spawnManager) then
-		self.spawnManager = new(SpawnManager_S, self)
-	end
-	
-	if (not self.itemManager) then
-		self.itemManager = new(ItemManager_S, self)
-	end
-	
-	if (not self.fightManager) then
-		self.fightManager = new(FightManager_S, self)
-	end
+	PlayerManager_S:new()
+	ChestManager_S:new()
+	NPCManager_S:new()
+	BikeManager_S:new()
+	PokeSpawnManager_S:new()
+	PokemonManager_S:new()
+	ItemManager_S:new()
+	FightManager_S:new()
 end
 
 
 function Core_S:update()
-	if (self.playerManager) then
-		self.playerManager:update()
-	end
-
-	if (self.spawnManager) then
-		self.spawnManager:update()
-	end
-	
-	if (self.itemManager) then
-		self.itemManager:update()
-	end
-	
-	if (self.fightManager) then
-		self.fightManager:update()
-	end
+	PlayerManager_S:getSingleton():update()
+	ChestManager_S:getSingleton():update()
+	NPCManager_S:getSingleton():update()
+	BikeManager_S:getSingleton():update()
+	PokeSpawnManager_S:getSingleton():update()
+	PokemonManager_S:getSingleton():update()
+	ItemManager_S:getSingleton():update()
+	FightManager_S:getSingleton():update()
 end
 
 
@@ -73,27 +54,14 @@ function Core_S:clear()
 		self.updateTimer = nil
 	end
 	
-	if (self.playerManager) then
-		delete(self.playerManager)
-		self.playerManager = nil
-	end
-
-	if (self.spawnManager) then
-		delete(self.spawnManager)
-		self.spawnManager = nil
-	end
-	
-	if (self.itemManager) then
-		delete(self.itemManager)
-		self.itemManager = nil
-	end
-	
-	if (self.fightManager) then
-		delete(self.fightManager)
-		self.fightManager = nil
-	end
-	
-	mainOutput("Core_S was deleted.")
+	delete(PlayerManager_S:getSingleton())
+	delete(ChestManager_S:getSingleton())
+	delete(NPCManager_S:getSingleton())
+	delete(BikeManager_S:getSingleton())
+	delete(PokeSpawnManager_S:getSingleton())
+	delete(PokemonManager_S:getSingleton())
+	delete(ItemManager_S:getSingleton())
+	delete(FightManager_S:getSingleton())
 end
 
 
@@ -101,19 +69,20 @@ function Core_S:destructor()
 	self:clear()
 
 	mainOutput("SERVER || ***** " .. Settings.resName .. " was stopped! " .. Settings.resVersion .. " *****")
+	
+	if (Settings.showCoreDebugInfo == true) then
+		mainOutput("Core_S was deleted.")
+	end
 end
 
 
 addEventHandler("onResourceStart", resourceRoot,
 function()
-	Instance = new(Core_S)
+	Core_S:new()
 end)
 
 
 addEventHandler("onResourceStop", resourceRoot,
 function()
-	if (Instance) then
-		delete(Instance)
-		Instance = nil
-	end
+	delete(Core_S:getSingleton())
 end)

@@ -3,11 +3,22 @@
 	<min_mta_version client="1.5.4" server="1.5.4"/>
 	<oop>true</oop>
 	
-	<!-- includes -->
+	<!-- ################################ Includes ################################ -->
+	
 	<include resource="Pokemon_Map_Default" />
 	
-	<!-- server scripts -->
-	<script src="server/settings/Settings_S.lua" type="server"/>
+	<!-- ################################ Scripts ################################ -->
+	
+	<!-- shared -->
+	<script src="shared/settings/WayPoints_Shared.lua" type="shared"/>
+	<script src="shared/settings/Settings_Shared.lua" type="shared"/>
+		
+	<script src="shared/Classlib.lua" type="shared"/>
+	<script src="shared/Utilities.lua" type="shared"/>
+	<script src="shared/Singleton.lua" type="shared"/>
+	<script src="shared/Class.lua" type="shared"/>
+	
+	<!-- server -->
 	<script src="server/settings/Colors_S.lua" type="server"/>
 	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
 	<script src="server/settings/ArenaList_S.lua" type="server"/>
@@ -15,45 +26,52 @@
 	<script src="server/settings/Pokedex_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
-	<script src="server/PlayerManager_S.lua" type="server"/>
-	<script src="server/Player_S.lua" type="server"/>
-	<script src="server/SpawnManager_S.lua" type="server"/>
-	<script src="server/ItemManager_S.lua" type="server"/>
-	<script src="server/FightManager_S.lua" type="server"/>
-	<script src="server/PokeSpawn_S.lua" type="server"/>
-	<script src="server/Bikes_S.lua" type="server"/>
-	<script src="server/Chest_S.lua" type="server"/>
-	<script src="server/Pokemon_S.lua" type="server"/>
-	<script src="server/NPC_S.lua" type="server"/>
-	<script src="server/Fight_S.lua" type="server"/>
-	<script src="server/Arena_S.lua" type="server"/>
 	
-	<!-- client scripts -->
-	<script src="client/dev/DevTools_C.lua" type="client" cache="false"/>
-	<script src="client/dev/Debug_C.lua" type="client" cache="false"/>
+	<script src="server/manager/PlayerManager_S.lua" type="server"/>
+	<script src="server/manager/ChestManager_S.lua" type="server"/>
+	<script src="server/manager/NPCManager_S.lua" type="server"/>
+	<script src="server/manager/BikeManager_S.lua" type="server"/>
+	<script src="server/manager/PokeSpawnManager_S.lua" type="server"/>
+	<script src="server/manager/PokemonManager_S.lua" type="server"/>
+	<script src="server/manager/ItemManager_S.lua" type="server"/>
+	<script src="server/manager/FightManager_S.lua" type="server"/>
 	
-	<script src="client/settings/Bindings_C.lua" type="client" cache="false"/>
+	<script src="server/classes/Player_S.lua" type="server"/>
+	<script src="server/classes/Chest_S.lua" type="server"/>
+	<script src="server/classes/NPC_S.lua" type="server"/>
+	<script src="server/classes/Bike_S.lua" type="server"/>
+	<script src="server/classes/PokeSpawn_S.lua" type="server"/>
+	<script src="server/classes/Pokemon_S.lua" type="server"/>
+	<script src="server/classes/Fight_S.lua" type="server"/>
+	<script src="server/classes/Arena_S.lua" type="server"/>
 	
-	<script src="client/Core_C.lua" type="client" cache="false"/>
-	<script src="client/ModelHandler_C.lua" type="client" cache="false"/>
-	<script src="client/Textures_C.lua" type="client" cache="false"/>
-	<script src="client/EffectManager_C.lua" type="client" cache="false"/>
-	<script src="client/SoundManager_C.lua" type="client" cache="false"/>
-	<script src="client/ShaderManager_C.lua" type="client" cache="false"/>
-	<script src="client/Renderer_C.lua" type="client" cache="false"/>
-	<script src="client/HUD_C.lua" type="client" cache="false"/>
-	<script src="client/Camera_C.lua" type="client" cache="false"/>
-	<script src="client/ShaderPeds_C.lua" type="client" cache="false"/>
-	<script src="client/ShaderObjects_C.lua" type="client" cache="false"/>
-	<script src="client/Player_C.lua" type="client" cache="false"/>
-	<script src="client/NameTags_C.lua" type="client" cache="false"/>
-	<script src="client/Text3D_C.lua" type="client" cache="false"/>
-	<script src="client/Radar_C.lua" type="client" cache="false"/>
+	<!-- client -->
+	<script src="client/settings/Bindings_C.lua" type="client"/>
+	<script src="client/helper/Textures_C.lua" type="client"/>
+	<script src="client/helper/Fonts_C.lua" type="client"/>
+	<script src="client/helper/ModelHandler_C.lua" type="client"/>
 	
-	<!-- shared scripts -->
-	<script src="shared/classlib.lua" type="shared"/>
-	<script src="shared/utils.lua" type="shared"/>
-	<script src="shared/settings/WayPoints_Shared.lua" type="shared"/>
+	<script src="client/dev/DevTools_C.lua" type="client"/>
+	<script src="client/dev/Debug_C.lua" type="client"/>
+	
+	<script src="client/Core_C.lua" type="client"/>
+	
+	<script src="client/manager/EffectManager_C.lua" type="client"/>
+	<script src="client/manager/SoundManager_C.lua" type="client"/>
+	<script src="client/manager/ShaderManager_C.lua" type="client"/>
+	
+	<script src="client/singleton/Camera_C.lua" type="client"/>
+	<script src="client/singleton/Player_C.lua" type="client"/>
+
+	<script src="client/classes/ShaderObjects_C.lua" type="client"/>
+	<script src="client/classes/ShaderPeds_C.lua" type="client"/>
+	<script src="client/classes/Renderer_C.lua" type="client"/>
+	<script src="client/classes/HUD_C.lua" type="client"/>
+	<script src="client/classes/NameTags_C.lua" type="client"/>
+	<script src="client/classes/Radar_C.lua" type="client"/>
+	<script src="client/classes/WorldText3D_C.lua" type="client"/>
+	
+	<!-- ################################ FILES ################################ -->
 	
 	<!-- shaders -->
 	<file src="res/shader/mta-helper.hlsl" type="client"/>

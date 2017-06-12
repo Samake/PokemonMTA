@@ -1,18 +1,14 @@
---[[
-	Filename: Debug_C.lua
-	Authors: Sam@ke
---]]
+Debug_C = inherit(Singleton)
 
-Debug_C = {}
+function Debug_C:constructor()
 
-function Debug_C:constructor(parent)
-
-	self.coreClass = parent
 	self.player = getLocalPlayer()
 	
 	self:init()
 	
-	mainOutput("Debug_C was started.")
+	if (Settings.showClassDebugInfo == true) then
+		mainOutput("Debug_C was started.")
+	end
 end
 
 
@@ -26,7 +22,7 @@ function Debug_C:update(delta)
 		self.playerPos = self.player:getPosition()
 		self.zone = getZoneName(self.playerPos.x, self.playerPos.y, self.playerPos.z)
 		
-		if (self.coreClass.isDebug == true) then
+		if (Settings.debugEnabled == true) then
 			for index, pokeSpawn in pairs(getElementsByType("POKESPAWN")) do
 				if (pokeSpawn) then
 					self:drawPokeSpawn(pokeSpawn)
@@ -132,5 +128,7 @@ end
 function Debug_C:destructor()
 	self:clear()
 	
-	mainOutput("Debug_C was deleted.")
+	if (Settings.showClassDebugInfo == true) then
+		mainOutput("Debug_C was deleted.")
+	end
 end

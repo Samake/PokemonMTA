@@ -1,8 +1,3 @@
---[[
-	Filename: WayPoints_Shared.lua
-	Authors: Sam@ke
---]]
-
 WayPoints = {}
 
 WayPoints["Palomino Creek"] = {}

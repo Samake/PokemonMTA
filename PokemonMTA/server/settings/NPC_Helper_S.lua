@@ -1,9 +1,3 @@
---[[
-	Filename: NPC_Helper_S.lua
-	Authors: Sam@ke
---]]
-
-
 NPC_Helper = {}
 local names = {}
 
