@@ -12,18 +12,18 @@
 	<!-- shared -->
 	<script src="shared/settings/WayPoints_Shared.lua" type="shared"/>
 	<script src="shared/settings/Settings_Shared.lua" type="shared"/>
-		
+	<script src="shared/settings/Colors_Shared.lua" type="shared"/>
+	<script src="shared/settings/Pokedex_Shared.lua" type="shared"/>
+	
 	<script src="shared/Classlib.lua" type="shared"/>
 	<script src="shared/Utilities.lua" type="shared"/>
 	<script src="shared/Singleton.lua" type="shared"/>
 	<script src="shared/Class.lua" type="shared"/>
 	
 	<!-- server -->
-	<script src="server/settings/Colors_S.lua" type="server"/>
 	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
 	<script src="server/settings/ArenaList_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
-	<script src="server/settings/Pokedex_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
 	
@@ -70,6 +70,7 @@
 	<script src="client/classes/NameTags_C.lua" type="client"/>
 	<script src="client/classes/Radar_C.lua" type="client"/>
 	<script src="client/classes/WorldText3D_C.lua" type="client"/>
+	<script src="client/classes/PokeSlots_C.lua" type="client"/>
 	
 	<!-- ################################ FILES ################################ -->
 	
@@ -92,6 +93,9 @@
 	<file src="res/textures/radar_mask.png" type="client"/>
 	<file src="res/textures/radar_mask_bg.png" type="client"/>
 	<file src="res/textures/radar_frame.png" type="client"/>
+	<file src="res/textures/slot_bg.png" type="client"/>
+	<file src="res/textures/pokeball_icon.png" type="client"/>
+	<file src="res/textures/pokeball_icon_disabled.png" type="client"/>
 	
 	<!-- sounds -->
 	<file src="res/sounds/music/music_1_11_battle.mp3" type="client"/>

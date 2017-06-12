@@ -4,6 +4,9 @@ function Textures:init()
 	Textures["gui"] = {}
 	Textures["gui"].pokeNameTag = dxCreateTexture("res/textures/pokeNameTag.png", "argb")
 	Textures["gui"].pokeNameTagBG = dxCreateTexture("res/textures/pokeNameTagBG.png", "argb")
+	Textures["gui"].slotBG = dxCreateTexture("res/textures/slot_bg.png", "argb")
+	Textures["gui"].pokeBallIcon = dxCreateTexture("res/textures/pokeball_icon.png", "argb")
+	Textures["gui"].pokeBallIconDisabled = dxCreateTexture("res/textures/pokeball_icon_disabled.png", "argb")
 	
 	Textures["radar"] = {}
 	Textures["radar"].radarBG = dxCreateTexture("res/textures/radar_bg.png", "argb")

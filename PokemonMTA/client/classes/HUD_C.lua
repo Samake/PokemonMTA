@@ -24,6 +24,10 @@ function HUD_C:initHUD()
 	if (not self.radar) then
 		self.radar = Radar_C:new()
 	end
+	
+	if (not self.pokeSlots) then
+		self.pokeSlots = PokeSlots_C:new()
+	end
 end
 
 
@@ -40,6 +44,10 @@ function HUD_C:update(delta, renderTarget)
 		
 		if (self.radar) then
 			self.radar:update(delta, renderTarget)
+		end
+		
+		if (self.pokeSlots) then
+			self.pokeSlots:update(delta, renderTarget)
 		end
 	end
 end
@@ -59,6 +67,11 @@ function HUD_C:clear()
 	if (self.radar) then
 		self.radar:delete()
 		self.radar = nil
+	end
+	
+	if (self.pokeSlots) then
+		self.pokeSlots:delete()
+		self.pokeSlots = nil
 	end
 end
 

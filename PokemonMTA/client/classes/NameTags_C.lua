@@ -45,6 +45,8 @@ function NameTags_C:update(delta, renderTarget)
 		dxSetRenderTarget(renderTarget, false)
 		
 		self:drawNameTags()
+		
+		dxSetRenderTarget()
 	end
 end
 
