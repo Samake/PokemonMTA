@@ -57,6 +57,7 @@ function PokeSpawn_S:spawnPokemon()
 				pokemonBluePrint.radius = self.radius
 				pokemonBluePrint.sound = rawPokemon.sound
 				pokemonBluePrint.dimension = 0
+				pokemonBluePrint.icon = rawPokemon.icon
 				
 				PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
 			end

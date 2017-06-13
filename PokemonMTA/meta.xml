@@ -94,8 +94,20 @@
 	<file src="res/textures/radar_mask_bg.png" type="client"/>
 	<file src="res/textures/radar_frame.png" type="client"/>
 	<file src="res/textures/slot_bg.png" type="client"/>
-	<file src="res/textures/pokeball_icon.png" type="client"/>
-	<file src="res/textures/pokeball_icon_disabled.png" type="client"/>
+
+	<file src="res/textures/icons/pokeball_icon.png" type="client"/>
+	<file src="res/textures/icons/pokeball_icon_disabled.png" type="client"/>
+	<file src="res/textures/icons/default_icon.png" type="client"/>
+	<file src="res/textures/icons/pickachu_icon.png" type="client"/>
+	<file src="res/textures/icons/rowlet_icon.png" type="client"/>
+	<file src="res/textures/icons/torchic_icon.png" type="client"/>
+	<file src="res/textures/icons/shaymin_icon.png" type="client"/>
+	<file src="res/textures/icons/fennekin_icon.png" type="client"/>
+	<file src="res/textures/icons/greninja_icon.png" type="client"/>
+	<file src="res/textures/icons/squishy_icon.png" type="client"/>
+	<file src="res/textures/icons/gible_icon.png" type="client"/>
+	<file src="res/textures/icons/glalie_icon.png" type="client"/>
+	<file src="res/textures/icons/braixen_icon.png" type="client"/>
 	
 	<!-- sounds -->
 	<file src="res/sounds/music/music_1_11_battle.mp3" type="client"/>

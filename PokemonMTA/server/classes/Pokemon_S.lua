@@ -25,6 +25,7 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self.radius = pokemonBluePrint.radius or 1
 	self.sound = pokemonBluePrint.sound
 	self.dimension = pokemonBluePrint.dimension or 0
+	self.icon = pokemonBluePrint.icon
 	
 	self.spawn = {x = self.x, y = self.y, z = self.z}
 	
@@ -59,6 +60,8 @@ function Pokemon_S:createPokemon()
 		
 		if (not self.actionCol) and (not self.owner) then
 			self.actionCol = createColSphere(self.x, self.y, self.z, 6)
+		elseif (self.owner) then
+			self:doSpawnEffects()
 		end
 		
 		if (self.model and self.actionCol) then
@@ -81,6 +84,7 @@ end
 
 
 function Pokemon_S:doSpawnEffects()
+
 	local effectSettings = {}
 	effectSettings.name = "explosion_door"
 	effectSettings.x = self.x
@@ -109,7 +113,7 @@ function Pokemon_S:doSpawnEffects()
 		soundSettings.x = self.x
 		soundSettings.y = self.y
 		soundSettings.z = self.z
-		soundSettings.distance = 25
+		soundSettings.distance = 15
 		soundSettings.volume = 0.25
 		
 		triggerClientEvent("POKEMONPLAY3DSOUND", root, soundSettings)

@@ -66,10 +66,11 @@ end
 
 function SoundManager_C:playSound3D(soundSettings)
 	if (soundSettings) then
-		
-		local sound3D = playSound3D(soundSettings.sound, soundSettings.x, soundSettings.y, soundSettings.z)
-		sound3D:getMaxDistance(soundSettings.distance)
-		sound3D:setVolume(soundSettings.volume)
+		if (soundSettings.sound) then
+			local sound3D = playSound3D(soundSettings.sound, soundSettings.x, soundSettings.y, soundSettings.z)
+			sound3D:getMaxDistance(soundSettings.distance)
+			sound3D:setVolume(soundSettings.volume)
+		end
 	end
 end
 

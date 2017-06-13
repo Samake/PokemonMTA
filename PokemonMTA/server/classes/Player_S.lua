@@ -106,27 +106,27 @@ if (not self.companion) and (Pokedex) then
 		local rawPokemon = Pokedex[1] -- pikachu
 		
 		if (rawPokemon) then
-			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, 2, math.random(0, 360), 1)
+			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, math.random(1, 3), math.random(0, 360), 1)
 			
 			local pokemonBluePrint = {}
-			
 			pokemonBluePrint.spawn = nil
 			pokemonBluePrint.owner = self.player
-			pokemonBluePrint.id = self.id .. ":" .. rawPokemon.name
+			pokemonBluePrint.id = self.id .. ":" .. tostring(self.player) .. ":" .. rawPokemon.name
 			pokemonBluePrint.modelID = rawPokemon.modelID
 			pokemonBluePrint.name = rawPokemon.name
 			pokemonBluePrint.type = rawPokemon.type
 			pokemonBluePrint.legendary = rawPokemon.legendary
 			pokemonBluePrint.size = rawPokemon.size
-			pokemonBluePrint.level = 1
+			pokemonBluePrint.level = math.random(1, 55)
 			pokemonBluePrint.power = math.random(5, 100)
 			pokemonBluePrint.x = x
 			pokemonBluePrint.y = y
 			pokemonBluePrint.z = z
 			pokemonBluePrint.rot = math.random(0, 360)
-			pokemonBluePrint.radius = 4
+			pokemonBluePrint.radius = 1
 			pokemonBluePrint.sound = rawPokemon.sound
 			pokemonBluePrint.dimension = 0
+			pokemonBluePrint.icon = rawPokemon.icon
 			
 			PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
 			self.companion = pokemonBluePrint.id
