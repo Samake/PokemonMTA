@@ -215,6 +215,18 @@
 	<file src="res/models/pokemon/mega_mewtwo.txd" type="client"/>
 	<file src="res/models/pokemon/ninetales.dff" type="client"/>
 	<file src="res/models/pokemon/ninetales.txd" type="client"/>
+	<file src="res/models/pokemon/zebstrika.dff" type="client"/>
+	<file src="res/models/pokemon/zebstrika.txd" type="client"/>
+	<file src="res/models/pokemon/groudon.dff" type="client"/>
+	<file src="res/models/pokemon/groudon.txd" type="client"/>
+	<file src="res/models/pokemon/starly.dff" type="client"/>
+	<file src="res/models/pokemon/starly.txd" type="client"/>
+	<file src="res/models/pokemon/lucario.dff" type="client"/>
+	<file src="res/models/pokemon/lucario.txd" type="client"/>
+	<file src="res/models/pokemon/riolu.dff" type="client"/>
+	<file src="res/models/pokemon/riolu.txd" type="client"/>
+	<file src="res/models/pokemon/zoroark.dff" type="client"/>
+	<file src="res/models/pokemon/zoroark.txd" type="client"/>
 	
 	<file src="res/models/items/item_chest_body.dff" type="client"/>
 	<file src="res/models/items/item_chest_body.col" type="client"/>

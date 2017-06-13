@@ -21,3 +21,9 @@ Pokedex[18] = {modelID = 230, name = "Hydreigon", pokedexID = 635, legendary = f
 Pokedex[19] = {modelID = 231, name = "Substitute", pokedexID = 99999, legendary = false, size = 1.3, type = "...", rate = 5.9, color = Colors.earth, sound = nil, icon = "default_icon"}
 Pokedex[20] = {modelID = 232, name = "Mega Mewtwo X", pokedexID = 150, legendary = true, size = 1.4, type = "psychic,fight", rate = 0.1, color = Colors.pink, sound = nil, icon = "default_icon"}
 Pokedex[21] = {modelID = 233, name = "Ninetales", pokedexID = 38, legendary = false, size = 1.0, type = "fire", rate = 9.8, color = Colors.red, sound = nil, icon = "default_icon"}
+Pokedex[22] = {modelID = 234, name = "Zebstrika", pokedexID = 523, legendary = false, size = 1.0, type = "electric", rate = 9.8, color = Colors.yellow, sound = nil, icon = "default_icon"}
+Pokedex[23] = {modelID = 235, name = "Groudon", pokedexID = 383, legendary = true, size = 1.0, type = "ground,fire", rate = 0.7, color = Colors.yellow, sound = nil, icon = "default_icon"}
+Pokedex[24] = {modelID = 236, name = "Starly", pokedexID = 396, legendary = false, size = 1.0, type = "normal,flying", rate = 33.3, color = Colors.blue, sound = nil, icon = "default_icon"}
+Pokedex[25] = {modelID = 237, name = "Lucario", pokedexID = 448, legendary = false, size = 1.0, type = "fight,steel", rate = 5.9, color = Colors.brown, sound = nil, icon = "default_icon"}
+Pokedex[26] = {modelID = 238, name = "Riolu", pokedexID = 447, legendary = false, size = 1.0, type = "fight", rate = 9.8, color = Colors.brown, sound = nil, icon = "default_icon"}
+Pokedex[27] = {modelID = 240, name = "Zoroark", pokedexID = 571, legendary = false, size = 1.0, type = "unlight", rate = 5.9, color = Colors.brown, sound = nil, icon = "default_icon"}

@@ -55,7 +55,12 @@ myModels[218] = {id = 230, pathTXD = "res/models/pokemon/hydreigon.txd", pathDFF
 myModels[219] = {id = 231, pathTXD = "res/models/pokemon/substitute.txd", pathDFF = "res/models/pokemon/substitute.dff", pathCOL = nil}
 myModels[220] = {id = 232, pathTXD = "res/models/pokemon/mega_mewtwo.txd", pathDFF = "res/models/pokemon/mega_mewtwo.dff", pathCOL = nil}
 myModels[221] = {id = 233, pathTXD = "res/models/pokemon/ninetales.txd", pathDFF = "res/models/pokemon/ninetales.dff", pathCOL = nil}
-
+myModels[222] = {id = 234, pathTXD = "res/models/pokemon/zebstrika.txd", pathDFF = "res/models/pokemon/zebstrika.dff", pathCOL = nil}
+myModels[223] = {id = 235, pathTXD = "res/models/pokemon/groudon.txd", pathDFF = "res/models/pokemon/groudon.dff", pathCOL = nil}
+myModels[224] = {id = 236, pathTXD = "res/models/pokemon/starly.txd", pathDFF = "res/models/pokemon/starly.dff", pathCOL = nil}
+myModels[225] = {id = 237, pathTXD = "res/models/pokemon/lucario.txd", pathDFF = "res/models/pokemon/lucario.dff", pathCOL = nil}
+myModels[226] = {id = 238, pathTXD = "res/models/pokemon/riolu.txd", pathDFF = "res/models/pokemon/riolu.dff", pathCOL = nil}
+myModels[227] = {id = 240, pathTXD = "res/models/pokemon/zoroark.txd", pathDFF = "res/models/pokemon/zoroark.dff", pathCOL = nil}
 
 -- // Items // --
 myModels[1004] = {id = 1851, pathTXD = "res/models/items/item_chest.txd", pathDFF = "res/models/items/item_chest_body.dff", pathCOL = "res/models/items/item_chest_body.col"}
