@@ -124,7 +124,7 @@ if (not self.companion) and (Pokedex) then
 			pokemonBluePrint.z = z
 			pokemonBluePrint.rot = math.random(0, 360)
 			pokemonBluePrint.radius = 1
-			pokemonBluePrint.sound = rawPokemon.sound
+			pokemonBluePrint.soundFile = rawPokemon.soundFile
 			pokemonBluePrint.dimension = 0
 			pokemonBluePrint.icon = rawPokemon.icon
 			

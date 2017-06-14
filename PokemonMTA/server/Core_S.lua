@@ -37,14 +37,16 @@ end
 
 
 function Core_S:update()
-	PlayerManager_S:getSingleton():update()
-	ChestManager_S:getSingleton():update()
-	NPCManager_S:getSingleton():update()
-	BikeManager_S:getSingleton():update()
-	PokeSpawnManager_S:getSingleton():update()
-	PokemonManager_S:getSingleton():update()
-	ItemManager_S:getSingleton():update()
-	FightManager_S:getSingleton():update()
+	if (#getElementsByType("player") > 0) then
+		PlayerManager_S:getSingleton():update()
+		ChestManager_S:getSingleton():update()
+		NPCManager_S:getSingleton():update()
+		BikeManager_S:getSingleton():update()
+		PokeSpawnManager_S:getSingleton():update()
+		PokemonManager_S:getSingleton():update()
+		ItemManager_S:getSingleton():update()
+		FightManager_S:getSingleton():update()
+	end
 end
 
 

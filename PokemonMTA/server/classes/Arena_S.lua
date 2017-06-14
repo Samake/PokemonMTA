@@ -169,8 +169,9 @@ function Arena_S:spawnPokemon()
 	pokemonBluePrint.z = self.spot1Pokemon.z
 	pokemonBluePrint.rot = rot
 	pokemonBluePrint.radius = 1
-	pokemonBluePrint.sound = rawPokemon.sound
-	pokemonBluePrint.dimension = self.arenaDimension
+	pokemonBluePrint.soundFile = rawPokemon.soundFile
+	pokemonBluePrint.dimension = 0
+	pokemonBluePrint.icon = rawPokemon.icon
 	
 	PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
 	
@@ -193,7 +194,7 @@ function Arena_S:spawnPokemon()
 	pokemonBluePrint.z = self.spot2Pokemon.z
 	pokemonBluePrint.rot = rot
 	pokemonBluePrint.radius = 1
-	pokemonBluePrint.sound = rawPokemon.sound
+	pokemonBluePrint.soundFile = rawPokemon.soundFile
 	pokemonBluePrint.dimension = self.arenaDimension
 	
 	PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)

@@ -23,7 +23,7 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self.ry = 0
 	self.rz = pokemonBluePrint.rot or 0
 	self.radius = pokemonBluePrint.radius or 1
-	self.sound = pokemonBluePrint.sound
+	self.soundFile = pokemonBluePrint.soundFile
 	self.dimension = pokemonBluePrint.dimension or 0
 	self.icon = pokemonBluePrint.icon
 	
@@ -98,7 +98,7 @@ function Pokemon_S:doSpawnEffects()
 	triggerClientEvent("DOCLIENTEFFECT", root, effectSettings)
 	
 	local soundSettings = {} 
-	soundSettings.sound = "res/sounds/effects/whoosh.wav"
+	soundSettings.soundFile = "res/sounds/effects/whoosh.wav"
 	soundSettings.x = self.x
 	soundSettings.y = self.y
 	soundSettings.z = self.z
@@ -107,9 +107,9 @@ function Pokemon_S:doSpawnEffects()
 	
 	triggerClientEvent("POKEMONPLAY3DSOUND", root, soundSettings)
 	
-	if (self.sound) then
+	if (self.soundFile) then
 		local soundSettings = {} 
-		soundSettings.sound = self.sound
+		soundSettings.soundFile = self.soundFile
 		soundSettings.x = self.x
 		soundSettings.y = self.y
 		soundSettings.z = self.z
@@ -135,7 +135,7 @@ function Pokemon_S:doDeleteEffects()
 	triggerClientEvent("DOCLIENTEFFECT", root, effectSettings)
 	
 	local soundSettings = {} 
-	soundSettings.sound = "res/sounds/effects/whoosh.wav"
+	soundSettings.soundFile = "res/sounds/effects/whoosh.wav"
 	soundSettings.x = self.x
 	soundSettings.y = self.y
 	soundSettings.z = self.z - 0.5

@@ -39,7 +39,10 @@ end
 
 function SoundManager_C:playAmbientMusic()
 	self.ambientMusic = playSound(self.musicAmbient, true)
-	self.ambientMusic:setVolume(self.ambientVolume)
+	
+	if (self.ambientMusic) then
+		self.ambientMusic:setVolume(self.ambientVolume)
+	end
 end
 
 
@@ -49,7 +52,10 @@ function SoundManager_C:startBattle()
 	end
 	
 	self.battleMusic = playSound(self.musicBattle, true)
-	self.battleMusic:setVolume(self.battleVolume)
+	
+	if (self.battleMusic) then
+		self.battleMusic:setVolume(self.battleVolume)
+	end
 end
 
 
@@ -66,10 +72,13 @@ end
 
 function SoundManager_C:playSound3D(soundSettings)
 	if (soundSettings) then
-		if (soundSettings.sound) then
-			local sound3D = playSound3D(soundSettings.sound, soundSettings.x, soundSettings.y, soundSettings.z)
-			sound3D:getMaxDistance(soundSettings.distance)
-			sound3D:setVolume(soundSettings.volume)
+		if (soundSettings.soundFile) then
+			local sound3D = playSound3D(soundSettings.soundFile, soundSettings.x, soundSettings.y, soundSettings.z)
+			
+			if (sound3D) then
+				sound3D:getMaxDistance(soundSettings.distance)
+				sound3D:setVolume(soundSettings.volume)
+			end
 		end
 	end
 end

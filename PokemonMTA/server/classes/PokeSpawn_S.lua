@@ -55,7 +55,7 @@ function PokeSpawn_S:spawnPokemon()
 				pokemonBluePrint.z = z
 				pokemonBluePrint.rot = math.random(0, 360)
 				pokemonBluePrint.radius = self.radius
-				pokemonBluePrint.sound = rawPokemon.sound
+				pokemonBluePrint.soundFile = rawPokemon.soundFile
 				pokemonBluePrint.dimension = 0
 				pokemonBluePrint.icon = rawPokemon.icon
 				

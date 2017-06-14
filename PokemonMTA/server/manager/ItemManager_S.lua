@@ -38,7 +38,7 @@ function ItemManager_S:getBoxContent(player, boxContent, x, y, z)
 					triggerClientEvent(player, "POKEMON3DTEXT", player, textProperties)
 					
 					local soundSettings = {} 
-					soundSettings.sound = "res/sounds/effects/pickup_item.ogg"
+					soundSettings.soundFile = "res/sounds/effects/pickup_item.ogg"
 					soundSettings.x = x
 					soundSettings.y = y
 					soundSettings.z = z
@@ -63,7 +63,7 @@ function ItemManager_S:getBoxContent(player, boxContent, x, y, z)
 			triggerClientEvent(player, "POKEMON3DTEXT", player, textProperties)
 			
 			local soundSettings = {} 
-			soundSettings.sound = "res/sounds/effects/empty_chest.wav"
+			soundSettings.soundFile = "res/sounds/effects/empty_chest.wav"
 			soundSettings.x = x
 			soundSettings.y = y
 			soundSettings.z = z

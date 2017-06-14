@@ -185,7 +185,7 @@ function Chest_S:onColShapeHit(element)
 					if (self.state ~= "opened") then
 						if (self.state ~= "wait") then
 							local soundSettings = {} 
-							soundSettings.sound = "res/sounds/effects/open_chest.wav"
+							soundSettings.soundFile = "res/sounds/effects/open_chest.wav"
 							soundSettings.x = self.x
 							soundSettings.y = self.y
 							soundSettings.z = self.z

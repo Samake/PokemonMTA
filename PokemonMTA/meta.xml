@@ -108,6 +108,20 @@
 	<file src="res/textures/icons/gible_icon.png" type="client"/>
 	<file src="res/textures/icons/glalie_icon.png" type="client"/>
 	<file src="res/textures/icons/braixen_icon.png" type="client"/>
+	<file src="res/textures/icons/lopunny_icon.png" type="client"/>
+	<file src="res/textures/icons/magearna_icon.png" type="client"/>
+	<file src="res/textures/icons/sharpedo_icon.png" type="client"/>
+	<file src="res/textures/icons/swampert_icon.png" type="client"/>
+	<file src="res/textures/icons/mewtwo_icon.png" type="client"/>
+	<file src="res/textures/icons/dragonite_icon.png" type="client"/>
+	<file src="res/textures/icons/hydreigon_icon.png" type="client"/>
+	<file src="res/textures/icons/ninetales_icon.png" type="client"/>
+	<file src="res/textures/icons/zebstrika_icon.png" type="client"/>
+	<file src="res/textures/icons/groudon_icon.png" type="client"/>
+	<file src="res/textures/icons/starly_icon.png" type="client"/>
+	<file src="res/textures/icons/lucario_icon.png" type="client"/>
+	<file src="res/textures/icons/riolu_icon.png" type="client"/>
+	<file src="res/textures/icons/zoroark_icon.png" type="client"/>
 	
 	<!-- sounds -->
 	<file src="res/sounds/music/music_1_11_battle.mp3" type="client"/>

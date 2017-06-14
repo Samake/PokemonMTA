@@ -23,7 +23,7 @@ end
 
 
 function PokeSlots_C:init()
-	for i = 1, self.slots - 1 do
+	for i = 1, self.slots do
 		self.pokeSlots[i] = Pokedex[math.random(1, #Pokedex)]
 	end
 end
