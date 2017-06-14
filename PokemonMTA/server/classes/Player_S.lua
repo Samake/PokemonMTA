@@ -103,7 +103,7 @@ end
 
 function Player_S:sendCompanion()
 if (not self.companion) and (Pokedex) then
-		local rawPokemon = Pokedex[1] -- pikachu
+		local rawPokemon = Pokedex[1] -- 1 pikachu
 		
 		if (rawPokemon) then
 			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, math.random(1, 3), math.random(0, 360), 1)

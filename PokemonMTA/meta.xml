@@ -122,12 +122,14 @@
 	<file src="res/textures/icons/lucario_icon.png" type="client"/>
 	<file src="res/textures/icons/riolu_icon.png" type="client"/>
 	<file src="res/textures/icons/zoroark_icon.png" type="client"/>
+	<file src="res/textures/icons/mimikyu_icon.png" type="client"/>
 	
 	<!-- sounds -->
 	<file src="res/sounds/music/music_1_11_battle.mp3" type="client"/>
 	<file src="res/sounds/music/music_1_03_kalos.mp3" type="client"/>
 	
 	<file src="res/sounds/pokemon/pikachu.wav" type="client"/>
+	<file src="res/sounds/pokemon/rowlet.ogg" type="client"/>
 	
 	<file src="res/sounds/effects/empty_chest.wav" type="client"/>
 	<file src="res/sounds/effects/open_chest.wav" type="client"/>
@@ -223,8 +225,6 @@
 	<file src="res/models/pokemon/dragonite.txd" type="client"/>
 	<file src="res/models/pokemon/hydreigon.dff" type="client"/>
 	<file src="res/models/pokemon/hydreigon.txd" type="client"/>
-	<file src="res/models/pokemon/substitute.dff" type="client"/>
-	<file src="res/models/pokemon/substitute.txd" type="client"/>
 	<file src="res/models/pokemon/mega_mewtwo.dff" type="client"/>
 	<file src="res/models/pokemon/mega_mewtwo.txd" type="client"/>
 	<file src="res/models/pokemon/ninetales.dff" type="client"/>
@@ -241,7 +241,7 @@
 	<file src="res/models/pokemon/riolu.txd" type="client"/>
 	<file src="res/models/pokemon/zoroark.dff" type="client"/>
 	<file src="res/models/pokemon/zoroark.txd" type="client"/>
-	
+
 	<file src="res/models/items/item_chest_body.dff" type="client"/>
 	<file src="res/models/items/item_chest_body.col" type="client"/>
 	<file src="res/models/items/item_chest_cover.dff" type="client"/>

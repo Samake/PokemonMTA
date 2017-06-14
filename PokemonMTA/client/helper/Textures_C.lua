@@ -42,6 +42,7 @@ function Textures:init()
 	Textures["icons"].lucario_icon = dxCreateTexture("res/textures/icons/lucario_icon.png")
 	Textures["icons"].riolu_icon = dxCreateTexture("res/textures/icons/riolu_icon.png")
 	Textures["icons"].zoroark_icon = dxCreateTexture("res/textures/icons/zoroark_icon.png")
+	Textures["icons"].mimikyu_icon = dxCreateTexture("res/textures/icons/mimikyu_icon.png")
 	
 	if (Settings.showClassDebugInfo == true) then
 		mainOutput("Textures were loaded.")

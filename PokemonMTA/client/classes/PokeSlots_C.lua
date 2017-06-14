@@ -53,6 +53,7 @@ function PokeSlots_C:update(delta, renderTarget)
 			if (self.pokeSlots[i]) then
 				-- // pokeball // --
 				local size = (self.slotHeight / 2) * 0.5
+				dxDrawImage(x + 6, y + 6, size, size, Textures["icons"].pokeBallIcon, 0, 0, 0, tocolor(65, 65, 65, self.alpha), false)
 				dxDrawImage(x + 4, y + 4, size, size, Textures["icons"].pokeBallIcon, 0, 0, 0, tocolor(255, 255, 255, self.alpha), false)
 				
 				-- // pokemon icon // --
@@ -66,7 +67,12 @@ function PokeSlots_C:update(delta, renderTarget)
 				
 				-- // pokemon icon // --
 				size = self.slotHeight * 0.8
+				dxDrawImage((x + (self.slotHeight / 4)) + 2, (y + (self.slotHeight / 8)) + 2, size, size, texture, 0, 0, 0, tocolor(65, 65, 65, self.alpha), false)
 				dxDrawImage(x + (self.slotHeight / 4), y + (self.slotHeight / 8), size, size, texture, 0, 0, 0, tocolor(255, 255, 255, self.alpha), false)
+				
+				-- // pokemon name // --
+				dxDrawText(self.pokeSlots[i].name, (x + (self.slotWidth * 0.26)) + 2, (y + (self.slotHeight / 4)) + 2, (x + (self.slotWidth * 0.26)) + 2, (y + (self.slotHeight / 4)) + 2, tocolor(65, 65, 65, self.alpha), 0.7, Fonts["pokemon_gb_8_bold"], "left", "center", false, false, false, true, true)
+				dxDrawText(self.pokeSlots[i].name, x + (self.slotWidth * 0.26), y + (self.slotHeight / 4), x + (self.slotWidth * 0.26), y + (self.slotHeight / 4), tocolor(220, 220, 185, self.alpha), 0.7, Fonts["pokemon_gb_8_bold"], "left", "center", false, false, false, true, true)
 			else
 				-- // pokeball // --
 				local size = (self.slotHeight / 2) * 0.5
@@ -74,7 +80,12 @@ function PokeSlots_C:update(delta, renderTarget)
 				
 				-- // pokemon icon // --
 				size = self.slotHeight * 0.8
+				dxDrawImage((x + (self.slotHeight / 4)) + 2, (y + (self.slotHeight / 8)) + 2, size, size, Textures["icons"].default_icon, 0, 0, 0, tocolor(65, 65, 65, self.alpha), false)
 				dxDrawImage(x + (self.slotHeight / 4), y + (self.slotHeight / 8), size, size, Textures["icons"].default_icon, 0, 0, 0, tocolor(255, 255, 255, self.alpha), false)
+				
+				-- // pokemon name // --
+				dxDrawText("----", (x + (self.slotWidth * 0.26)) + 2, (y + (self.slotHeight / 4)) + 2, (x + (self.slotWidth * 0.26)) + 2, (y + (self.slotHeight / 4)) + 2, tocolor(65, 65, 65, self.alpha), 0.7, Fonts["pokemon_gb_8_bold"], "left", "center", false, false, false, true, true)
+				dxDrawText("----", x + (self.slotWidth * 0.26), y + (self.slotHeight / 4), x + (self.slotWidth * 0.26), y + (self.slotHeight / 4), tocolor(220, 220, 185, self.alpha), 0.7, Fonts["pokemon_gb_8_bold"], "left", "center", false, false, false, true, true)
 			end
 		end
 		
