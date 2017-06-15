@@ -103,34 +103,8 @@ end
 
 function Player_S:sendCompanion()
 if (not self.companion) and (Pokedex) then
-		local rawPokemon = Pokedex[1] -- 1 pikachu
-		
-		if (rawPokemon) then
-			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, math.random(1, 3), math.random(0, 360), 1)
-			
-			local pokemonBluePrint = {}
-			pokemonBluePrint.spawn = nil
-			pokemonBluePrint.owner = self.player
-			pokemonBluePrint.id = self.id .. ":" .. tostring(self.player) .. ":" .. rawPokemon.name
-			pokemonBluePrint.modelID = rawPokemon.modelID
-			pokemonBluePrint.name = rawPokemon.name
-			pokemonBluePrint.type = rawPokemon.type
-			pokemonBluePrint.legendary = rawPokemon.legendary
-			pokemonBluePrint.size = rawPokemon.size
-			pokemonBluePrint.level = math.random(1, 55)
-			pokemonBluePrint.power = math.random(5, 100)
-			pokemonBluePrint.x = x
-			pokemonBluePrint.y = y
-			pokemonBluePrint.z = z
-			pokemonBluePrint.rot = math.random(0, 360)
-			pokemonBluePrint.radius = 1
-			pokemonBluePrint.soundFile = rawPokemon.soundFile
-			pokemonBluePrint.dimension = 0
-			pokemonBluePrint.icon = rawPokemon.icon
-			
-			PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
-			self.companion = pokemonBluePrint.id
-		end
+		--PokemonManager_S:getSingleton():addPokemon(1)
+		--self.companion = 1
 		
 		mainOutput("SERVER || Companion send out!")
 	end
@@ -140,7 +114,7 @@ end
 function Player_S:callCompanion()
 	if (self.companion) then
 		
-		PokemonManager_S:getSingleton():deletePokemon(self.companion)
+		--PokemonManager_S:getSingleton():deletePokemon(self.companion)
 		self.companion = nil
 		
 		mainOutput("SERVER || Companion called!")

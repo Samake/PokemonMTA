@@ -149,56 +149,8 @@ end
 
 
 function Arena_S:spawnPokemon()
-	
-	local rawPokemon = Pokedex[math.random(1, #Pokedex)]
-	local rot = findRotation(self.spot1Pokemon.x, self.spot1Pokemon.y, self.spot2Pokemon.x, self.spot2Pokemon.y)
-
-	local pokemonBluePrint = {}
-	pokemonBluePrint.spawn = nil
-	pokemonBluePrint.owner = self.player
-	pokemonBluePrint.id = "POKEFIGHTTEST1"
-	pokemonBluePrint.modelID = rawPokemon.modelID
-	pokemonBluePrint.name = rawPokemon.name
-	pokemonBluePrint.type = rawPokemon.type
-	pokemonBluePrint.legendary = rawPokemon.legendary
-	pokemonBluePrint.size = rawPokemon.size
-	pokemonBluePrint.level = 1
-	pokemonBluePrint.power = math.random(5, 100)
-	pokemonBluePrint.x = self.spot1Pokemon.x
-	pokemonBluePrint.y = self.spot1Pokemon.y
-	pokemonBluePrint.z = self.spot1Pokemon.z
-	pokemonBluePrint.rot = rot
-	pokemonBluePrint.radius = 1
-	pokemonBluePrint.soundFile = rawPokemon.soundFile
-	pokemonBluePrint.dimension = 0
-	pokemonBluePrint.icon = rawPokemon.icon
-	
-	PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
-	
-	local rawPokemon = Pokedex[math.random(1, #Pokedex)]
-	local rot = findRotation(self.spot2Pokemon.x, self.spot2Pokemon.y, self.spot1Pokemon.x, self.spot1Pokemon.y)
-
-	local pokemonBluePrint = {}
-	pokemonBluePrint.spawn = nil
-	pokemonBluePrint.owner = self.opponent
-	pokemonBluePrint.id = "POKEFIGHTTEST2"
-	pokemonBluePrint.modelID = rawPokemon.modelID
-	pokemonBluePrint.name = rawPokemon.name
-	pokemonBluePrint.type = rawPokemon.type
-	pokemonBluePrint.legendary = rawPokemon.legendary
-	pokemonBluePrint.size = rawPokemon.size
-	pokemonBluePrint.level = 1
-	pokemonBluePrint.power = math.random(5, 100)
-	pokemonBluePrint.x = self.spot2Pokemon.x
-	pokemonBluePrint.y = self.spot2Pokemon.y
-	pokemonBluePrint.z = self.spot2Pokemon.z
-	pokemonBluePrint.rot = rot
-	pokemonBluePrint.radius = 1
-	pokemonBluePrint.soundFile = rawPokemon.soundFile
-	pokemonBluePrint.dimension = self.arenaDimension
-	
-	PokemonManager_S:getSingleton():addPokemon(pokemonBluePrint)
-	
+	--PokemonManager_S:getSingleton():addPokemon(math.random(1, #Pokedex))
+	--PokemonManager_S:getSingleton():addPokemon(math.random(1, #Pokedex))
 end
 
 

@@ -58,10 +58,8 @@ function Pokemon_S:createPokemon()
 	if (not self.model) then
 		self.model = createPed(self.modelID, self.x, self.y, self.z, self.rz, true)
 		
-		if (not self.actionCol) and (not self.owner) then
+		if (not self.actionCol) then
 			self.actionCol = createColSphere(self.x, self.y, self.z, 6)
-		elseif (self.owner) then
-			self:doSpawnEffects()
 		end
 		
 		if (self.model and self.actionCol) then
@@ -70,13 +68,12 @@ function Pokemon_S:createPokemon()
 			self.m_OnColShapeHit = bind(self.onColShapeHit, self)
 			self.m_OnColShapeLeave = bind(self.onColShapeLeave, self)
 			
-			addEventHandler("onColShapeHit", self.actionCol, self.m_OnColShapeHit)
-			addEventHandler("onColShapeLeave", self.actionCol, self.m_OnColShapeLeave)
+			if (not self.owner) then
+				addEventHandler("onColShapeHit", self.actionCol, self.m_OnColShapeHit)
+				addEventHandler("onColShapeLeave", self.actionCol, self.m_OnColShapeLeave)
+			end
 			
-			self.element:setDimension(self.dimension)
-			self.actionCol:setDimension(self.dimension)
-			self.model:setDimension(self.dimension)
-			
+			self:setDimension(self.dimension)
 			self:doSpawnEffects()
 		end
 	end
@@ -434,8 +431,150 @@ function Pokemon_S:deletePokemon()
 		self.actionCol:destroy()
 		self.actionCol = nil
 		
+		self.state = nil
+		self.job = nil
+		self.jobStartTime = 0
+		
 		self:doDeleteEffects()
 	end
+	
+	
+end
+
+	
+function Pokemon_S:setOwner(owner)
+	if (owner) then
+		self.owner = owner
+	end
+end
+
+
+function Pokemon_S:getOwner()
+	return self.owner
+end
+
+
+function Pokemon_S:getID()
+	return self.id
+end
+
+
+function Pokemon_S:getModelID()
+	return self.modelID
+end
+
+
+function Pokemon_S:getName()
+	return self.name
+end
+
+
+function Pokemon_S:getType()
+	return self.type
+end
+
+
+function Pokemon_S:getLegendary()
+	return self.legendary
+end
+
+
+function Pokemon_S:setSize(size)
+	if (size) then
+		self.size = size
+	end
+end
+
+
+function Pokemon_S:getSize()
+	return self.size
+end
+
+
+function Pokemon_S:setLevel(level)
+	if (level) then
+		self.level = level
+	end
+end
+
+
+function Pokemon_S:getLevel()
+	return self.level
+end
+
+
+function Pokemon_S:setPower(power)
+	if (power) then
+		self.power = power
+	end
+end
+
+
+function Pokemon_S:getPower()
+	return self.power
+end
+
+
+function Pokemon_S:setPosition(x, y, z)
+	if (x) and (y) and (z) then
+		self.x = x
+		self.y = y
+		self.z = z
+		
+		self.element:setPosition(self.x, self.y, self.z)
+		self.actionCol:setPosition(self.x, self.y, self.z)
+		self.model:setPosition(self.x, self.y, self.z)
+	end
+end
+
+
+function Pokemon_S:getPosition()
+	return {x = self.x, y = self.y, z = self.z}
+end
+
+
+function Pokemon_S:setRotation(rx, ry, rz)
+	if (rx) and (ry) and (rz) then
+		self.rx = rx
+		self.ry = ry
+		self.rz = rz
+		
+		self.element:setRotation(self.rx, self.ry, self.rz)
+		self.actionCol:setRotation(self.rx, self.ry, self.rz)
+		self.model:setRotation(self.rx, self.ry, self.rz)
+	end
+end
+
+
+function Pokemon_S:getRotation()
+	return {x = self.rx, y = self.ry, z = self.rz}
+end
+
+
+function Pokemon_S:setRadius(radius)
+	if (radius) then
+		self.radius = radius
+	end
+end
+
+
+function Pokemon_S:getRadius()
+	return self.radius
+end
+
+
+function Pokemon_S:setDimension(dimension)
+	if (dimension) then
+		self.dimension = dimension
+		self.element:setDimension(self.dimension)
+		self.actionCol:setDimension(self.dimension)
+		self.model:setDimension(self.dimension)
+	end
+end
+
+
+function Pokemon_S:getDimension()
+	return self.dimension
 end
 
 
