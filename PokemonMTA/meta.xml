@@ -42,6 +42,7 @@
 	<script src="server/classes/Bike_S.lua" type="server"/>
 	<script src="server/classes/PokeSpawn_S.lua" type="server"/>
 	<script src="server/classes/Pokemon_S.lua" type="server"/>
+	<script src="server/classes/PlayerPokemon_S.lua" type="server"/>
 	<script src="server/classes/Fight_S.lua" type="server"/>
 	<script src="server/classes/Arena_S.lua" type="server"/>
 	

@@ -1,7 +1,12 @@
 Bindings = {}
 Bindings["TOGGLESHADER"] = "M"
 Bindings["TOGGLENAMETAGS"] = "N"
-Bindings["COMPANION"] = "1"
+Bindings["POKESLOT1"] = "1"
+Bindings["POKESLOT2"] = "2"
+Bindings["POKESLOT3"] = "3"
+Bindings["POKESLOT4"] = "4"
+Bindings["POKESLOT5"] = "5"
+Bindings["POKESLOT6"] = "6"
 Bindings["MAPZOOMIN"] = "num_8"
 Bindings["MAPZOOMOUT"] = "num_2"
 Bindings["DEBUG"] = "L"

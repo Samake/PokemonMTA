@@ -1,8 +1,3 @@
---[[
-	Filename: Pokemon_S.lua
-	Authors: Sam@ke
---]]
-
 Pokemon_S = inherit(Class)
 
 function Pokemon_S:constructor(pokemonBluePrint)

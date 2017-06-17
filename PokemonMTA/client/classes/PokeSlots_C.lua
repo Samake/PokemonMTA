@@ -4,7 +4,6 @@ function PokeSlots_C:constructor()
 	
 	self.screenWidth, self.screenHeight = guiGetScreenSize()
 	
-	self.slots = 6
 	self.slotWidth = self.screenHeight * 0.25
 	self.slotHeight = self.screenHeight * 0.055
 	self.x = self.screenWidth - self.slotWidth
@@ -37,16 +36,9 @@ function PokeSlots_C:update(delta, renderTarget)
 		dxSetRenderTarget(renderTarget, false)
 		dxSetBlendMode("modulate_add")
 		
+		local color = tocolor(255, 255, 255, self.alpha)
+		
 		for i = 1, #self.pokeSlots do
-			local color = tocolor(255, 255, 255, self.alpha)
-			
-			if (self.pokeSlots[i]) then
-				if (self.pokeSlots[i].color) then
-					local slotColor = self.pokeSlots[i].color
-					color = tocolor(slotColor.r, slotColor.g, slotColor.b, self.alpha * 0.55)
-				end
-			end
-			
 			local x = self.x - 5
 			local y = ((self.y) + (self.slotHeight * i)) + self.space * i
 			
@@ -55,6 +47,9 @@ function PokeSlots_C:update(delta, renderTarget)
 			dxDrawImage(x + 2, y + 2, self.slotWidth - 4, self.slotHeight - 4, Textures["gui"].slotBG, 0, 0, 0, color, false)
 
 			if (self.pokeSlots[i]) then
+				local slotColor = self.pokeSlots[i].color
+				color = tocolor(slotColor.r, slotColor.g, slotColor.b, self.alpha * 0.55)
+				
 				-- // pokeball // --
 				local size = (self.slotHeight / 2) * 0.5
 				dxDrawImage(x + 6, y + 6, size, size, Textures["icons"].pokeBallIcon, 0, 0, 0, tocolor(65, 65, 65, self.alpha), false)

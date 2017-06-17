@@ -17,7 +17,7 @@ function PokemonManager_S:initManager()
 end
 
 
-function PokemonManager_S:addPokemon(pokemonIndex, x, y, z, rot, dimension, radius, level, power, owner)
+function PokemonManager_S:addPokemon(pokemonIndex, x, y, z, rot, dimension, radius, level, life, power, owner)
 	if (pokemonIndex) and (Pokedex) then
 
 		if (Pokedex[pokemonIndex]) then
@@ -39,6 +39,7 @@ function PokemonManager_S:addPokemon(pokemonIndex, x, y, z, rot, dimension, radi
 			pokemonBluePrint.dimension = dimension or 0
 			pokemonBluePrint.radius = radius or 1
 			pokemonBluePrint.level = level or math.random(1, 100)
+			pokemonBluePrint.life = life or math.random(1, 100)
 			pokemonBluePrint.power = power or math.random(1, 100)
 			pokemonBluePrint.owner = owner
 		

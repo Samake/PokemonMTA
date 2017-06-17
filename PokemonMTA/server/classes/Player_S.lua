@@ -72,7 +72,10 @@ end
 function Player_S:loadPokemons()
 	if (Pokedex) then
 		for i = 1, self.maxPokemons do
-			self.pokemons[i] = Pokedex[math.random(1, #Pokedex)]
+			if (not self.pokemons[i]) then
+				local id = "pokemon" .. tostring(self.player) .. 1
+				self.pokemons[i] = new(PlayerPokemon_S, id, self.player, Pokedex[math.random(1, #Pokedex)])
+			end
 		end
 	end
 end
@@ -82,6 +85,12 @@ function Player_S:update()
 	if (self.player and isElement(self.player)) then
 		self:updateCoords()
 		self:syncPokemon()
+		
+		for index, playerPokemon in pairs(self.pokemons) do
+			if (playerPokemon) then
+				playerPokemon:update()
+			end
+		end
 	end
 end
 
@@ -110,35 +119,49 @@ function Player_S:syncPokemon()
 end
 
 
-function Player_S:toggleCompanion()
-	if (self.player) and (isElement(client)) then
+function Player_S:toggleCompanion(slot)
+	if (self.player) and (isElement(client)) and (slot) then
 		if (client == self.player) then
-			if (not self.companion) then
-				self:sendCompanion()
+			if (self.companion) then
+				if (slot == self.companion.slot) then
+					self:callCompanion()
+				else
+					self:callCompanion()
+					self:sendCompanion(slot)
+				end
 			else
-				self:callCompanion()
+				self:sendCompanion(slot)
 			end
 		end
 	end
 end
 
 
-function Player_S:sendCompanion()
-if (not self.companion) and (self.pokemons[1]) then
-		local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, 3, math.random(0, 360), 1)
-		self.companion = PokemonManager_S:getSingleton():addPokemon(self.pokemons[1].id, x, y, z, math.random(0, 360), 0, self.radius, 55, 100, self.player)
-		
-		mainOutput("SERVER || Companion send out!")
+function Player_S:sendCompanion(slot)
+	if (self.player and isElement(self.player)) and (slot) then
+		if (not self.companion) and (self.pokemons[slot]) then
+			self.companion = {}
+			self.companion.slot = slot
+			
+			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, 3, math.random(0, 360), 1)
+			local dimension = self.player:getDimension()
+
+			self.companion.pokemon = PokemonManager_S:getSingleton():addPokemon(self.pokemons[slot].index, x, y, z, math.random(0, 360), dimension, self.radius, self.pokemons[slot].level, self.pokemons[slot].life, self.pokemons[slot].power, self.player)
+			
+			mainOutput("SERVER || Companion send out!")
+		end
 	end
 end
 
 
 function Player_S:callCompanion()
 	if (self.companion) then
-		PokemonManager_S:getSingleton():deletePokemon(self.companion.id)
-		self.companion = nil
-		
-		mainOutput("SERVER || Companion called!")
+		if (self.companion.pokemon) then
+			PokemonManager_S:getSingleton():deletePokemon(self.companion.pokemon.id)
+			self.companion = nil
+			
+			mainOutput("SERVER || Companion called!")
+		end
 	end
 end
 
@@ -146,9 +169,18 @@ end
 function Player_S:clear()
 	removeEventHandler("DOTOGGLECOMPANION", root, self.m_ToggleCompanion)
 	
+	for index, playerPokemon in pairs(self.pokemons) do
+		if (playerPokemon) then
+			playerPokemon:delete()
+			playerPokemon = nil
+		end
+	end
+		
 	if (self.companion) then
-		PokemonManager_S:getSingleton():deletePokemon(self.companion)
-		self.companion = nil
+		if (self.companion.pokemon) then
+			PokemonManager_S:getSingleton():deletePokemon(self.companion.pokemon.id)
+			self.companion = nil
+		end
 	end
 end
 
