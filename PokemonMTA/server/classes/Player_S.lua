@@ -14,6 +14,8 @@ function Player_S:constructor(id, player)
 	self.skinID = 258
 	
 	self.companion = nil
+	self.pokemons = {}
+	self.maxPokemons = 6
 	
 	self:init()
 	
@@ -31,6 +33,7 @@ function Player_S:init()
 	
 	self:initSpawn()
 	self:performSpawn()
+	self:loadPokemons()
 end
 
 
@@ -66,9 +69,19 @@ function Player_S:performSpawn()
 end
 
 
+function Player_S:loadPokemons()
+	if (Pokedex) then
+		for i = 1, self.maxPokemons do
+			self.pokemons[i] = Pokedex[math.random(1, #Pokedex)]
+		end
+	end
+end
+
+
 function Player_S:update()
 	if (self.player and isElement(self.player)) then
 		self:updateCoords()
+		self:syncPokemon()
 	end
 end
 
@@ -88,6 +101,15 @@ function Player_S:updateCoords()
 end
 
 
+function Player_S:syncPokemon()
+	if (self.player and isElement(self.player)) then
+		if (#self.pokemons > 0) then
+			triggerClientEvent(self.player, "DOSYNCPLAYERPOKEMON", self.player, self.pokemons)
+		end
+	end
+end
+
+
 function Player_S:toggleCompanion()
 	if (self.player) and (isElement(client)) then
 		if (client == self.player) then
@@ -102,9 +124,9 @@ end
 
 
 function Player_S:sendCompanion()
-if (not self.companion) and (Pokedex) then
-		--PokemonManager_S:getSingleton():addPokemon(1)
-		--self.companion = 1
+if (not self.companion) and (self.pokemons[1]) then
+		local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, 3, math.random(0, 360), 1)
+		self.companion = PokemonManager_S:getSingleton():addPokemon(self.pokemons[1].id, x, y, z, math.random(0, 360), 0, self.radius, 55, 100, self.player)
 		
 		mainOutput("SERVER || Companion send out!")
 	end
@@ -113,8 +135,7 @@ end
 
 function Player_S:callCompanion()
 	if (self.companion) then
-		
-		--PokemonManager_S:getSingleton():deletePokemon(self.companion)
+		PokemonManager_S:getSingleton():deletePokemon(self.companion.id)
 		self.companion = nil
 		
 		mainOutput("SERVER || Companion called!")

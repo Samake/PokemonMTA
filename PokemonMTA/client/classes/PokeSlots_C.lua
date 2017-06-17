@@ -23,24 +23,28 @@ end
 
 
 function PokeSlots_C:init()
-	for i = 1, self.slots do
-		self.pokeSlots[i] = Pokedex[math.random(1, #Pokedex)]
-	end
+
 end
 
 
 function PokeSlots_C:update(delta, renderTarget)
 	if (renderTarget) then
 	
+		if (Player_C:getSingleton():getPokemons()) then
+			self.pokeSlots = Player_C:getSingleton():getPokemons()
+		end
+	
 		dxSetRenderTarget(renderTarget, false)
 		dxSetBlendMode("modulate_add")
 		
-		for i = 1, self.slots do
+		for i = 1, #self.pokeSlots do
 			local color = tocolor(255, 255, 255, self.alpha)
 			
 			if (self.pokeSlots[i]) then
-				local slotColor = self.pokeSlots[i].color
-				color = tocolor(slotColor.r, slotColor.g, slotColor.b, self.alpha * 0.55)
+				if (self.pokeSlots[i].color) then
+					local slotColor = self.pokeSlots[i].color
+					color = tocolor(slotColor.r, slotColor.g, slotColor.b, self.alpha * 0.55)
+				end
 			end
 			
 			local x = self.x - 5
