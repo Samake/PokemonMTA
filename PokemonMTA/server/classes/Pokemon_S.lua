@@ -21,6 +21,7 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self.soundFile = pokemonBluePrint.soundFile
 	self.dimension = pokemonBluePrint.dimension or 0
 	self.icon = pokemonBluePrint.icon
+	self.gender = pokemonBluePrint.gender
 	
 	self.spawn = {x = self.x, y = self.y, z = self.z}
 	
@@ -44,6 +45,8 @@ function Pokemon_S:init()
 	if (not self.element) then
 		self.element = createElement("POKEMON", self.id)
 	end
+	
+	self.animationSet = Animations_S:getPokemonAnimations()
 	
 	self:createPokemon()
 end
@@ -263,7 +266,7 @@ function Pokemon_S:job_flee()
 
 		if (self.destX) and (self.destY) then
 			self.model:setRotation(0, 0, findRotation(self.x, self.y, self.destX, self.destY))
-			self.model:setAnimation("ped", "woman_run")
+			self.model:setAnimation(self.animationSet.run.block, self.animationSet.run.anim)
 			
 			self.state = "flee"
 			self.job = "walk"
@@ -290,7 +293,7 @@ function Pokemon_S:job_follow_new_position()
 		if (self.destX) and (self.destY) then
 			if (self.distanceToTarget > 4) then
 				self.model:setRotation(0, 0, findRotation(self.x, self.y, self.destX, self.destY))
-				self.model:setAnimation("ped", "woman_runpanic")
+				self.model:setAnimation(self.animationSet.run.block, self.animationSet.run.anim)
 				
 				self.state = "follow"
 				self.job = "walk"
@@ -319,7 +322,7 @@ function Pokemon_S:job_idle()
 	self.state = "idle"
 	self.job = "stand"
 	
-	self.model:setAnimation("ped", "idle_tired")
+	self.model:setAnimation(self.animationSet.idle.block, self.animationSet.idle.anim)
 	
 	self.jobStartTime = getTickCount()
 	self.thinkTime = math.random(500, 2500)
@@ -333,7 +336,7 @@ function Pokemon_S:job_idle_pos_change()
 
 		if (self.destX) and (self.destY) then
 			self.model:setRotation(0, 0, findRotation(self.x, self.y, self.destX, self.destY))
-			self.model:setAnimation("ped", "woman_walknorm")
+			self.model:setAnimation(self.animationSet.walk.block, self.animationSet.walk.anim)
 			
 			self.state = "idle"
 			self.job = "walk"

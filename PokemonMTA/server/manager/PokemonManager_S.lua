@@ -41,6 +41,7 @@ function PokemonManager_S:addPokemon(pokemonIndex, x, y, z, rot, dimension, radi
 			pokemonBluePrint.level = level or math.random(1, 100)
 			pokemonBluePrint.life = life or math.random(1, 100)
 			pokemonBluePrint.power = power or math.random(1, 100)
+			pokemonBluePrint.gender = pokedexCluster.gender or "female"
 			pokemonBluePrint.owner = owner
 		
 			if (not self.pokemonInstances[pokemonBluePrint.id]) then

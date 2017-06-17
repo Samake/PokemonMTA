@@ -51,7 +51,7 @@ function NPCManager_S:initNPCs()
 			local name = NPC_Helper:getRandomName(npcProperties.modelID) or "UNKNOWN"
 			
 			npcProperties.name = prefix .. " " .. name
-			npcProperties.sex = NPC_Helper:getSex(npcProperties.modelID) or "female"
+			npcProperties.gender = NPC_Helper:getGender(npcProperties.modelID) or "female"
 			
 			if (not self.npcInstances[npcProperties.id]) then
 				self.npcInstances[npcProperties.id] = NPC_S:new(npcProperties)

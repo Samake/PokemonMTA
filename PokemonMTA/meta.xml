@@ -22,6 +22,7 @@
 	
 	<!-- server -->
 	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
+	<script src="server/settings/Animations_S.lua" type="server"/>
 	<script src="server/settings/ArenaList_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
 	
@@ -37,6 +38,7 @@
 	<script src="server/manager/FightManager_S.lua" type="server"/>
 	
 	<script src="server/classes/Player_S.lua" type="server"/>
+	<script src="server/classes/Inventory_S.lua" type="server"/>
 	<script src="server/classes/Chest_S.lua" type="server"/>
 	<script src="server/classes/NPC_S.lua" type="server"/>
 	<script src="server/classes/Bike_S.lua" type="server"/>

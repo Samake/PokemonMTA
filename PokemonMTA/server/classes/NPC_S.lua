@@ -5,7 +5,7 @@ function NPC_S:constructor(npcProperties)
 	self.id = npcProperties.id
 	self.modelID = npcProperties.modelID
 	self.name = npcProperties.name
-	self.sex = npcProperties.sex
+	self.gender = npcProperties.gender
 	self.x = npcProperties.x
 	self.y = npcProperties.y
 	self.z = npcProperties.z
@@ -46,6 +46,8 @@ function NPC_S:init()
 	if (not self.element) then
 		self.element = createElement("NPC", self.id)
 	end
+	
+	self.animationSet = Animations_S:getNPCAnimations(self.gender)
 	
 	self:createNPC()
 end
@@ -193,7 +195,7 @@ function NPC_S:job_idle()
 		self.state = "idle"
 		self.job = "stand"
 		
-		self.model:setAnimation("misc", "idle_chat_02")
+		self.model:setAnimation(self.animationSet.idle.block, self.animationSet.idle.anim)
 		self.model:setFrozen(false)
 		
 		self.jobStartTime = getTickCount()
@@ -243,7 +245,7 @@ function NPC_S:job_setWayPoint()
 		
 		if (self.destX) and (self.destY) then
 			self.model:setRotation(0, 0, findRotation(self.x, self.y, self.destX, self.destY))
-			self.model:setAnimation("ped", "woman_walksexy")
+			self.model:setAnimation(self.animationSet.walk.block, self.animationSet.walk.anim)
 		end
 	end
 end
@@ -262,7 +264,7 @@ function NPC_S:job_talk_to_player()
 	if (isElement(self.player)) and (isElement(self.model)) then
 		if (self.state ~= "talk") then
 			self.state = "talk"
-			self.model:setAnimation("playidles", "stretch")
+			self.model:setAnimation(self.animationSet.talk.block, self.animationSet.talk.anim)
 		end
 		
 		if (self.job ~= "player") then
@@ -286,7 +288,7 @@ function NPC_S:job_idle_pos_change()
 
 			if (self.destX) and (self.destY) then
 				self.model:setRotation(0, 0, findRotation(self.x, self.y, self.destX, self.destY))
-				self.model:setAnimation("ped", "woman_walksexy")
+				self.model:setAnimation(self.animationSet.walk.block, self.animationSet.walk.anim)
 				
 				self.state = "idle"
 				self.job = "walk"

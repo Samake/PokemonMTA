@@ -18,6 +18,7 @@ function PlayerPokemon_S:constructor(id, player, pokedexInfo)
 	self.level = math.random(1, 100)
 	self.life = math.random(1, 100)
 	self.power = math.random(1, 100)
+	self.gender = pokedexInfo.gender
 
 	self:init()
 	

@@ -33,6 +33,7 @@ function Player_S:init()
 	
 	self:initSpawn()
 	self:performSpawn()
+	self:loadInventory()
 	self:loadPokemons()
 end
 
@@ -69,11 +70,18 @@ function Player_S:performSpawn()
 end
 
 
+function Player_S:loadInventory()
+	if (not self.inventory) then
+		self.inventory = Inventory_S:new(tostring(self.player))
+	end
+end
+
+
 function Player_S:loadPokemons()
 	if (Pokedex) then
 		for i = 1, self.maxPokemons do
 			if (not self.pokemons[i]) then
-				local id = "pokemon" .. tostring(self.player) .. 1
+				local id = "pokemon_" .. tostring(self.player) .. "_" .. i
 				self.pokemons[i] = new(PlayerPokemon_S, id, self.player, Pokedex[math.random(1, #Pokedex)])
 			end
 		end
@@ -84,6 +92,7 @@ end
 function Player_S:update()
 	if (self.player and isElement(self.player)) then
 		self:updateCoords()
+		self:updateInventory()
 		self:syncPokemon()
 		
 		for index, playerPokemon in pairs(self.pokemons) do
@@ -107,6 +116,13 @@ function Player_S:updateCoords()
 	self.rx = rot.x
 	self.ry = rot.y
 	self.rz = rot.z
+end
+
+
+function Player_S:updateInventory()
+	if (self.inventory) then
+		self.inventory:update()
+	end
 end
 
 
@@ -142,11 +158,11 @@ function Player_S:sendCompanion(slot)
 		if (not self.companion) and (self.pokemons[slot]) then
 			self.companion = {}
 			self.companion.slot = slot
-			
-			local x, y, z = getAttachedPosition(self.x, self.y, self.z, 0, 0, 0, 3, math.random(0, 360), 1)
+
+			local x, y, z = getAttachedPosition(self.x, self.y, self.z, self.rx, self.ry, self.rz, 2.5 * self.pokemons[slot].size, 310, 1)
 			local dimension = self.player:getDimension()
 
-			self.companion.pokemon = PokemonManager_S:getSingleton():addPokemon(self.pokemons[slot].index, x, y, z, math.random(0, 360), dimension, self.radius, self.pokemons[slot].level, self.pokemons[slot].life, self.pokemons[slot].power, self.player)
+			self.companion.pokemon = PokemonManager_S:getSingleton():addPokemon(self.pokemons[slot].index, x, y, z, self.rz, dimension, self.radius, self.pokemons[slot].level, self.pokemons[slot].life, self.pokemons[slot].power, self.player)
 			
 			mainOutput("SERVER || Companion send out!")
 		end
@@ -181,6 +197,11 @@ function Player_S:clear()
 			PokemonManager_S:getSingleton():deletePokemon(self.companion.pokemon.id)
 			self.companion = nil
 		end
+	end
+	
+	if (self.inventory) then
+		self.inventory:delete()
+		self.inventory = nil
 	end
 end
 
