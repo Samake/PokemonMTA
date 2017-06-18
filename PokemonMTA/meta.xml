@@ -101,6 +101,8 @@
 	<file src="res/textures/icons/pokeball_icon.png" type="client"/>
 	<file src="res/textures/icons/pokeball_icon_disabled.png" type="client"/>
 	<file src="res/textures/icons/default_icon.png" type="client"/>
+	<file src="res/textures/icons/female_icon.png" type="client"/>
+	<file src="res/textures/icons/male_icon.png" type="client"/>
 	<file src="res/textures/icons/pickachu_icon.png" type="client"/>
 	<file src="res/textures/icons/rowlet_icon.png" type="client"/>
 	<file src="res/textures/icons/torchic_icon.png" type="client"/>

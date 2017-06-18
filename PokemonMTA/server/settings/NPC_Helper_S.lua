@@ -2,21 +2,13 @@ NPC_Helper = {}
 local names = {}
 local animations = {}
 
+
 local maleIDs = {15, 17, 21, 24, 27, 28, 29, 32, 34}
 local femaleIDs = {12, 13, 14, 16, 18, 19, 20, 22, 23, 25, 26, 30, 31, 33, 35}
 
+
 names["male"] = {"Elio", "Brendan", "Guzma", "Gladion", "Laxxter", "Lysandre", "Clemont", "Ash"}
 names["female"] = {"Selene", "Acerola", "Luna", "May", "Wally", "Cynthia", "Serena", "Plumeria", "Lillie", "Mallow", "Misty", "Corni", "Bonnie", "Mei"}
-
-animations.default = {}
-
-animations.pokemon = {}
-animations.pokemon.male = {}
-animations.pokemon.female = {}
-
-animations.npc = {}
-animations.npc.male = {}
-animations.npc.female = {}
 
 
 function NPC_Helper:getRandomPed()
@@ -52,28 +44,6 @@ function NPC_Helper:getRandomName(id)
 		
 		return "UNKNOWN"
 	end
-end
-
-
-function NPC_Helper:getNPCAnimationSet(gender)
-	if (gender) then
-		if (animations.npc[gender]) then
-			return animations.npc[gender]
-		end
-	end
-	
-	return animations.default
-end
-
-
-function NPC_Helper:getPokemonAnimationSet(gender)
-	if (gender) then
-		if (animations.pokemon[gender]) then
-			return animations.pokemon[gender]
-		end
-	end
-	
-	return animations.default
 end
 
 

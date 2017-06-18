@@ -10,6 +10,7 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self.legendary = pokemonBluePrint.legendary or "false"
 	self.size =	pokemonBluePrint.size or 1
 	self.level = pokemonBluePrint.level or 1
+	self.life = pokemonBluePrint.life or 100
 	self.power = pokemonBluePrint.power or 100
 	self.x = pokemonBluePrint.x or 0
 	self.y = pokemonBluePrint.y or 0
@@ -247,6 +248,7 @@ function Pokemon_S:updateData()
 	self.model:setData("POKEMON:LEVEL", self.level, true)
 	self.model:setData("POKEMON:LEGENDARY", self.legendary, true)
 	self.model:setData("POKEMON:SIZE", self.size, true)
+	self.model:setData("POKEMON:LIFE", self.life, true)
 	self.model:setData("POKEMON:POWER", self.power, true)
 	self.model:setData("POKEMON:STATE", self.state, true)
 	self.model:setData("POKEMON:JOB", self.job, true)

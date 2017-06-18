@@ -76,6 +76,7 @@ function NameTags_C:drawPokemonNameTag(ped)
 	local isLegendary = ped:getData("POKEMON:LEGENDARY") or false
 	local pokeJob = ped:getData("POKEMON:JOB") or "Unknown"
 	local pokeState = ped:getData("POKEMON:STATE") or "Unknown"
+	local pokeLife = ped:getData("POKEMON:LIFE") or 50
 	local pokePower = ped:getData("POKEMON:POWER") or 50
 	local isCompanion = ped:getData("POKEMON:COMPANION") or "false"
 
@@ -120,10 +121,11 @@ function NameTags_C:drawPokemonNameTag(ped)
 				x = ntx + width * 0.32
 				y = nty + height * 0.38
 				
-				local lifeWidth = ((width * 0.57) / 100) * ped:getHealth()
+				local lifeWidth = ((width * 0.57) / 100) * pokeLife
 				local lifeHeight = height * 0.1
 				
-				dxDrawRectangle(x, y, lifeWidth, lifeHeight, tocolor(0, 255, 0, alpha), false, true)
+				dxDrawRectangle(x, y, (width * 0.57), lifeHeight, tocolor(255, 45, 45, alpha), false, true)
+				dxDrawRectangle(x, y, lifeWidth, lifeHeight, tocolor(45, 255, 45, alpha), false, true)
 				
 				-- // powerbar // --
 				x = ntx + width * 0.32
