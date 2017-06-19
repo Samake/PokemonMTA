@@ -10,4 +10,6 @@
     <NPCSPAWN id="NPCSPAWN (3)" walkAround="false" radius="3" reputation="good" skin="28" isTrainer="false" isVendor="true" dimension="0" posX="2401.7002" posY="17.90039" posZ="26.5" rotX="0" rotY="0" rotZ="83.984"></NPCSPAWN>
     <object id="object (noodlecart_prop) (1)" breakable="true" interior="0" collisions="true" alpha="255" model="1342" doublesided="false" scale="1" dimension="0" posX="2400" posY="18" posZ="26.5" rotX="0" rotY="0" rotZ="0"></object>
     <NPCSPAWN id="NPCSPAWN (4)" walkAround="true" radius="0" reputation="good" skin="30" isTrainer="false" isVendor="false" dimension="0" posX="2401.6001" posY="-19.6" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
+    <ARENA id="ARENA (1)" type="village" name="Palomino Creek 01" dimension="0" posX="2465.1006" posY="41.79981" posZ="25.6" rotX="0" rotY="0" rotZ="3.999"></ARENA>
+    <PCSPAWN id="PCSPAWN (1)" dimension="0" posX="2411.2002" posY="-9.7002" posZ="25.9" rotX="0" rotY="0" rotZ="272"></PCSPAWN>
 </map>

@@ -43,6 +43,7 @@ myModels[174] = {id = 35, pathTXD = "res/models/npc/mei.txd", pathDFF = "res/mod
 
 -- // Items // --
 myModels[1004] = {id = 1851, pathTXD = "res/models/items/item_chest.txd", pathDFF = "res/models/items/chest_full.dff", pathCOL = "res/models/items/chest_full.col"}
+myModels[1005] = {id = 1852, pathTXD = "res/models/items/pokePC.txd", pathDFF = "res/models/items/pokePC.dff", pathCOL = "res/models/items/pokePC.col"}
 
 function ModelHandler:init()
 	for index, modelInfo in pairs(myModels) do

@@ -53,7 +53,7 @@ end
 
 function Fight_S:buildArena()
 	if (not self.arena) then
-		local arenaProperties = Arena:getNearest(self.x, self.y, self.z)
+		local arenaProperties = ArenaManager_S:getSingleton():getNearestArena(self.x, self.y, self.z)
 		
 		if (arenaProperties) then
 			arenaProperties.id = self.id

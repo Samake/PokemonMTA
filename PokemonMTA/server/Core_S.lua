@@ -32,7 +32,9 @@ function Core_S:initComponents()
 	PokeSpawnManager_S:new()
 	PokemonManager_S:new()
 	ItemManager_S:new()
+	ArenaManager_S:new()
 	FightManager_S:new()
+	ComputerManager_S:new()
 end
 
 
@@ -46,6 +48,7 @@ function Core_S:update()
 		PokemonManager_S:getSingleton():update()
 		ItemManager_S:getSingleton():update()
 		FightManager_S:getSingleton():update()
+		ComputerManager_S:getSingleton():update()
 	end
 end
 
@@ -63,7 +66,9 @@ function Core_S:clear()
 	delete(PokeSpawnManager_S:getSingleton())
 	delete(PokemonManager_S:getSingleton())
 	delete(ItemManager_S:getSingleton())
+	delete(ArenaManager_S:getSingleton())
 	delete(FightManager_S:getSingleton())
+	delete(ComputerManager_S:getSingleton())
 end
 
 

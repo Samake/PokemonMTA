@@ -28,6 +28,8 @@
 	<file src="edf/icon_npc.png" type="client"/>
 	<file src="edf/icon_pokespawn.png" type="client"/>
 	<file src="edf/icon_bike.png" type="client"/>
+	<file src="edf/icon_arena.png" type="client"/>
+	<file src="edf/icon_pc.png" type="client"/>
 	
 	<!-- shaders -->
 	<file src="res/shader/mta-helper.hlsl" type="client"/>
@@ -91,4 +93,7 @@
 	<file src="res/models/items/chest_full.dff" type="client"/>
 	<file src="res/models/items/chest_full.col" type="client"/>
 	<file src="res/models/items/item_chest.txd" type="client"/>
+	<file src="res/models/items/pokePC.dff" type="client"/>
+	<file src="res/models/items/pokePC.col" type="client"/>
+	<file src="res/models/items/pokePC.txd" type="client"/>
 </meta>

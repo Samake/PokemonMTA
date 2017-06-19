@@ -14,6 +14,7 @@ Settings.drawDistanceBikes = 100
 Settings.drawDistanceNPC = 75
 Settings.drawDistancePokemon = 75
 Settings.drawDistanceChests = 50
+Settings.drawDistanceComputer = 75
 
 Settings.chestRefillDelay = 120000
 Settings.bikeRespawnDelay = 60000

@@ -23,7 +23,6 @@
 	<!-- server -->
 	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
 	<script src="server/settings/Animations_S.lua" type="server"/>
-	<script src="server/settings/ArenaList_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
@@ -35,7 +34,9 @@
 	<script src="server/manager/PokeSpawnManager_S.lua" type="server"/>
 	<script src="server/manager/PokemonManager_S.lua" type="server"/>
 	<script src="server/manager/ItemManager_S.lua" type="server"/>
+	<script src="server/manager/ArenaManager_S.lua" type="server"/>
 	<script src="server/manager/FightManager_S.lua" type="server"/>
+	<script src="server/manager/ComputerManager_S.lua" type="server"/>
 	
 	<script src="server/classes/Player_S.lua" type="server"/>
 	<script src="server/classes/Inventory_S.lua" type="server"/>
@@ -47,6 +48,7 @@
 	<script src="server/classes/PlayerPokemon_S.lua" type="server"/>
 	<script src="server/classes/Fight_S.lua" type="server"/>
 	<script src="server/classes/Arena_S.lua" type="server"/>
+	<script src="server/classes/Computer_S.lua" type="server"/>
 	
 	<!-- client -->
 	<script src="client/settings/Bindings_C.lua" type="client"/>
@@ -252,4 +254,7 @@
 	<file src="res/models/items/item_chest_cover.dff" type="client"/>
 	<file src="res/models/items/item_chest_cover.col" type="client"/>
 	<file src="res/models/items/item_chest.txd" type="client"/>
+	<file src="res/models/items/pokePC.dff" type="client"/>
+	<file src="res/models/items/pokePC.col" type="client"/>
+	<file src="res/models/items/pokePC.txd" type="client"/>
 </meta>

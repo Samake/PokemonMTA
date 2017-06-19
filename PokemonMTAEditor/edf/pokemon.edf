@@ -28,6 +28,24 @@
 		<object model="1851" rotation="!rotation!"/>
 	</element>
 	
+	<element name="ARENA" friendlyname="arena" icon="edf/icon_arena.png">
+		<object editorOnly="true" model="1254" />
+		<data name="name" type="string" default="Arena" />
+		<data name="type" type="selection:desert,village,city,street,wood,grassland,water" default="village" />
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<data name="dimension" type="integer" description="Current dimension" default="0" />
+		<object model="1254" rotation="!rotation!"/>
+	</element>
+	
+	<element name="PCSPAWN" friendlyname="pc spawn" icon="edf/icon_pc.png">
+		<object editorOnly="true" model="1852" />
+		<data name="position" type="coord3d" default="0,0,0" />
+		<data name="rotation" type="coord3d" default="0,0,0" />
+		<data name="dimension" type="integer" description="Current dimension" default="0" />
+		<object model="1852" rotation="!rotation!"/>
+	</element>
+	
 	<element name="BIKESPAWN" friendlyname="Bike spawn" icon="edf/icon_bike.png">
 		<data name="position" type="coord3d" default="0,0,0" />
 		<data name="rotation" type="coord3d" default="0,0,0" />
