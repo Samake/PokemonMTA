@@ -82,6 +82,11 @@ function HUD_C:update(delta, renderTarget)
 	if (renderTarget) then
 		
 		if (self.isShowingPokedex == false) and (self.isShowingPC == false) then
+			
+			if (isCursorShowing()) then
+				showCursor(false, false)
+			end
+			
 			if (self.nameTags) then
 				self.nameTags:update(delta, renderTarget)
 			end
@@ -101,9 +106,17 @@ function HUD_C:update(delta, renderTarget)
 			if (self.pokePC) then
 				self.pokePC:update(delta, renderTarget)
 			end
+			
+			if (not isCursorShowing()) then
+				showCursor(true, false)
+			end
 		elseif (self.isShowingPokedex == true) then
 			if (self.pokeDex) then
 				self.pokeDex:update(delta, renderTarget)
+			end
+			
+			if (not isCursorShowing()) then
+				showCursor(true, true)
 			end
 		end
 	end

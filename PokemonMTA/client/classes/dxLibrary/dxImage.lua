@@ -1,6 +1,6 @@
-dxWindow = inherit(Class)
+dxImage = inherit(Class)
 
-function dxWindow:constructor(x, y, width, height, texture, parent)
+function dxImage:constructor(x, y, width, height, texture, parent)
 
 	self.screenWidth, self.screenHeight = guiGetScreenSize()
 	
@@ -19,45 +19,43 @@ function dxWindow:constructor(x, y, width, height, texture, parent)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("dxWindow was started.")
+		mainOutput("dxImage was started.")
 	end
 end
 
 
-function dxWindow:setTexture(texture)
+function dxImage:setTexture(texture)
 	self.texture = texture
 end
 
 
-function dxWindow:init()
+function dxImage:init()
 	
 end
 
 
-function dxWindow:update()
+function dxImage:update()
 	self.mouseX, self.mouseY = getCursorPosition()
 	
 	if (self.texture) then
 		dxDrawImage(self.x, self.y, self.width, self.height, self.texture, 0, 0, 0, tocolor(255, 255, 255, self.alpha), false)
-	else
-		dxDrawRectangle(self.x, self.y, self.width, self.height, tocolor(45, 45, 45, self.alpha))
 	end
 end
 
 
-function dxWindow:getAlpha()
+function dxImage:getAlpha()
 	return self.alpha
 end
 
 
-function dxWindow:setAlpha(alpha)
+function dxImage:setAlpha(alpha)
 	if (alpha) then
 		self.alpha = alpha
 	end
 end
 
 
-function dxWindow:isCursorInside()
+function dxImage:isCursorInside()
 	if (self.mouseX) and (self.mouseY) then
 		if (self.mouseX * self.screenWidth > self.x) and (self.mouseX * self.screenWidth < self.x + self.width) then
 			if (self.mouseY * self.screenHeight > self.y) and (self.mouseY * self.screenHeight < self.y + self.height) then
@@ -69,15 +67,15 @@ function dxWindow:isCursorInside()
 	return false
 end
 
-function dxWindow:clear()
+function dxImage:clear()
 
 end
 
 
-function dxWindow:destructor()
+function dxImage:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("dxWindow was deleted.")
+		mainOutput("dxImage was deleted.")
 	end
 end

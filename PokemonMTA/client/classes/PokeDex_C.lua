@@ -14,6 +14,11 @@ function PokeDex_C:constructor()
 	self.currentAlpha = 0
 	self.maxAlpha = 255
 	
+	self.displayWidth = self.width * 0.515
+	self.displayHeight = self.height * 0.6
+	self.displayX = self.screenWidth * 0.478
+	self.displayY = self.screenHeight * 0.2
+	
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
@@ -24,6 +29,7 @@ end
 
 function PokeDex_C:init()
 	self.components.window = dxWindow:new(self.x, self.y, self.width, self.height, Textures["pokedex"].pokedex_frame, nil)
+	self.components.background = dxImage:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight, Textures["computer"].screen_bg, nil)
 end
 
 

@@ -14,6 +14,11 @@ function PokePC_C:constructor()
 	self.currentAlpha = 0
 	self.maxAlpha = 255
 	
+	self.displayWidth = self.width * 0.875
+	self.displayHeight = self.height * 0.875
+	self.displayX = (self.screenWidth / 2) - (self.displayWidth / 2)
+	self.displayY = (self.screenHeight / 2) - (self.displayHeight / 2)
+	
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
@@ -24,6 +29,7 @@ end
 
 function PokePC_C:init()
 	self.components.window = dxWindow:new(self.x, self.y, self.width, self.height, Textures["computer"].computer_frame, nil)
+	self.components.background = dxImage:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight, Textures["computer"].screen_bg, nil)
 end
 
 

@@ -69,6 +69,7 @@
 	<script src="client/singleton/Player_C.lua" type="client"/>
 
 	<script src="client/classes/dxLibrary/dxWindow.lua" type="client"/>
+	<script src="client/classes/dxLibrary/dxImage.lua" type="client"/>
 	
 	<script src="client/classes/ShaderObjects_C.lua" type="client"/>
 	<script src="client/classes/ShaderPeds_C.lua" type="client"/>
@@ -105,6 +106,7 @@
 	<file src="res/textures/slot_bg.png" type="client"/>
 	<file src="res/textures/computer_frame.png" type="client"/>
 	<file src="res/textures/pokedex_frame.png" type="client"/>
+	<file src="res/textures/screen_bg.png" type="client"/>
 	
 	<file src="res/textures/icons/pokeball_icon.png" type="client"/>
 	<file src="res/textures/icons/pokeball_icon_disabled.png" type="client"/>
