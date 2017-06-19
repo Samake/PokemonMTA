@@ -17,9 +17,12 @@ end
 
 function HUD_C:initHUD()
 	self.m_ShowComputer = bind(self.showComputer, self)
+	self.m_TogglePokeDex = bind(self.togglePokeDex, self)
 	
 	addEvent("SHOWCLIENTCOMPUTER", true)
 	addEventHandler("SHOWCLIENTCOMPUTER", root, self.m_ShowComputer)
+	
+	bindKey(Bindings["POKEDEX"], "down", self.m_TogglePokeDex)
 	
 	if (not self.nameTags) then
 		self.nameTags = NameTags_C:new()
@@ -40,11 +43,28 @@ function HUD_C:initHUD()
 	if (not self.pokePC) then
 		self.pokePC = PokePC_C:new()
 	end
+	
+	if (not self.pokeDex) then
+		self.pokeDex = PokeDex_C:new()
+	end
 end
 
 
 function HUD_C:showComputer(bool)
 	self.isShowingPC = bool
+	
+	if (self.isShowingPC == true) then
+		self.isShowingPokedex = false
+	end
+end
+
+
+function HUD_C:togglePokeDex()
+	if (self.isShowingPC == false) then
+		self.isShowingPokedex = not self.isShowingPokedex
+	else
+		self.isShowingPokedex = false
+	end
 end
 
 
@@ -67,11 +87,13 @@ function HUD_C:update(delta, renderTarget)
 			if (self.pokeSlots) then
 				self.pokeSlots:update(delta, renderTarget)
 			end
-		elseif (self.isShowingPokedex == true) then
-		
-		elseif (self.isShowingPC == true) then
+		elseif (self.isShowingPokedex == false) and (self.isShowingPC == true) then
 			if (self.pokePC) then
 				self.pokePC:update(delta, renderTarget)
+			end
+		elseif (self.isShowingPokedex == true) then
+			if (self.pokeDex) then
+				self.pokeDex:update(delta, renderTarget)
 			end
 		end
 	end
@@ -80,6 +102,8 @@ end
 
 function HUD_C:clear()
 	removeEventHandler("SHOWCLIENTCOMPUTER", root, self.m_ShowComputer)
+	
+	unbindKey(Bindings["POKEDEX"], "down", self.m_TogglePokeDex)
 	
 	if (self.nameTags) then
 		self.nameTags:delete()
@@ -104,6 +128,11 @@ function HUD_C:clear()
 	if (self.pokePC) then
 		self.pokePC:delete()
 		self.pokePC = nil
+	end
+	
+	if (self.pokeDex) then
+		self.pokeDex:delete()
+		self.pokeDex = nil
 	end
 end
 

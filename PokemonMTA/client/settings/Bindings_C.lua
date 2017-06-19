@@ -1,4 +1,5 @@
 Bindings = {}
+Bindings["POKEDEX"] = "J"
 Bindings["TOGGLESHADER"] = "M"
 Bindings["TOGGLENAMETAGS"] = "N"
 Bindings["POKESLOT1"] = "1"

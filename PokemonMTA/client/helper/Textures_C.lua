@@ -17,6 +17,9 @@ function Textures:init()
 	Textures["computer"] = {}
 	Textures["computer"].computer_frame = dxCreateTexture("res/textures/computer_frame.png")
 	
+	Textures["pokedex"] = {}
+	Textures["pokedex"].pokedex_frame = dxCreateTexture("res/textures/pokedex_frame.png")
+	
 	Textures["icons"] = {}
 	Textures["icons"].pokeBallIcon = dxCreateTexture("res/textures/icons/pokeball_icon.png")
 	Textures["icons"].pokeBallIconDisabled = dxCreateTexture("res/textures/icons/pokeball_icon_disabled.png")

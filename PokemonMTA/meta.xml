@@ -79,6 +79,7 @@
 	<script src="client/classes/WorldText3D_C.lua" type="client"/>
 	<script src="client/classes/PokeSlots_C.lua" type="client"/>
 	<script src="client/classes/PokePC_C.lua" type="client"/>
+	<script src="client/classes/PokeDex_C.lua" type="client"/>
 	
 	<!-- ################################ FILES ################################ -->
 	
@@ -103,6 +104,7 @@
 	<file src="res/textures/radar_frame.png" type="client"/>
 	<file src="res/textures/slot_bg.png" type="client"/>
 	<file src="res/textures/computer_frame.png" type="client"/>
+	<file src="res/textures/pokedex_frame.png" type="client"/>
 	
 	<file src="res/textures/icons/pokeball_icon.png" type="client"/>
 	<file src="res/textures/icons/pokeball_icon_disabled.png" type="client"/>
