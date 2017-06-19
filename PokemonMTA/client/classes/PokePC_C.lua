@@ -11,6 +11,9 @@ function PokePC_C:constructor()
 	self.x = (self.screenWidth / 2) - (self.width / 2)
 	self.y = (self.screenHeight / 2) - (self.height / 2)
 	
+	self.currentAlpha = 0
+	self.maxAlpha = 255
+	
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
@@ -24,14 +27,28 @@ function PokePC_C:init()
 end
 
 
+function PokePC_C:fadeIn()
+	self.currentAlpha = 0
+end
+
+
 function PokePC_C:update(delta, renderTarget)
 	if (renderTarget) then
+		if (self.currentAlpha < self.maxAlpha) then
+			self.currentAlpha = self.currentAlpha + 5
+			
+			if (self.currentAlpha > self.maxAlpha) then
+				self.currentAlpha = self.maxAlpha
+			end
+		end
+		
 		dxSetRenderTarget(renderTarget, true)
 		dxSetBlendMode("modulate_add")
 		
 		for index, component in pairs(self.components) do
 			if (component) then
 				component:update()
+				component:setAlpha(self.currentAlpha)
 			end
 		end
 		

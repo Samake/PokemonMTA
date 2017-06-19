@@ -55,6 +55,10 @@ function HUD_C:showComputer(bool)
 	
 	if (self.isShowingPC == true) then
 		self.isShowingPokedex = false
+		
+		if (self.pokePC) then
+			self.pokePC:fadeIn()
+		end
 	end
 end
 
@@ -64,6 +68,12 @@ function HUD_C:togglePokeDex()
 		self.isShowingPokedex = not self.isShowingPokedex
 	else
 		self.isShowingPokedex = false
+	end
+	
+	if (self.isShowingPokedex == true) then
+		if (self.pokeDex) then
+			self.pokeDex:fadeIn()
+		end
 	end
 end
 
