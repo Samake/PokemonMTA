@@ -95,6 +95,8 @@ function Computer_S:onColShapeHit(element)
 					if (not self.light) then
 						self.light = createMarker(self.x, self.y, self.z + 1.5, "corona", 1, 90, 90, 175, 220)
 					end
+					
+					triggerClientEvent(self.player, "SHOWCLIENTCOMPUTER", self.player, true)
 				end
 			end
 		end
@@ -107,6 +109,8 @@ function Computer_S:onColShapeLeave(element)
 		if (isElement(element)) then
 			if (element:getType() == "player") then
 				if (element == self.player) then
+					triggerClientEvent(self.player, "SHOWCLIENTCOMPUTER", self.player, false)
+					
 					self.player = nil
 					
 					if (self.light) then

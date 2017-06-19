@@ -14,6 +14,9 @@ function Textures:init()
 	Textures["radar"].radarMaskBG = dxCreateTexture("res/textures/radar_mask_bg.png")
 	Textures["radar"].radarFrame = dxCreateTexture("res/textures/radar_frame.png")
 	
+	Textures["computer"] = {}
+	Textures["computer"].computer_frame = dxCreateTexture("res/textures/computer_frame.png")
+	
 	Textures["icons"] = {}
 	Textures["icons"].pokeBallIcon = dxCreateTexture("res/textures/icons/pokeball_icon.png")
 	Textures["icons"].pokeBallIconDisabled = dxCreateTexture("res/textures/icons/pokeball_icon_disabled.png")
