@@ -82,7 +82,6 @@ function WorldText3D_C:draw3DTexts()
 				local textColor = tocolor(textSlot.r, textSlot.g, textSlot.b, alpha * textSlot.a)
 				
 				if (ntx) and (nty) then
-					-- // name // --
 					local x = ntx
 					local y = nty - textSlot.offset
 					
@@ -96,8 +95,8 @@ end
 
 
 function WorldText3D_C:getFreeID()
-	for index, text in pairs(self.textElements) do
-		if (not text) then
+	for index, textSlot in pairs(self.textElements) do
+		if (not textSlot) then
 			return index
 		end
 	end
@@ -120,7 +119,7 @@ end
 
 
 function WorldText3D_C:getTextAlpha(distanceValue)
-	local alphaVar = self.maxTextAlpha - ((self.maxTextAlpha/self.maxTextDistance) * distanceValue)
+	local alphaVar = self.maxTextAlpha - ((self.maxTextAlpha / self.maxTextDistance) * distanceValue)
     
     if (alphaVar <= self.minTextAlpha) then
         alphaVar = self.minTextAlpha
@@ -134,6 +133,14 @@ end
 
 function WorldText3D_C:clear()
 	removeEventHandler("POKEMON3DTEXT", root, self.m_AddText)
+	
+	for index, textSlot in pairs(self.textElements) do
+		if (textSlot) then
+			textSlot = nil
+		end
+	end
+	
+	self.textElements = nil
 end
 
 

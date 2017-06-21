@@ -12,4 +12,6 @@
     <NPCSPAWN id="NPCSPAWN (4)" walkAround="true" radius="0" reputation="good" skin="30" isTrainer="false" isVendor="false" dimension="0" posX="2401.6001" posY="-19.6" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
     <ARENA id="ARENA (1)" type="village" name="Palomino Creek 01" dimension="0" posX="2465.1006" posY="41.79981" posZ="25.6" rotX="0" rotY="0" rotZ="3.999"></ARENA>
     <PCSPAWN id="PCSPAWN (1)" dimension="0" posX="2411.2002" posY="-9.7002" posZ="25.9" rotX="0" rotY="0" rotZ="272"></PCSPAWN>
+    <PCSPAWN id="PCSPAWN (2)" dimension="0" posX="2375" posY="-16.1" posZ="27" rotX="0" rotY="0" rotZ="88"></PCSPAWN>
+    <NPCSPAWN id="NPCSPAWN (5)" walkAround="true" radius="0" reputation="neutral" skin="21" isTrainer="false" isVendor="false" dimension="0" posX="2401.3" posY="-8.1" posZ="26.5" rotX="0" rotY="0" rotZ="0"></NPCSPAWN>
 </map>

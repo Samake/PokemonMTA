@@ -24,6 +24,7 @@
 	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
 	<script src="server/settings/Animations_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
+	<script src="server/settings/Phrases_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
 	
@@ -78,6 +79,7 @@
 	<script src="client/classes/NameTags_C.lua" type="client"/>
 	<script src="client/classes/Radar_C.lua" type="client"/>
 	<script src="client/classes/WorldText3D_C.lua" type="client"/>
+	<script src="client/classes/SpeechBubble_C.lua" type="client"/>
 	<script src="client/classes/PokeSlots_C.lua" type="client"/>
 	<script src="client/classes/PokePC_C.lua" type="client"/>
 	<script src="client/classes/PokeDex_C.lua" type="client"/>

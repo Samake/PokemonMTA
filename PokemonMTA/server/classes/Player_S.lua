@@ -10,12 +10,15 @@ function Player_S:constructor(id, player)
 	self.rx = 0
 	self.ry = 0
 	self.rz = 0
+	self.name = removeHEXColorCode(self.player:getName())
 	
 	self.skinID = 258
 	
 	self.companion = nil
 	self.pokemons = {}
 	self.maxPokemons = 6
+	
+	self.isInConversation = "false"
 	
 	self:init()
 	
@@ -26,6 +29,9 @@ end
 
 
 function Player_S:init()
+	
+	toggleControl(self.player, "fire", false)
+	
 	self.m_ToggleCompanion = bind(self.toggleCompanion, self)
 	
 	addEvent("DOTOGGLECOMPANION", true)
@@ -203,6 +209,8 @@ function Player_S:clear()
 		self.inventory:delete()
 		self.inventory = nil
 	end
+	
+	toggleControl(self.player, "fire", true)
 end
 
 

@@ -29,6 +29,8 @@ function NPC_S:constructor(npcProperties)
 	self.thinkTime = math.random(2000, 8000)
 	
 	self.player = nil
+	self.playerClass = nil
+	
 	self.isInFight = "false"
 	
 	self.zone = getZoneName(self.x, self.y, self.z)
@@ -345,23 +347,57 @@ function NPC_S:onColShapeHit(element)
 			if (element:getType() == "player") then
 				if (not self.player) and (self.isInFight == "false") then
 					
-					self.player = element
+					self.playerClass = PlayerManager_S:getSingleton():getPlayerClass(element)
 					
-					if (self.isTrainer == "true") then
-						self.player = element
+					if (self.playerClass) then
+						if (self.playerClass.isInConversation == "false") then
+							self.player = element
+							
+							self.playerClass.isInConversation = "true"
+							
+							if (self.isTrainer == "true") then 		-- TRAINER
+								self.player = element
 
-						local fightProperties = {}
-						fightProperties.x = self.x
-						fightProperties.y = self.y
-						fightProperties.z = self.z
-						fightProperties.playerClass = PlayerManager_S:getSingleton():getPlayerClass(element)
-						fightProperties.opponentClass = self
-						
-						FightManager_S:getSingleton():startFight(fightProperties)
-					elseif (self.isVendor == "true") then
-						self:job_talk_to_player()
-					else
-						self:job_talk_to_player()
+								local fightProperties = {}
+								fightProperties.x = self.x
+								fightProperties.y = self.y
+								fightProperties.z = self.z
+								fightProperties.playerClass = PlayerManager_S:getSingleton():getPlayerClass(element)
+								fightProperties.opponentClass = self
+								
+								FightManager_S:getSingleton():startFight(fightProperties)
+							elseif (self.isVendor == "true") then 	-- VENDOR
+								self:job_talk_to_player()
+							else									-- DEFAULT NPC
+								self:job_talk_to_player()
+								
+								if (Phrases) and (ItemList) then
+									if (Phrases["NPC"]) then
+										local speechProperties = {}
+										local text = "#FFBB66" .. Phrases["NPC"][math.random(1, #Phrases["NPC"])]
+										
+										if (string.find(text, "<<NAME>>")) then
+											text = string.gsub(text, "<<NAME>>", "#66FF66" .. self.name .. "#FFBB66")
+										end
+										
+										if (string.find(text, "<<ITEM>>")) then
+											text = string.gsub(text, "<<ITEM>>", "#FF6666" .. ItemList[math.random(1, #ItemList)].name .. "´s#FFBB66")
+										end
+										
+										if (string.find(text, "<<PLAYER>>")) then
+											text = string.gsub(text, "<<PLAYER>>", "#9999FF" .. self.playerClass.name .. "#FFBB66")
+										end
+										
+										speechProperties.text = text
+										speechProperties.x = self.x
+										speechProperties.y = self.y
+										speechProperties.z = self.z + 1.5
+										
+										triggerClientEvent(self.player, "POKEMONSPEECHBUBBLEENABLE", self.player, speechProperties)
+									end
+								end
+							end
+						end
 					end
 				end
 			end
@@ -375,7 +411,14 @@ function NPC_S:onColShapeLeave(element)
 		if (isElement(element)) then
 			if (element:getType() == "player") then
 				if (self.player == element) then
+					triggerClientEvent(self.player, "POKEMONSPEECHBUBBLEDISABLE", self.player)
+					
 					self.player = nil
+					
+					if (self.playerClass) then
+						self.playerClass.isInConversation = "false"
+						self.playerClass = nil
+					end
 					
 					self:job_setDefault()
 				end

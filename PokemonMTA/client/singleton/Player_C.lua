@@ -96,7 +96,7 @@ end
 
 function Player_C:destructor()
 	self:clear()
-	
+
 	if (Settings.showClassDebugInfo == true) then
 		mainOutput("Player_C was deleted.")
 	end

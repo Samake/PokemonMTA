@@ -245,7 +245,7 @@ end
 
 
 function NameTags_C:getNameTagAlpha(distanceValue)
-	local alphaVar = self.maxNameTagAlpha - ((self.maxNameTagAlpha/self.maxNameTagDistance) * distanceValue)
+	local alphaVar = self.maxNameTagAlpha - ((self.maxNameTagAlpha / self.maxNameTagDistance) * distanceValue)
     
     if (alphaVar <= self.minNameTagAlpha) then
         alphaVar = self.minNameTagAlpha
