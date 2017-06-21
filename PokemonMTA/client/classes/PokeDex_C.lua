@@ -28,8 +28,9 @@ end
 
 
 function PokeDex_C:init()
-	self.components.window = dxWindow:new(self.x, self.y, self.width, self.height, Textures["pokedex"].pokedex_frame, nil)
-	self.components.background = dxImage:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight, Textures["computer"].screen_bg, nil)
+	self.components[1] = dxWindow:new(self.x, self.y, self.width, self.height, Textures["pokedex"].pokedex_frame, nil)
+	self.components[2] = dxImage:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight, Textures["computer"].screen_bg, nil)
+	self.components[3] = PokeDexGUI_C:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight)
 end
 
 
@@ -48,10 +49,10 @@ function PokeDex_C:update(delta, renderTarget)
 			end
 		end
 		
-		dxSetRenderTarget(renderTarget, true)
+		dxSetRenderTarget(renderTarget, false)
 		dxSetBlendMode("modulate_add")
 		
-		for index, component in pairs(self.components) do
+		for index, component in ipairs(self.components) do
 			if (component) then
 				component:update()
 				component:setAlpha(self.currentAlpha)

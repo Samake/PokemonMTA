@@ -2,6 +2,7 @@ Bindings = {}
 Bindings["POKEDEX"] = "J"
 Bindings["TOGGLESHADER"] = "M"
 Bindings["TOGGLENAMETAGS"] = "N"
+Bindings["THROWPOKEBALL"] = "mouse2"
 Bindings["POKESLOT1"] = "1"
 Bindings["POKESLOT2"] = "2"
 Bindings["POKESLOT3"] = "3"

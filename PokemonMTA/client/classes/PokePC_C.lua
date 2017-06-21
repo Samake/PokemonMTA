@@ -28,8 +28,9 @@ end
 
 
 function PokePC_C:init()
-	self.components.window = dxWindow:new(self.x, self.y, self.width, self.height, Textures["computer"].computer_frame, nil)
-	self.components.background = dxImage:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight, Textures["computer"].screen_bg, nil)
+	self.components[1] = dxWindow:new(self.x, self.y, self.width, self.height, Textures["computer"].computer_frame, nil)
+	self.components[2] = dxImage:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight, Textures["computer"].screen_bg, nil)
+	self.components[3] = PokePCGUI_C:new(self.displayX, self.displayY, self.displayWidth, self.displayHeight)
 end
 
 

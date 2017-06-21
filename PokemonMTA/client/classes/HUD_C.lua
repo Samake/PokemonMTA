@@ -32,8 +32,8 @@ function HUD_C:initHUD()
 		self.worldText3D = WorldText3D_C:new()
 	end
 	
-	if (not self.speechBubble) then
-		self.speechBubble = SpeechBubble_C:new()
+	if (not self.speechBubbles) then
+		self.speechBubbles = SpeechBubbles_C:new()
 	end
 	
 	if (not self.radar) then
@@ -99,8 +99,8 @@ function HUD_C:update(delta, renderTarget)
 				self.worldText3D:update(delta, renderTarget)
 			end
 			
-			if (self.speechBubble) then
-				self.speechBubble:update(delta, renderTarget)
+			if (self.speechBubbles) then
+				self.speechBubbles:update(delta, renderTarget)
 			end
 			
 			if (self.radar) then
@@ -146,9 +146,9 @@ function HUD_C:clear()
 		self.worldworldText3D = nil
 	end
 	
-	if (self.speechBubble) then
-		self.speechBubble:delete()
-		self.speechBubble = nil
+	if (self.speechBubbles) then
+		self.speechBubbles:delete()
+		self.speechBubbles = nil
 	end
 	
 	if (self.radar) then

@@ -7,11 +7,11 @@ function Radar_C:constructor()
 	
 	self.drawDistance = 255
 	self.gtaMapSize = 6000
-	self.size = self.screenHeight * 0.28
+	self.size = self.screenHeight * 0.26
 	self.x = self.screenWidth - self.size
 	self.y = 0
 	
-	self.zoom = 0.35
+	self.zoom = 0.65
 	self.minZoom = 0.15
 	self.maxZoom = 0.95
 	self.zoomStep = 0.025

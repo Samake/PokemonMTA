@@ -1,6 +1,6 @@
-SpeechBubble_C = inherit(Class)
+SpeechBubbles_C = inherit(Class)
 
-function SpeechBubble_C:constructor()
+function SpeechBubbles_C:constructor()
 	
 	self.screenWidth, self.screenHeight = guiGetScreenSize()
 	self.player = getLocalPlayer()
@@ -20,12 +20,12 @@ function SpeechBubble_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("SpeechBubble_C was started.")
+		mainOutput("SpeechBubbles_C was started.")
 	end
 end
 
 
-function SpeechBubble_C:init()
+function SpeechBubbles_C:init()
 	self.m_AddSpeechBubble = bind(self.addSpeechBubble, self)
 	self.m_RemoveSpeechBubble = bind(self.removeSpeechBubble, self)
 	
@@ -37,7 +37,7 @@ function SpeechBubble_C:init()
 end
 
 
-function SpeechBubble_C:addSpeechBubble(speechProperties)
+function SpeechBubbles_C:addSpeechBubble(speechProperties)
 	if (speechProperties) then
 		self.text = speechProperties.text
 		self.x = speechProperties.x
@@ -49,7 +49,7 @@ function SpeechBubble_C:addSpeechBubble(speechProperties)
 end
 
 
-function SpeechBubble_C:removeSpeechBubble()
+function SpeechBubbles_C:removeSpeechBubble()
 	self.text = nil
 	self.x = 0
 	self.y = 0
@@ -58,7 +58,7 @@ function SpeechBubble_C:removeSpeechBubble()
 end
 
 
-function SpeechBubble_C:update(delta, renderTarget)
+function SpeechBubbles_C:update(delta, renderTarget)
 	if (renderTarget) then
 		dxSetRenderTarget(renderTarget, false)
 
@@ -69,7 +69,7 @@ function SpeechBubble_C:update(delta, renderTarget)
 end
 
 
-function SpeechBubble_C:draw3DTexts()
+function SpeechBubbles_C:draw3DTexts()
 	if (self.text) then
 		
 		if (self.alpha < 255) then
@@ -112,7 +112,7 @@ function SpeechBubble_C:draw3DTexts()
 end
 
 
-function SpeechBubble_C:getTextScale(distanceValue)
+function SpeechBubbles_C:getTextScale(distanceValue)
     local scaleVar = (self.maxTextDistance * self.minTextScale) / (distanceValue * self.maxTextScale)
     
     if (scaleVar <= self.minTextScale) then
@@ -125,16 +125,16 @@ function SpeechBubble_C:getTextScale(distanceValue)
 end
 
 
-function SpeechBubble_C:clear()
+function SpeechBubbles_C:clear()
 	removeEventHandler("POKEMONSPEECHBUBBLEENABLE", root, self.m_AddSpeechBubble)
 	removeEventHandler("POKEMONSPEECHBUBBLEDISABLE", root, self.m_RemoveSpeechBubble)
 end
 
 
-function SpeechBubble_C:destructor()
+function SpeechBubbles_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("SpeechBubble_C was deleted.")
+		mainOutput("SpeechBubbles_C was deleted.")
 	end
 end

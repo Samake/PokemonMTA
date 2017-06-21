@@ -79,10 +79,12 @@
 	<script src="client/classes/NameTags_C.lua" type="client"/>
 	<script src="client/classes/Radar_C.lua" type="client"/>
 	<script src="client/classes/WorldText3D_C.lua" type="client"/>
-	<script src="client/classes/SpeechBubble_C.lua" type="client"/>
+	<script src="client/classes/SpeechBubbles_C.lua" type="client"/>
 	<script src="client/classes/PokeSlots_C.lua" type="client"/>
 	<script src="client/classes/PokePC_C.lua" type="client"/>
+	<script src="client/classes/PokePCGUI_C.lua" type="client"/>
 	<script src="client/classes/PokeDex_C.lua" type="client"/>
+	<script src="client/classes/PokeDexGUI_C.lua" type="client"/>
 	
 	<!-- ################################ FILES ################################ -->
 	
