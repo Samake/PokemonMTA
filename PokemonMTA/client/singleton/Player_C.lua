@@ -6,7 +6,7 @@ function Player_C:constructor()
 	
 	self.throwPower = 0
 	self.maxThrowPower = 1.8
-	self.isThowing = "false"
+	self.isThrowing = "false"
 	self.animationReset = "false"
 	
 	self.currentCount = 0
@@ -56,16 +56,16 @@ function Player_C:update(delta)
 			self.throwPower = self.maxThrowPower
 		end
 		
-		if (self.isThowing == "false") then
-			self.isThowing = "true"
+		if (self.isThrowing == "false") then
+			self.isThrowing = "true"
 			self.player:setAnimation("grenade","weapon_start_throw", -1, false)
 			self.animationReset = "false"
 		end
 	else
-		if (self.isThowing == "true") then
+		if (self.isThrowing == "true") then
 			self.player:setAnimation("grenade","weapon_throw", -1, false)
 			self.throwPower = 0
-			self.isThowing = "false"
+			self.isThrowing = "false"
 			self.startCount = getTickCount()
 		end
 		
