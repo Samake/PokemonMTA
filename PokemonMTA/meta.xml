@@ -38,6 +38,7 @@
 	<script src="server/manager/ArenaManager_S.lua" type="server"/>
 	<script src="server/manager/FightManager_S.lua" type="server"/>
 	<script src="server/manager/ComputerManager_S.lua" type="server"/>
+	<script src="server/manager/PokeBallManager_S.lua" type="server"/>
 	
 	<script src="server/classes/Player_S.lua" type="server"/>
 	<script src="server/classes/Inventory_S.lua" type="server"/>
@@ -50,6 +51,7 @@
 	<script src="server/classes/Fight_S.lua" type="server"/>
 	<script src="server/classes/Arena_S.lua" type="server"/>
 	<script src="server/classes/Computer_S.lua" type="server"/>
+	<script src="server/classes/PokeBall_S.lua" type="server"/>
 	
 	<!-- client -->
 	<script src="client/settings/Bindings_C.lua" type="client"/>
@@ -269,4 +271,8 @@
 	<file src="res/models/items/pokePC.dff" type="client"/>
 	<file src="res/models/items/pokePC.col" type="client"/>
 	<file src="res/models/items/pokePC.txd" type="client"/>
+	
+	<file src="res/models/balls/PokeBall.dff" type="client"/>
+	<file src="res/models/balls/PokeBall.col" type="client"/>
+	<file src="res/models/balls/PokeBall.txd" type="client"/>
 </meta>

@@ -5,12 +5,14 @@ function Player_C:constructor()
 	self.player = getLocalPlayer()
 	
 	self.throwPower = 0
-	self.maxThrowPower = 1.8
+	self.maxThrowPower = 3.5
 	self.isThrowing = "false"
 	self.animationReset = "false"
 	
 	self.currentCount = 0
 	self.startCount = 0
+	
+	self.pokeBall = nil
 	
 	self.pokemons = {}
 	
@@ -49,6 +51,11 @@ end
 function Player_C:update(delta)
 	self.currentCount = getTickCount()
 	
+	if (isElement(self.pokeBall)) then
+		local x, y, z = self.player:getBonePosition(25)
+		self.pokeBall:setPosition(x, y, z - 0.05)
+	end
+	
 	if (getKeyState(Bindings["THROWPOKEBALL"])) then
 		if (self.throwPower < self.maxThrowPower) then
 			self.throwPower = self.throwPower + 0.025
@@ -57,16 +64,11 @@ function Player_C:update(delta)
 		end
 		
 		if (self.isThrowing == "false") then
-			self.isThrowing = "true"
-			self.player:setAnimation("grenade","weapon_start_throw", -1, false)
-			self.animationReset = "false"
+			self:prepareThrowing()
 		end
 	else
 		if (self.isThrowing == "true") then
-			self.player:setAnimation("grenade","weapon_throw", -1, false)
-			self.throwPower = 0
-			self.isThrowing = "false"
-			self.startCount = getTickCount()
+			self:finishThrowing()
 		end
 		
 		if (self.animationReset == "false") then
@@ -75,6 +77,41 @@ function Player_C:update(delta)
 				self.animationReset = "true"
 			end
 		end
+	end
+end
+
+
+function Player_C:prepareThrowing()
+	self.isThrowing = "true"
+	self.player:setAnimation("grenade","weapon_start_throw", -1, false)
+	self.animationReset = "false"
+	
+	self:createPokeBall()
+end
+
+
+function Player_C:finishThrowing()
+	self.player:setAnimation("grenade","weapon_throw", -1, false)
+	self.throwPower = 0
+	self.isThrowing = "false"
+	self.startCount = getTickCount()
+	
+	self:deletePokeBall()
+end
+
+
+function Player_C:createPokeBall()
+	if (not self.pokeBall) then
+		local x, y, z = self.player:getBonePosition(25)
+		self.pokeBall = createObject(1854, x, y, z - 0.05, math.random(1, 360), math.random(1, 360), math.random(1, 360))
+	end
+end
+
+
+function Player_C:deletePokeBall()
+	if (self.pokeBall) then
+		self.pokeBall:destroy()
+		self.pokeBall = nil
 	end
 end
 

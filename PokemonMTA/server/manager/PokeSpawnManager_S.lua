@@ -13,11 +13,11 @@ end
 
 function PokeSpawnManager_S:initManager()
 	
-	self:initChests()
+	self:initSpawns()
 end
 
 
-function PokeSpawnManager_S:initChests()
+function PokeSpawnManager_S:initSpawns()
 	local count = 0
 	
 	for index, pokeSpawn in pairs(getElementsByType("POKESPAWN")) do

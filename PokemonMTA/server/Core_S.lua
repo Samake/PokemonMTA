@@ -35,6 +35,7 @@ function Core_S:initComponents()
 	ArenaManager_S:new()
 	FightManager_S:new()
 	ComputerManager_S:new()
+	PokeBallManager_S:new()
 end
 
 
@@ -49,6 +50,7 @@ function Core_S:update()
 		ItemManager_S:getSingleton():update()
 		FightManager_S:getSingleton():update()
 		ComputerManager_S:getSingleton():update()
+		PokeBallManager_S:getSingleton():update()
 	end
 end
 
@@ -69,6 +71,7 @@ function Core_S:clear()
 	delete(ArenaManager_S:getSingleton())
 	delete(FightManager_S:getSingleton())
 	delete(ComputerManager_S:getSingleton())
+	delete(PokeBallManager_S:getSingleton())
 end
 
 
