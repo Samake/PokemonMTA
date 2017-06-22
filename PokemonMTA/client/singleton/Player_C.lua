@@ -5,7 +5,7 @@ function Player_C:constructor()
 	self.player = getLocalPlayer()
 	
 	self.throwPower = 0
-	self.maxThrowPower = 3.5
+	self.maxThrowPower = 1.5
 	self.isThrowing = "false"
 	self.animationReset = "false"
 	
@@ -51,6 +51,11 @@ end
 function Player_C:update(delta)
 	self.currentCount = getTickCount()
 	
+	if (isElement(self.player)) then
+		self.playerPos = self.player:getPosition()
+		self.playerRot = self.player:getRotation()
+	end
+	
 	if (isElement(self.pokeBall)) then
 		local x, y, z = self.player:getBonePosition(25)
 		self.pokeBall:setPosition(x, y, z - 0.05)
@@ -78,6 +83,17 @@ function Player_C:update(delta)
 			end
 		end
 	end
+	
+	self:updateThrowLight()
+end
+
+
+function Player_C:updateThrowLight()
+	if (self.playerPos) and (self.playerRot) and (isElement(self.throwLight)) then
+		local lx, ly, lz = getAttachedPosition(self.playerPos.x, self.playerPos.y, self.playerPos.z, self.playerRot.x, self.playerRot.y, self.playerRot.z, (20.5 / self.maxThrowPower) * self.throwPower, 0, 0)
+		
+		self.throwLight:setPosition(lx, ly, lz)
+	end
 end
 
 
@@ -87,6 +103,7 @@ function Player_C:prepareThrowing()
 	self.animationReset = "false"
 	
 	self:createPokeBall()
+	self:createThrowLight()
 end
 
 
@@ -97,6 +114,7 @@ function Player_C:finishThrowing()
 	self.startCount = getTickCount()
 	
 	self:deletePokeBall()
+	self:deleteThrowLight()
 end
 
 
@@ -107,11 +125,24 @@ function Player_C:createPokeBall()
 	end
 end
 
+function Player_C:createThrowLight()
+	if (self.playerPos) and (not self.throwLight) then
+		self.throwLight = createMarker(self.playerPos.x, self.playerPos.y, self.playerPos.z, "corona", 0.35, 220, 220, 75, 190)
+	end
+end
 
 function Player_C:deletePokeBall()
 	if (self.pokeBall) then
 		self.pokeBall:destroy()
 		self.pokeBall = nil
+	end
+end
+
+
+function Player_C:deleteThrowLight()
+	if (self.throwLight) then
+		self.throwLight:destroy()
+		self.throwLight = nil
 	end
 end
 
@@ -155,9 +186,7 @@ end
 
 function Player_C:throwPokeBall()
 	if (isElement(self.player)) then
-		local playerPos = self.player:getPosition()
-		local playerRot = self.player:getRotation()
-		local x, y, z = getAttachedPosition(playerPos.x, playerPos.y, playerPos.z, playerRot.x, playerRot.y, playerRot.z, 5, 0, 0)
+		local x, y, z = self.player:getBonePosition(25)
 		
 		local throwDetails = {}
 		throwDetails.player = self.player
@@ -165,6 +194,8 @@ function Player_C:throwPokeBall()
 		throwDetails.y = y 
 		throwDetails.z = z
 		throwDetails.power = self.throwPower
+		
+		triggerServerEvent("PLAYERTHROWPOKEBALL", self.player, throwDetails)
 		
 		outputChatBox("Pokeball thrown with power " .. self.throwPower)
 	end

@@ -12,7 +12,33 @@ function PokeBallManager_S:constructor()
 end
 
 function PokeBallManager_S:initManager()
+	self.m_AddPokeBall = bind(self.addPokeBall, self)
 	
+	addEvent("PLAYERTHROWPOKEBALL", true)
+	addEventHandler("PLAYERTHROWPOKEBALL", root, self.m_AddPokeBall)
+end
+
+
+function PokeBallManager_S:addPokeBall(pokeBallProperties)
+	if (isElement(client)) then
+		if (pokeBallProperties) then
+			pokeBallProperties.id = self:getFreeID()
+			
+			if (not self.pokeBallInstances[pokeBallProperties.id]) then
+				self.pokeBallInstances[pokeBallProperties.id] = PokeBall_S:new(pokeBallProperties)
+			end
+		end
+	end
+end
+
+
+function PokeBallManager_S:removePokeBall(id)
+	if (id) then
+		if (self.pokeBallInstances[id]) then
+			self.pokeBallInstances[id]:delete()
+			self.pokeBallInstances[id] = nil
+		end
+	end
 end
 
 
@@ -25,7 +51,20 @@ function PokeBallManager_S:update()
 end
 
 
+function PokeBallManager_S:getFreeID()
+	for index, instance in pairs(self.pokeBallInstances) do
+		if (not instance) then
+			return index
+		end
+	end
+	
+	return #self.pokeBallInstances + 1
+end
+
+
 function PokeBallManager_S:clear()
+	removeEventHandler("PLAYERTHROWPOKEBALL", root, self.m_AddPokeBall)
+	
 	for index, instance in pairs(self.pokeBallInstances) do
 		if (instance) then
 			instance:delete()

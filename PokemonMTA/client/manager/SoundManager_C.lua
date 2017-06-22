@@ -11,6 +11,9 @@ function SoundManager_C:constructor()
 	self.ambientMusic = nil
 	self.battleMusic = nil
 	
+	self.worldSounds = {}
+	self.worldSounds[1] = {group = 2, index = 2} -- pokeballs collission sound
+	
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
@@ -20,6 +23,12 @@ end
 
 
 function SoundManager_C:initManager()
+	for index, worldsound in pairs(self.worldSounds) do
+		if (worldsound) then
+			setWorldSoundEnabled(worldsound.group, worldsound.index, false)
+		end
+	end
+	
 	self.m_StartBattle = bind(self.startBattle, self)
 	self.m_StopBattle = bind(self.stopBattle, self)
 	self.m_PlaySound3D = bind(self.playSound3D, self)
@@ -100,6 +109,12 @@ function SoundManager_C:clear()
 	
 	if (self.ambientMusic) then
 		self.ambientMusic:stop()
+	end
+	
+	for index, worldsound in pairs(self.worldSounds) do
+		if (worldsound) then
+			setWorldSoundEnabled(worldsound.group, worldsound.index, true)
+		end
 	end
 end
 

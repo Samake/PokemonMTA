@@ -67,6 +67,8 @@ myModels[1005] = {id = 1852, pathTXD = "res/models/items/item_chest.txd", pathDF
 myModels[1006] = {id = 1853, pathTXD = "res/models/items/pokePC.txd", pathDFF = "res/models/items/pokePC.dff", pathCOL = "res/models/items/pokePC.col"}
 myModels[1007] = {id = 1854, pathTXD = "res/models/balls/PokeBall.txd", pathDFF = "res/models/balls/PokeBall.dff", pathCOL = "res/models/balls/PokeBall.col"}
 
+myModels[2007] = {id = 594, pathTXD = "res/models/balls/PokeBall.txd", pathDFF = "res/models/balls/PokeBall_S.dff", pathCOL = nil}
+
 function ModelHandler:init()
 	for index, modelInfo in pairs(myModels) do
 		if (modelInfo) then

@@ -272,6 +272,7 @@
 	<file src="res/models/items/pokePC.col" type="client"/>
 	<file src="res/models/items/pokePC.txd" type="client"/>
 	
+	<file src="res/models/balls/PokeBall_S.dff" type="client"/>
 	<file src="res/models/balls/PokeBall.dff" type="client"/>
 	<file src="res/models/balls/PokeBall.col" type="client"/>
 	<file src="res/models/balls/PokeBall.txd" type="client"/>
