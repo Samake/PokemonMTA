@@ -1,5 +1,5 @@
--- ############# mainOutput ############## --
-function mainOutput(text)
+-- ############# sendMessage ############## --
+function sendMessage(text)
 	if (string.find(text, "CLIENT", 1, true)) then
 		outputChatBox("#CCFF00 INFO >> #FFFF99" .. text, 255, 255, 255, true)
 	elseif (string.find(text, "SERVER", 1, true)) then

@@ -5,7 +5,7 @@ function ShaderPeds_C:constructor()
 	self:initShader()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("ShaderPeds_C was started.")
+		sendMessage("ShaderPeds_C was started.")
 	end
 end
 
@@ -51,6 +51,6 @@ function ShaderPeds_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("ShaderPeds_C was deleted.")
+		sendMessage("ShaderPeds_C was deleted.")
 	end
 end

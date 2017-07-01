@@ -30,7 +30,7 @@ function Bike_S:constructor(bikeProperties)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Bike_S " .. self.id .. " was started.")
+		sendMessage("Bike_S " .. self.id .. " was started.")
 	end
 end
 
@@ -134,6 +134,6 @@ function Bike_S:destructor()
 	self:deleteBike()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Bike_S " .. self.id .. " was deleted.")
+		sendMessage("Bike_S " .. self.id .. " was deleted.")
 	end
 end

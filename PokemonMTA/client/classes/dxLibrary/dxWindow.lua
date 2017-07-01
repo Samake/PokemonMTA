@@ -19,7 +19,7 @@ function dxWindow:constructor(x, y, width, height, texture, parent)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("dxWindow was started.")
+		sendMessage("dxWindow was started.")
 	end
 end
 
@@ -78,6 +78,6 @@ function dxWindow:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("dxWindow was deleted.")
+		sendMessage("dxWindow was deleted.")
 	end
 end

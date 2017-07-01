@@ -7,7 +7,7 @@ function ArenaManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ArenaManager_S was started.")
+		sendMessage("ArenaManager_S was started.")
 	end
 end
 
@@ -37,7 +37,7 @@ function ArenaManager_S:loadArenas()
 	end
 
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ArenaManager_S: " .. count .. " arenas were found!")
+		sendMessage("ArenaManager_S: " .. count .. " arenas were found!")
 	end
 end
 
@@ -81,7 +81,7 @@ function ArenaManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ArenaManager_S was deleted.")
+		sendMessage("ArenaManager_S was deleted.")
 	end
 end
 

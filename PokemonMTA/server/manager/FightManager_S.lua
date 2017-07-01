@@ -7,7 +7,7 @@ function FightManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("FightManager_S was started.")
+		sendMessage("FightManager_S was started.")
 	end
 end
 
@@ -67,7 +67,7 @@ function FightManager_S:clear()
 	end
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("FightManager_S was deleted.")
+		sendMessage("FightManager_S was deleted.")
 	end
 end
 

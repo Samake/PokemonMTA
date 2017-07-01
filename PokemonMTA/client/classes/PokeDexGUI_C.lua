@@ -16,7 +16,7 @@ function PokeDexGUI_C:constructor(x, y, width, height)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeDexGUI_C was started.")
+		sendMessage("PokeDexGUI_C was started.")
 	end
 end
 
@@ -58,6 +58,6 @@ function PokeDexGUI_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeDexGUI_C was deleted.")
+		sendMessage("PokeDexGUI_C was deleted.")
 	end
 end

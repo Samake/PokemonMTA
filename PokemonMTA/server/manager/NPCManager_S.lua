@@ -7,7 +7,7 @@ function NPCManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("NPCManager_S was started.")
+		sendMessage("NPCManager_S was started.")
 	end
 end
 
@@ -61,7 +61,7 @@ function NPCManager_S:initNPCs()
 	end
 
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("NPCManager_S: " .. count .. " npc instances created!")
+		sendMessage("NPCManager_S: " .. count .. " npc instances created!")
 	end
 end
 
@@ -89,7 +89,7 @@ function NPCManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("NPCManager_S was deleted.")
+		sendMessage("NPCManager_S was deleted.")
 	end
 end
 

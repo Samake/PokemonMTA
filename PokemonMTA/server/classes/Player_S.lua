@@ -23,7 +23,7 @@ function Player_S:constructor(id, player)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Player_S " .. self.id .. " was started.")
+		sendMessage("Player_S " .. self.id .. " was started.")
 	end
 end
 
@@ -170,7 +170,7 @@ function Player_S:sendCompanion(slot)
 
 			self.companion.pokemon = PokemonManager_S:getSingleton():addPokemon(self.pokemons[slot].index, x, y, z, self.rz, dimension, self.radius, self.pokemons[slot].level, self.pokemons[slot].life, self.pokemons[slot].power, self.player)
 			
-			mainOutput("SERVER || Companion send out!")
+			sendMessage("SERVER || Companion send out!")
 		end
 	end
 end
@@ -182,7 +182,7 @@ function Player_S:callCompanion()
 			PokemonManager_S:getSingleton():deletePokemon(self.companion.pokemon.id)
 			self.companion = nil
 			
-			mainOutput("SERVER || Companion called!")
+			sendMessage("SERVER || Companion called!")
 		end
 	end
 end
@@ -218,6 +218,6 @@ function Player_S:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Player_S " .. self.id .. " was deleted.")
+		sendMessage("Player_S " .. self.id .. " was deleted.")
 	end
 end

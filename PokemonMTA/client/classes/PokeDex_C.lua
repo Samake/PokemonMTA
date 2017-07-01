@@ -22,7 +22,7 @@ function PokeDex_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeDex_C was started.")
+		sendMessage("PokeDex_C was started.")
 	end
 end
 
@@ -79,6 +79,6 @@ function PokeDex_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeDex_C was deleted.")
+		sendMessage("PokeDex_C was deleted.")
 	end
 end

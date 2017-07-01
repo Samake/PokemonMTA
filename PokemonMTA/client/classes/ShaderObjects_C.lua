@@ -5,7 +5,7 @@ function ShaderObjects_C:constructor()
 	self:initShader()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("ShaderObjects_C was started.")
+		sendMessage("ShaderObjects_C was started.")
 	end
 end
 
@@ -51,6 +51,6 @@ function ShaderObjects_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("ShaderObjects_C was deleted.")
+		sendMessage("ShaderObjects_C was deleted.")
 	end
 end

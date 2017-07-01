@@ -23,7 +23,7 @@ function PokeBall_S:constructor(pokeBallProperties)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeBall_S " .. self.id .. " was started.")
+		sendMessage("PokeBall_S " .. self.id .. " was started.")
 	end
 end
 
@@ -98,6 +98,6 @@ function PokeBall_S:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeBall_S " .. self.id .. " was deleted.")
+		sendMessage("PokeBall_S " .. self.id .. " was deleted.")
 	end
 end

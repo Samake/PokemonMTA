@@ -15,7 +15,7 @@ function Renderer_C:constructor()
 	self:initRenderer()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Renderer_C was started.")
+		sendMessage("Renderer_C was started.")
 	end
 end
 
@@ -127,6 +127,6 @@ function Renderer_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Renderer_C was deleted.")
+		sendMessage("Renderer_C was deleted.")
 	end
 end

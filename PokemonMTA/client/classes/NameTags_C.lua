@@ -19,7 +19,7 @@ function NameTags_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("NameTags_C was started.")
+		sendMessage("NameTags_C was started.")
 	end
 end
 
@@ -266,6 +266,6 @@ function NameTags_C:destructor()
 	self:clear()
 
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("NameTags_C was deleted.")
+		sendMessage("NameTags_C was deleted.")
 	end
 end

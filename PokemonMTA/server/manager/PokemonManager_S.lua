@@ -8,7 +8,7 @@ function PokemonManager_S:constructor()
 	self.count = 0
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokemonManager_S was started.")
+		sendMessage("PokemonManager_S was started.")
 	end
 end
 
@@ -100,7 +100,7 @@ function PokemonManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokemonManager_S was deleted.")
+		sendMessage("PokemonManager_S was deleted.")
 	end
 end
 

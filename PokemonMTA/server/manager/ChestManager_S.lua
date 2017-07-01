@@ -7,7 +7,7 @@ function ChestManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ChestManager_S was started.")
+		sendMessage("ChestManager_S was started.")
 	end
 end
 
@@ -40,7 +40,7 @@ function ChestManager_S:initChests()
 	end
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ChestManager_S: " .. count .. " chest instances created!")
+		sendMessage("ChestManager_S: " .. count .. " chest instances created!")
 	end
 end
 
@@ -68,7 +68,7 @@ function ChestManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ChestManager_S was deleted.")
+		sendMessage("ChestManager_S was deleted.")
 	end
 end
 

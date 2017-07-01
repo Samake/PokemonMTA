@@ -23,7 +23,7 @@ function PlayerPokemon_S:constructor(id, player, pokedexInfo)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PlayerPokemon_S " .. self.id .. " was started.")
+		sendMessage("PlayerPokemon_S " .. self.id .. " was started.")
 	end
 end
 
@@ -48,6 +48,6 @@ function PlayerPokemon_S:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PlayerPokemon_S " .. self.id .. " was deleted.")
+		sendMessage("PlayerPokemon_S " .. self.id .. " was deleted.")
 	end
 end

@@ -29,7 +29,7 @@ function Arena_S:constructor(arenaProperties)
 	self:init()
 
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Arena_S " .. self.name .. ":" .. self.id .. " was started.")
+		sendMessage("Arena_S " .. self.name .. ":" .. self.id .. " was started.")
 	end
 end
 
@@ -195,6 +195,6 @@ function Arena_S:destructor()
 	self:clear()	
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Arena_S " .. self.name .. ":" .. self.id .. " was deleted.")
+		sendMessage("Arena_S " .. self.name .. ":" .. self.id .. " was deleted.")
 	end
 end

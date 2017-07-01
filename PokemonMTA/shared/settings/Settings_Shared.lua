@@ -5,6 +5,8 @@ Settings.resVersion = "0.0.41"
 Settings.fpsLimit = 60
 Settings.serverUpdateInterval = 50
 
+Settings.dbConnection = {type = "mysql", name = "pokemonDB", ip = "localhost", user = "root", pw = ""}
+
 Settings.debugEnabled = false
 Settings.showCoreDebugInfo = true
 Settings.showManagerDebugInfo = true

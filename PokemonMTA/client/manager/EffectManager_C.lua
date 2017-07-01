@@ -9,7 +9,7 @@ function EffectManager_C:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("EffectManager_C was started.")
+		sendMessage("EffectManager_C was started.")
 	end
 end
 
@@ -140,7 +140,7 @@ function EffectManager_C:clear()
 		end
 	end
 	
-	mainOutput("EffectManager_C was deleted.")
+	sendMessage("EffectManager_C was deleted.")
 end
 
 
@@ -148,6 +148,6 @@ function EffectManager_C:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("EffectManager_C was deleted.")
+		sendMessage("EffectManager_C was deleted.")
 	end
 end

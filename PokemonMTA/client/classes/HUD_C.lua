@@ -10,7 +10,7 @@ function HUD_C:constructor()
 	self.isShowingPC = false
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("HUD_C was started.")
+		sendMessage("HUD_C was started.")
 	end
 end
 
@@ -177,6 +177,6 @@ function HUD_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("HUD_C was deleted.")
+		sendMessage("HUD_C was deleted.")
 	end
 end

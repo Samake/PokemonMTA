@@ -8,7 +8,7 @@ function Inventory_S:constructor(id)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Inventory_S " .. self.id .. " was started.")
+		sendMessage("Inventory_S " .. self.id .. " was started.")
 	end
 end
 
@@ -56,6 +56,6 @@ function Inventory_S:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Inventory_S " .. self.id .. " was deleted.")
+		sendMessage("Inventory_S " .. self.id .. " was deleted.")
 	end
 end

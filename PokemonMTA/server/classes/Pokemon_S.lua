@@ -37,7 +37,7 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Pokemon_S " .. self.id .. " was started.")
+		sendMessage("Pokemon_S " .. self.id .. " was started.")
 	end
 end
 
@@ -587,6 +587,6 @@ function Pokemon_S:destructor()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Pokemon_S " .. self.id .. " was deleted.")
+		sendMessage("Pokemon_S " .. self.id .. " was deleted.")
 	end
 end

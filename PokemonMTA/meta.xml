@@ -24,10 +24,12 @@
 	<script src="server/settings/NPC_Helper_S.lua" type="server"/>
 	<script src="server/settings/Animations_S.lua" type="server"/>
 	<script src="server/settings/ItemsList_S.lua" type="server"/>
+	<script src="server/settings/MySQL_Statements_S.lua" type="server"/>
 	<script src="server/settings/Phrases_S.lua" type="server"/>
 	
 	<script src="server/Core_S.lua" type="server"/>
 	
+	<script src="server/manager/MySQLManager_S.lua" type="server"/>
 	<script src="server/manager/PlayerManager_S.lua" type="server"/>
 	<script src="server/manager/ChestManager_S.lua" type="server"/>
 	<script src="server/manager/NPCManager_S.lua" type="server"/>

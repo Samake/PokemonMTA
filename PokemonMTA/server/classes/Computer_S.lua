@@ -18,7 +18,7 @@ function Computer_S:constructor(computerProperties)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Computer_S " .. self.id .. " was started.")
+		sendMessage("Computer_S " .. self.id .. " was started.")
 	end
 end
 
@@ -158,6 +158,6 @@ function Computer_S:destructor()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Computer_S " .. self.id .. " was deleted.")
+		sendMessage("Computer_S " .. self.id .. " was deleted.")
 	end
 end

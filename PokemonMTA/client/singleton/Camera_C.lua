@@ -20,7 +20,7 @@ function Camera_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Camera_C was started.")
+		sendMessage("Camera_C was started.")
 	end
 end
 
@@ -83,6 +83,6 @@ function Camera_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Camera_C was deleted.")
+		sendMessage("Camera_C was deleted.")
 	end
 end

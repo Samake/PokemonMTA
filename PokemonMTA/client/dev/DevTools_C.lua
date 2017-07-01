@@ -7,7 +7,7 @@ function DevTools_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("DevTools_C was started.")
+		sendMessage("DevTools_C was started.")
 	end
 end
 
@@ -44,6 +44,6 @@ function DevTools_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("DevTools_C was deleted.")
+		sendMessage("DevTools_C was deleted.")
 	end
 end

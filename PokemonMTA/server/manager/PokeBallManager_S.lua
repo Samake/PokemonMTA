@@ -7,7 +7,7 @@ function PokeBallManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokeBallManager_S was started.")
+		sendMessage("PokeBallManager_S was started.")
 	end
 end
 
@@ -78,7 +78,7 @@ function PokeBallManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokeBallManager_S was deleted.")
+		sendMessage("PokeBallManager_S was deleted.")
 	end
 end
 

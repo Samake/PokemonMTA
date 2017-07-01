@@ -54,7 +54,7 @@ function Textures:init()
 	Textures["icons"].mimikyu_icon = dxCreateTexture("res/textures/icons/mimikyu_icon.png")
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Textures were loaded.")
+		sendMessage("Textures were loaded.")
 	end
 end
 
@@ -76,6 +76,6 @@ function Textures:cleanUp()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Textures were deleted.")
+		sendMessage("Textures were deleted.")
 	end
 end

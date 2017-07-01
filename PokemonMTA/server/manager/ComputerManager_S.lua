@@ -7,7 +7,7 @@ function ComputerManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ComputerManager_S was started.")
+		sendMessage("ComputerManager_S was started.")
 	end
 end
 
@@ -41,7 +41,7 @@ function ComputerManager_S:initComputers()
 	end
 
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ComputerManager_S: " .. count .. " computer instances created!")
+		sendMessage("ComputerManager_S: " .. count .. " computer instances created!")
 	end
 end
 
@@ -69,7 +69,7 @@ function ComputerManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ComputerManager_S was deleted.")
+		sendMessage("ComputerManager_S was deleted.")
 	end
 end
 

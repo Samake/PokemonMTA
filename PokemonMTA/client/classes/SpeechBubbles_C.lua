@@ -20,7 +20,7 @@ function SpeechBubbles_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("SpeechBubbles_C was started.")
+		sendMessage("SpeechBubbles_C was started.")
 	end
 end
 
@@ -135,6 +135,6 @@ function SpeechBubbles_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("SpeechBubbles_C was deleted.")
+		sendMessage("SpeechBubbles_C was deleted.")
 	end
 end

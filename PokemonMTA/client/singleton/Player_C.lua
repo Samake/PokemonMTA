@@ -19,7 +19,7 @@ function Player_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Player_C was started.")
+		sendMessage("Player_C was started.")
 	end
 end
 
@@ -230,6 +230,6 @@ function Player_C:destructor()
 	self:clear()
 
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Player_C was deleted.")
+		sendMessage("Player_C was deleted.")
 	end
 end

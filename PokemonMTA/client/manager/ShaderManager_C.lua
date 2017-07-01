@@ -35,7 +35,7 @@ function ShaderManager_C:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ShaderManager_C was started.")
+		sendMessage("ShaderManager_C was started.")
 	end
 end
 
@@ -82,7 +82,7 @@ function ShaderManager_C:createShaders()
 		self.objectShader = ShaderObjects_C:new()
 	end
 	
-	mainOutput("CLIENT || Shaders enabled.")
+	sendMessage("CLIENT || Shaders enabled.")
 end
 
 
@@ -127,7 +127,7 @@ function ShaderManager_C:deleteShaders()
 		self.objectShader = nil
 	end
 	
-	mainOutput("CLIENT || Shaders disabled.")
+	sendMessage("CLIENT || Shaders disabled.")
 end
 
 
@@ -152,6 +152,6 @@ function ShaderManager_C:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ShaderManager_C was deleted.")
+		sendMessage("ShaderManager_C was deleted.")
 	end
 end

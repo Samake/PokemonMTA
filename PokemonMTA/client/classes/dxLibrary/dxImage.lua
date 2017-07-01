@@ -19,7 +19,7 @@ function dxImage:constructor(x, y, width, height, texture, parent)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("dxImage was started.")
+		sendMessage("dxImage was started.")
 	end
 end
 
@@ -76,6 +76,6 @@ function dxImage:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("dxImage was deleted.")
+		sendMessage("dxImage was deleted.")
 	end
 end

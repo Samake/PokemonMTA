@@ -17,7 +17,7 @@ function SoundManager_C:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("SoundManager_C was started.")
+		sendMessage("SoundManager_C was started.")
 	end
 end
 
@@ -123,6 +123,6 @@ function SoundManager_C:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("SoundManager_C was deleted.")
+		sendMessage("SoundManager_C was deleted.")
 	end
 end

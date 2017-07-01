@@ -6,7 +6,7 @@ function Fonts:init()
 
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Fonts were loaded.")
+		sendMessage("Fonts were loaded.")
 	end
 end
 
@@ -22,6 +22,6 @@ function Fonts:cleanUp()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Fonts were deleted.")
+		sendMessage("Fonts were deleted.")
 	end
 end

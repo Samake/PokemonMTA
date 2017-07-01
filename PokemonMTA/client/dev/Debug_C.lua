@@ -7,7 +7,7 @@ function Debug_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Debug_C was started.")
+		sendMessage("Debug_C was started.")
 	end
 end
 
@@ -146,6 +146,6 @@ function Debug_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Debug_C was deleted.")
+		sendMessage("Debug_C was deleted.")
 	end
 end

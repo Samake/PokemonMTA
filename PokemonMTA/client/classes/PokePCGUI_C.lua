@@ -16,7 +16,7 @@ function PokePCGUI_C:constructor(x, y, width, height)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokePCGUI_C was started.")
+		sendMessage("PokePCGUI_C was started.")
 	end
 end
 
@@ -58,6 +58,6 @@ function PokePCGUI_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokePCGUI_C was deleted.")
+		sendMessage("PokePCGUI_C was deleted.")
 	end
 end

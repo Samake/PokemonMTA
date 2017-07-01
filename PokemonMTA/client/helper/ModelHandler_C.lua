@@ -92,6 +92,6 @@ function ModelHandler:init()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Models were replaced.")
+		sendMessage("Models were replaced.")
 	end
 end

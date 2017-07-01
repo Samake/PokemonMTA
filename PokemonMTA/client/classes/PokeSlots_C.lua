@@ -19,7 +19,7 @@ function PokeSlots_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeSlots_C was started.")
+		sendMessage("PokeSlots_C was started.")
 	end
 end
 
@@ -142,6 +142,6 @@ function PokeSlots_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeSlots_C was deleted.")
+		sendMessage("PokeSlots_C was deleted.")
 	end
 end

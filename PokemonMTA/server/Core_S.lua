@@ -1,10 +1,10 @@
 Core_S = inherit(Singleton)
 
 function Core_S:constructor()
-	mainOutput("SERVER || ***** " .. Settings.resName .. " was started! " .. Settings.resVersion .. " *****")
+	sendMessage("SERVER || ***** " .. Settings.resName .. " was started! " .. Settings.resVersion .. " *****")
 
 	if (Settings.showCoreDebugInfo == true) then
-		mainOutput("Core_S was loaded.")
+		sendMessage("Core_S was loaded.")
 	end
 	
 	self:initServer()
@@ -25,6 +25,7 @@ end
 
 
 function Core_S:initComponents()
+	MySQLManager_S:new()
 	PlayerManager_S:new()
 	ChestManager_S:new()
 	NPCManager_S:new()
@@ -61,6 +62,7 @@ function Core_S:clear()
 		self.updateTimer = nil
 	end
 	
+	delete(MySQLManager_S:getSingleton())
 	delete(PlayerManager_S:getSingleton())
 	delete(ChestManager_S:getSingleton())
 	delete(NPCManager_S:getSingleton())
@@ -78,10 +80,10 @@ end
 function Core_S:destructor()
 	self:clear()
 
-	mainOutput("SERVER || ***** " .. Settings.resName .. " was stopped! " .. Settings.resVersion .. " *****")
+	sendMessage("SERVER || ***** " .. Settings.resName .. " was stopped! " .. Settings.resVersion .. " *****")
 	
 	if (Settings.showCoreDebugInfo == true) then
-		mainOutput("Core_S was deleted.")
+		sendMessage("Core_S was deleted.")
 	end
 end
 

@@ -7,7 +7,7 @@ function PlayerManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PlayerManager_S was started.")
+		sendMessage("PlayerManager_S was started.")
 	end
 end
 
@@ -38,7 +38,7 @@ function PlayerManager_S:initPlayers()
 	end
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PlayerManager_S: " .. count .. " player instances created!")
+		sendMessage("PlayerManager_S: " .. count .. " player instances created!")
 	end
 end
 
@@ -95,7 +95,7 @@ function PlayerManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PlayerManager_S was deleted.")
+		sendMessage("PlayerManager_S was deleted.")
 	end
 end
 

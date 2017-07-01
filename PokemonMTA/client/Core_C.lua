@@ -2,7 +2,7 @@ Core_C = inherit(Singleton)
 
 function Core_C:constructor()
 	if (Settings.showCoreDebugInfo == true) then
-		mainOutput("Core_C was loaded.")
+		sendMessage("Core_C was loaded.")
 	end
 
 	self.showMTAHUD = false
@@ -44,9 +44,9 @@ function Core_C:toggleDebug()
 	Settings.debugEnabled = not Settings.debugEnabled
 	
 	if (Settings.debugEnabled == true) then
-		mainOutput("CLIENT || Debug mode enabled!")
+		sendMessage("CLIENT || Debug mode enabled!")
 	else
-		mainOutput("CLIENT || Debug mode disabled!")
+		sendMessage("CLIENT || Debug mode disabled!")
 	end
 end
 
@@ -94,7 +94,7 @@ function Core_C:destructor()
 	self:clear()
 	
 	if (Settings.showCoreDebugInfo == true) then
-		mainOutput("Core_C was deleted.")
+		sendMessage("Core_C was deleted.")
 	end
 end
 

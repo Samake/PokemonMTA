@@ -7,7 +7,7 @@ function PokeSpawnManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokeSpawnManager_S was started.")
+		sendMessage("PokeSpawnManager_S was started.")
 	end
 end
 
@@ -40,7 +40,7 @@ function PokeSpawnManager_S:initSpawns()
 	end
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokeSpawnManager_S: " .. count .. " pokespawn instances created!")
+		sendMessage("PokeSpawnManager_S: " .. count .. " pokespawn instances created!")
 	end
 end
 
@@ -68,7 +68,7 @@ function PokeSpawnManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("PokeSpawnManager_S was deleted.")
+		sendMessage("PokeSpawnManager_S was deleted.")
 	end
 end
 

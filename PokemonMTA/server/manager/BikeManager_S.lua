@@ -7,7 +7,7 @@ function BikeManager_S:constructor()
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("BikeManager_S was started.")
+		sendMessage("BikeManager_S was started.")
 	end
 end
 
@@ -40,7 +40,7 @@ function BikeManager_S:initBikes()
 	end
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("BikeManager_S: " .. count .. " bike instances created!")
+		sendMessage("BikeManager_S: " .. count .. " bike instances created!")
 	end
 end
 
@@ -68,7 +68,7 @@ function BikeManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("BikeManager_S was deleted.")
+		sendMessage("BikeManager_S was deleted.")
 	end
 end
 

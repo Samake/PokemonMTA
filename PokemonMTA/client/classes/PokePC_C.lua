@@ -22,7 +22,7 @@ function PokePC_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokePC_C was started.")
+		sendMessage("PokePC_C was started.")
 	end
 end
 
@@ -79,6 +79,6 @@ function PokePC_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokePC_C was deleted.")
+		sendMessage("PokePC_C was deleted.")
 	end
 end

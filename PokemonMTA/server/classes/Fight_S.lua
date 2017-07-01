@@ -20,7 +20,7 @@ function Fight_S:constructor(fightProperties)
 	self:initFight()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Fight_S " .. self.id .. " was started.")
+		sendMessage("Fight_S " .. self.id .. " was started.")
 	end
 end
 
@@ -64,7 +64,7 @@ function Fight_S:buildArena()
 			
 			self.arena = Arena_S:new(arenaProperties)
 		else
-			mainOutput("ERROR || Fight " .. self.id .. " failed to start!")
+			sendMessage("ERROR || Fight " .. self.id .. " failed to start!")
 			self:stopFight()
 		end
 	end
@@ -104,7 +104,7 @@ function Fight_S:startFight()
 	self.isStarted = true
 	self:resetCamera()
 	
-	mainOutput("SERVER || Fight started: " .. self.player:getName() .. " vs. " .. self.opponentClass.name .. " at Arena: " .. self.arena.name)
+	sendMessage("SERVER || Fight started: " .. self.player:getName() .. " vs. " .. self.opponentClass.name .. " at Arena: " .. self.arena.name)
 end
 
 
@@ -115,7 +115,7 @@ function Fight_S:stopFight()
 	self.isStarted = false
 	self:resetCamera()
 	
-	mainOutput("SERVER || Fight stopped!")
+	sendMessage("SERVER || Fight stopped!")
 end
 
 
@@ -163,6 +163,6 @@ function Fight_S:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Fight_S " .. self.id .. " was deleted.")
+		sendMessage("Fight_S " .. self.id .. " was deleted.")
 	end
 end

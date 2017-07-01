@@ -31,7 +31,7 @@ function Chest_S:constructor(chestProperties)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Chest_S " .. self.id .. " was started.")
+		sendMessage("Chest_S " .. self.id .. " was started.")
 	end
 end
 
@@ -272,6 +272,6 @@ function Chest_S:destructor()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Chest_S " .. self.id .. " was deleted.")
+		sendMessage("Chest_S " .. self.id .. " was deleted.")
 	end
 end

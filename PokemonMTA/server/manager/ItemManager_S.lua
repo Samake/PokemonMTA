@@ -7,7 +7,7 @@ function ItemManager_S:constructor(parent)
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ItemManager_S was started.")
+		sendMessage("ItemManager_S was started.")
 	end
 end
 
@@ -97,6 +97,6 @@ function ItemManager_S:destructor()
 	self:clear()
 	
 	if (Settings.showManagerDebugInfo == true) then
-		mainOutput("ItemManager_S was deleted.")
+		sendMessage("ItemManager_S was deleted.")
 	end
 end

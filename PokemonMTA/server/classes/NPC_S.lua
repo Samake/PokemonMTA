@@ -39,7 +39,7 @@ function NPC_S:constructor(npcProperties)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("NPC_S " .. self.id .. " was started.")
+		sendMessage("NPC_S " .. self.id .. " was started.")
 	end
 end
 
@@ -467,6 +467,6 @@ function NPC_S:destructor()
 	end
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("NPC_S " .. self.id .. " was deleted.")
+		sendMessage("NPC_S " .. self.id .. " was deleted.")
 	end
 end

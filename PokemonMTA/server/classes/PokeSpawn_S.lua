@@ -19,7 +19,7 @@ function PokeSpawn_S:constructor(pokeSpawnProperties)
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeSpawn_S " .. self.id .. " was started.")
+		sendMessage("PokeSpawn_S " .. self.id .. " was started.")
 	end
 end
 
@@ -73,6 +73,6 @@ function PokeSpawn_S:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("PokeSpawn_S " .. self.id .. " was deleted.")
+		sendMessage("PokeSpawn_S " .. self.id .. " was deleted.")
 	end
 end

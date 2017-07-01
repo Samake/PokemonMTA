@@ -21,7 +21,7 @@ function Radar_C:constructor()
 	self:init()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Radar_C was started.")
+		sendMessage("Radar_C was started.")
 	end
 end
 
@@ -264,6 +264,6 @@ function Radar_C:destructor()
 	self:clear()
 	
 	if (Settings.showClassDebugInfo == true) then
-		mainOutput("Radar_C was deleted.")
+		sendMessage("Radar_C was deleted.")
 	end
 end
