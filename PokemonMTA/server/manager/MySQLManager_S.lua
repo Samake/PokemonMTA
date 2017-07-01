@@ -22,6 +22,7 @@ end
 
 function MySQLManager_S:initManager()
 	self:connectDB()
+	self:createTables()
 end
 
 
@@ -41,6 +42,38 @@ function MySQLManager_S:connectDB()
 			sendMessage("SERVER || MySQL user: " .. tostring(self.settings.user))
 		end
 	end
+end
+
+
+function MySQLManager_S:createTables()
+	if (self.dbConnection) then
+		if (MySQL.playerTable) then
+			local finalString = self.dbConnection:prepareString(MySQL.playerTable)
+			self.dbConnection:exec(finalString)
+		end
+	end
+end
+
+
+function MySQLManager_S:query(statement, ...)
+	if (self.dbConnection) then
+		local finalString = self.dbConnection:prepareString(statement, ...)
+		
+		return self.dbConnection:query(finalString)
+	end
+	
+	return nil
+end
+
+
+function MySQLManager_S:exec(statement, ...)
+	if (self.dbConnection) then
+		local finalString = self.dbConnection:prepareString(statement, ...)
+		
+		return self.dbConnection:exec(finalString)
+	end
+	
+	return nil
 end
 
 
