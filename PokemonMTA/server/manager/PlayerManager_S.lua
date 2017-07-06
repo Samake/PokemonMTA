@@ -4,6 +4,8 @@ function PlayerManager_S:constructor()
 
 	self.playerInstances = {}
 	
+	self.playerCount = 0
+	
 	self:initManager()
 	
 	if (Settings.showManagerDebugInfo == true) then
@@ -26,19 +28,14 @@ end
 
 
 function PlayerManager_S:initPlayers()
-	local count = 0
-	
 	for index, player in pairs(getElementsByType("player")) do
 		if (player) then
-			if (not self.playerInstances[tostring(player)]) then
-				self.playerInstances[tostring(player)] = Player_S:new(tostring(player), player)
-				count = count +1 
-			end
+			self:addPlayer(player)
 		end
 	end
 	
 	if (Settings.showManagerDebugInfo == true) then
-		sendMessage("PlayerManager_S: " .. count .. " player instances created!")
+		sendMessage("PlayerManager_S: " .. self.playerCount .. " player instances created!")
 	end
 end
 
@@ -52,18 +49,40 @@ function PlayerManager_S:update()
 end
 
 
-function PlayerManager_S:addPlayer()
-	if (not self.playerInstances[tostring(source)]) then
-		self.playerInstances[tostring(source)] = Player_S:new(tostring(source), source)
+function PlayerManager_S:addPlayer(player)
+	if (source) or (player) then
+		local thePlayer = nil
+		
+		if (not source) then 
+			thePlayer = player 
+		else 
+			thePlayer = source 
+		end
+		
+		if (not self.playerInstances[tostring(thePlayer)]) then
+			self.playerInstances[tostring(thePlayer)] = Player_S:new(tostring(thePlayer), thePlayer)
+			self.playerCount = self.playerCount + 1
+		end
 	end
 end
 
 
-function PlayerManager_S:removePlayer()
-	if (self.playerInstances[tostring(source)]) then
-		delete(self.playerInstances[tostring(source)])
-		self.playerInstances[tostring(source)] = nil
-	end	
+function PlayerManager_S:removePlayer(player)
+	if (source) or (player) then
+		local thePlayer = nil
+		
+		if (not source) then
+			thePlayer = player 
+		else 
+			thePlayer = source 
+		end
+		
+		if (self.playerInstances[tostring(thePlayer)]) then
+			delete(self.playerInstances[tostring(thePlayer)])
+			self.playerInstances[tostring(thePlayer)] = nil
+			self.playerCount = self.playerCount - 1
+		end
+	end
 end
 
 

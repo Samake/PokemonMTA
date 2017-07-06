@@ -42,6 +42,7 @@ end
 
 function Core_S:update()
 	if (#getElementsByType("player") > 0) then
+		MySQLManager_S:getSingleton():update()
 		PlayerManager_S:getSingleton():update()
 		ChestManager_S:getSingleton():update()
 		NPCManager_S:getSingleton():update()

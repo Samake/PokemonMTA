@@ -29,7 +29,7 @@ end
 
 
 function Player_S:init()
-	
+
 	toggleControl(self.player, "fire", false)
 	
 	self.m_ToggleCompanion = bind(self.toggleCompanion, self)
@@ -189,6 +189,7 @@ end
 
 
 function Player_S:clear()
+	
 	removeEventHandler("DOTOGGLECOMPANION", root, self.m_ToggleCompanion)
 	
 	for index, playerPokemon in pairs(self.pokemons) do

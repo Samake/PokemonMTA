@@ -1,11 +1,12 @@
 Settings = {}
 
 Settings.resName = "Pokemon"
-Settings.resVersion = "0.0.41"
+Settings.resVersion = "0.0.42"
 Settings.fpsLimit = 60
 Settings.serverUpdateInterval = 50
 
 Settings.dbConnection = {type = "mysql", name = "pokemonDB", ip = "localhost", user = "root", pw = ""}
+Settings.dbSaveInterVal = 360000 -- per hour
 
 Settings.debugEnabled = false
 Settings.showCoreDebugInfo = true

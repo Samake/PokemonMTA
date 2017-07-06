@@ -17,12 +17,16 @@ function MySQLManager_S:constructor()
 			sendMessage("MySQLManager_S couln´t be started! See /debugscript 3 for further details!")
 		end
 	end
+	
 end
 
 
 function MySQLManager_S:initManager()
 	self:connectDB()
 	self:createTables()
+	self:loadMySQLData()
+	
+	self.startTick = getTickCount()
 end
 
 
@@ -47,10 +51,47 @@ end
 
 function MySQLManager_S:createTables()
 	if (self.dbConnection) then
-		if (MySQL.playerTable) then
-			local finalString = self.dbConnection:prepareString(MySQL.playerTable)
+		if (MySQL.createPlayerTable) then
+			local finalString = self.dbConnection:prepareString(MySQL.createPlayerTable)
 			self.dbConnection:exec(finalString)
 		end
+	end
+end
+
+
+function MySQLManager_S:loadMySQLData()
+	if (self.dbConnection) then
+		self.mySQLQuery = self:query(MySQL.getAllPlayerData)
+		
+		if (self.mySQLQuery) then
+			self.mySQLData = self.mySQLQuery:poll(-1)
+			
+			if (self.mySQLData) then
+				if (#self.mySQLData > 0) then
+					if (#self.mySQLData > 0) then
+						for index, data in pairs(self.mySQLData) do
+							if (data) then
+								for id, playerData in pairs(data) do
+									outputChatBox(id .. ": " .. tostring(playerData))
+								end
+							end
+						end
+					end
+				end
+			end
+			
+			self.mySQLQuery:free()
+		end
+	end
+end
+
+
+function MySQLManager_S:update()
+	self.currentTick = getTickCount()
+	
+	if (self.currentTick > self.startTick + Settings.dbSaveInterVal) then
+		self:saveMySQLData()
+		self.startTick = getTickCount()
 	end
 end
 
@@ -59,7 +100,11 @@ function MySQLManager_S:query(statement, ...)
 	if (self.dbConnection) then
 		local finalString = self.dbConnection:prepareString(statement, ...)
 		
-		return self.dbConnection:query(finalString)
+		outputChatBox("QUERY: " .. tostring(finalString))
+		
+		local query = self.dbConnection:query(finalString)
+		
+		return query
 	end
 	
 	return nil
@@ -67,14 +112,30 @@ end
 
 
 function MySQLManager_S:exec(statement, ...)
+	
 	if (self.dbConnection) then
 		local finalString = self.dbConnection:prepareString(statement, ...)
 		
+		outputChatBox("EXEC: " .. tostring(finalString))
 		return self.dbConnection:exec(finalString)
 	end
 	
 	return nil
 end
+
+
+function MySQLManager_S:saveMySQLData()
+	outputChatBox("DB´s saved!")
+	
+	--if (self.mySQLData == nil) then
+		--self.saveState = MySQLManager_S:getSingleton():exec(MySQL.savePlayerData, 1, "username", "password", self.skinID, self.name, self.x .. "|" .. self.y .. "|" .. self.z, self.rx .. "|" .. self.ry .. "|" .. self.rz) -- username, password, skin, name, position, rotation
+	--else
+	
+	--end
+	
+	--outputChatBox("SaveTest: " .. tostring(self.saveState))
+end
+
 
 
 function MySQLManager_S:clear()
