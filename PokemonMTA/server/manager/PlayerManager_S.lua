@@ -75,13 +75,20 @@ function PlayerManager_S:addPlayer(player)
 				playerSetting.accountName = accountData.account_name
 				playerSetting.password = accountData.password
 				playerSetting.player = thePlayer
-				playerSetting.skinID = accountData.skin_id
-				playerSetting.x = pos[1] or nil
-				playerSetting.y = pos[2] or nil
-				playerSetting.z = pos[3] or nil
-				playerSetting.rx = rot[1] or nil
-				playerSetting.ry = rot[2] or nil
-				playerSetting.rz = rot[3] or nil
+				playerSetting.skinID = accountData.skin_id or 258
+				playerSetting.x = tonumber(pos[1]) or nil
+				playerSetting.y = tonumber(pos[2]) or nil
+				playerSetting.z = tonumber(pos[3]) or nil
+				playerSetting.rx = tonumber(rot[1]) or nil
+				playerSetting.ry = tonumber(rot[2]) or nil
+				playerSetting.rz = tonumber(rot[3]) or nil
+				playerSetting.title = accountData.title or "Beginner"
+				playerSetting.playerXP = accountData.player_xp or 0
+				playerSetting.playerLevel = accountData.player_level or 0
+				playerSetting.money = accountData.money or 0
+				playerSetting.pokemonSeen = accountData.pokemon_seen or 0
+				playerSetting.pokemonCatched = accountData.pokemon_catched or 0
+				playerSetting.pokemonKilled = accountData.pokemon_killed or 0
 			else
 				playerSetting.id = "new_id"
 				playerSetting.accountName = accountName
@@ -94,6 +101,13 @@ function PlayerManager_S:addPlayer(player)
 				playerSetting.rx = nil
 				playerSetting.ry = nil
 				playerSetting.rz = nil
+				playerSetting.title = "Beginner"
+				playerSetting.playerXP = 0
+				playerSetting.playerLevel = 0
+				playerSetting.money = 0
+				playerSetting.pokemonSeen = 0
+				playerSetting.pokemonCatched = 0
+				playerSetting.pokemonKilled = 0
 			end
 			
 			self.playerInstances[tostring(thePlayer)] = Player_S:new(playerSetting)

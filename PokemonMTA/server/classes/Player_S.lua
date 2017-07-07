@@ -12,6 +12,13 @@ function Player_S:constructor(playerSetting)
 	self.rx = playerSetting.rx
 	self.ry = playerSetting.ry
 	self.rz = playerSetting.rz
+	self.title = playerSetting.title
+	self.playerXP = playerSetting.playerXP
+	self.playerLevel = playerSetting.playerLevel
+	self.money = playerSetting.money
+	self.pokemonSeen = playerSetting.pokemonSeen
+	self.pokemonCatched = playerSetting.pokemonCatched
+	self.pokemonKilled = playerSetting.pokemonKilled
 	
 	self.playerName = removeHEXColorCode(self.player:getName())
 	

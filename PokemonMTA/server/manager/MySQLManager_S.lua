@@ -103,9 +103,16 @@ function MySQLManager_S:setAccountData(playerClass)
         self.accountData[playerClass.accountName].account_name = playerClass.accountName
         self.accountData[playerClass.accountName].password = playerClass.password
         self.accountData[playerClass.accountName].skin_id = playerClass.skinID
-        self.accountData[playerClass.accountName].player_name = playerClass.playerName
+        self.accountData[playerClass.accountName].player_name = playerClass.playerName or "UNKNOWN"
         self.accountData[playerClass.accountName].position = playerClass.x .. "|" .. playerClass.y .. "|" .. playerClass.z
         self.accountData[playerClass.accountName].rotation = playerClass.rx .. "|" .. playerClass.ry .. "|" .. playerClass.rz
+		self.accountData[playerClass.accountName].player_title = playerClass.title
+		self.accountData[playerClass.accountName].player_xp = playerClass.playerXP
+		self.accountData[playerClass.accountName].player_level = playerClass.playerLevel
+		self.accountData[playerClass.accountName].money = playerClass.money
+		self.accountData[playerClass.accountName].pokemon_seen = playerClass.pokemonSeen
+		self.accountData[playerClass.accountName].pokemon_catched = playerClass.pokemonCatched
+		self.accountData[playerClass.accountName].pokemon_killed = playerClass.pokemonKilled
     end
 end
 
@@ -157,9 +164,37 @@ function MySQLManager_S:saveMySQLData()
                 
                 if (self.mySQLData) then
                     if (#self.mySQLData > 0) then
-                        self:exec(MySQL.updateAccountData, accountData.account_name, accountData.password, accountData.skin_id, accountData.player_name, accountData.position, accountData.rotation, accountData.account_id)
+                        self:exec(MySQL.updateAccountData,  -- update existing account in db
+							accountData.account_name, 
+							accountData.password, 
+							accountData.skin_id, 
+							accountData.player_name, 
+							accountData.position, 
+							accountData.rotation,
+							accountData.player_title,
+							accountData.player_xp,
+							accountData.player_level,
+							accountData.money,
+							accountData.pokemon_seen, 
+							accountData.pokemon_catched, 
+							accountData.pokemon_killed, 
+							accountData.account_id)
                     else
-                        self:exec(MySQL.saveAccountData, accountData.account_id, accountData.account_name, accountData.password, accountData.skin_id, accountData.player_name, accountData.position, accountData.rotation)
+                        self:exec(MySQL.saveAccountData,  -- create new entry for account in db
+							accountData.account_id, 
+							accountData.account_name, 
+							accountData.password, 
+							accountData.skin_id, 
+							accountData.player_name, 
+							accountData.position, 
+							accountData.rotation,
+							accountData.player_title,
+							accountData.player_xp,
+							accountData.player_level,
+							accountData.money,
+							accountData.pokemon_seen, 
+							accountData.pokemon_catched, 
+							accountData.pokemon_killed)
                     end
                 end
                 

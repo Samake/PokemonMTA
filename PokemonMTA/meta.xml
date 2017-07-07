@@ -1,4 +1,11 @@
 <meta>
+	<!--
+		################################ INFO ################################
+		Gamemode: 		[MTA]Pokemon
+		Author:			Sam@ke
+		Co-Authors: 	sxb320, Jusonex, 50p, Ren712
+	-->
+	
 	<info name="PokemonMTA" description="Pokemon MTA" version="PreAlpha" type="gamemode" author="Sam@ke"/>
 	<min_mta_version client="1.5.4" server="1.5.4"/>
 	<oop>true</oop>
