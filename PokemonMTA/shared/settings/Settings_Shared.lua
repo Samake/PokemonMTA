@@ -9,8 +9,8 @@ Settings.dbConnection = {type = "mysql", name = "pokemonDB", ip = "localhost", u
 Settings.dbSaveInterVal = 360000 -- per hour
 
 Settings.debugEnabled = false
-Settings.showCoreDebugInfo = true
-Settings.showManagerDebugInfo = true
+Settings.showCoreDebugInfo = false
+Settings.showManagerDebugInfo = false
 Settings.showClassDebugInfo = false
 
 Settings.drawDistanceBikes = 100

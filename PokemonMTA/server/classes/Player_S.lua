@@ -20,7 +20,7 @@ function Player_S:constructor(playerSettings)
 	self.pokemonCatched = playerSettings.pokemonCatched
 	self.pokemonKilled = playerSettings.pokemonKilled
 	
-	self.playerName = removeHEXColorCode(self.player:getName())
+	self.playerName = nil
 	
 	self.companion = nil
 	self.pokemons = {}
@@ -133,6 +133,10 @@ function Player_S:update()
 			if (playerPokemon) then
 				playerPokemon:update()
 			end
+		end
+		
+		if (not self.playerName) then
+			self.playerName = removeHEXColorCode(self.player:getName())
 		end
 	end
 end

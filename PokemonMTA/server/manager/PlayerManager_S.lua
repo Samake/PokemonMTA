@@ -30,7 +30,7 @@ end
 function PlayerManager_S:initPlayers()
 	for index, player in pairs(getElementsByType("player")) do
 		if (player) then
-			self:addPlayer(player)
+			self:createPlayerInstance(player)
 		end
 	end
 	
@@ -49,68 +49,65 @@ function PlayerManager_S:update()
 end
 
 
-function PlayerManager_S:addPlayer(player)
-	if (source) or (player) then
-		local thePlayer = nil
+function PlayerManager_S:addPlayer()
+	self:createPlayerInstance(source)
+end
+
+
+function PlayerManager_S:createPlayerInstance(player)
+	if (player) and (isElement(player)) then
+		local accountName = "samake" -- for test only
+		local password = sha256("testpassword") -- for test only
 		
-		if (not source) then 
-			thePlayer = player 
-		else 
-			thePlayer = source 
+		local accountData = MySQLManager_S:getSingleton():getAccountData(accountName)
+
+		local playerSetting = {}
+		
+		if (accountData) then
+			local pos = string.split(accountData.position, "|")
+			local rot = string.split(accountData.rotation, "|")
+			
+			playerSetting.id = accountData.account_id
+			playerSetting.accountName = accountData.account_name
+			playerSetting.password = accountData.password
+			playerSetting.player = player
+			playerSetting.skinID = accountData.skin_id or 258
+			playerSetting.x = tonumber(pos[1]) or nil
+			playerSetting.y = tonumber(pos[2]) or nil
+			playerSetting.z = tonumber(pos[3]) or nil
+			playerSetting.rx = tonumber(rot[1]) or nil
+			playerSetting.ry = tonumber(rot[2]) or nil
+			playerSetting.rz = tonumber(rot[3]) or nil
+			playerSetting.title = accountData.title or "Beginner"
+			playerSetting.playerXP = accountData.player_xp or 0
+			playerSetting.playerLevel = accountData.player_level or 1
+			playerSetting.money = accountData.money or 0
+			playerSetting.pokemonSeen = accountData.pokemon_seen or 0
+			playerSetting.pokemonCatched = accountData.pokemon_catched or 0
+			playerSetting.pokemonKilled = accountData.pokemon_killed or 0
+		else
+			playerSetting.id = "new_id"
+			playerSetting.accountName = accountName
+			playerSetting.password = password
+			playerSetting.player = player
+			playerSetting.skinID = 258
+			playerSetting.x = nil
+			playerSetting.y = nil
+			playerSetting.z = nil
+			playerSetting.rx = nil
+			playerSetting.ry = nil
+			playerSetting.rz = nil
+			playerSetting.title = "Beginner"
+			playerSetting.playerXP = 0
+			playerSetting.playerLevel = 1
+			playerSetting.money = 0
+			playerSetting.pokemonSeen = 0
+			playerSetting.pokemonCatched = 0
+			playerSetting.pokemonKilled = 0
 		end
 		
-		if (not self.playerInstances[tostring(thePlayer)]) then
-			local accountName = "samake" -- for test only
-			local password = sha256("testpassword") -- for test only
-			
-			local accountData = MySQLManager_S:getSingleton():getAccountData(accountName)
-
-			local playerSetting = {}
-			
-			if (accountData) then
-				local pos = string.split(accountData.position, "|")
-				local rot = string.split(accountData.rotation, "|")
-				
-				playerSetting.id = accountData.account_id
-				playerSetting.accountName = accountData.account_name
-				playerSetting.password = accountData.password
-				playerSetting.player = thePlayer
-				playerSetting.skinID = accountData.skin_id or 258
-				playerSetting.x = tonumber(pos[1]) or nil
-				playerSetting.y = tonumber(pos[2]) or nil
-				playerSetting.z = tonumber(pos[3]) or nil
-				playerSetting.rx = tonumber(rot[1]) or nil
-				playerSetting.ry = tonumber(rot[2]) or nil
-				playerSetting.rz = tonumber(rot[3]) or nil
-				playerSetting.title = accountData.title or "Beginner"
-				playerSetting.playerXP = accountData.player_xp or 0
-				playerSetting.playerLevel = accountData.player_level or 1
-				playerSetting.money = accountData.money or 0
-				playerSetting.pokemonSeen = accountData.pokemon_seen or 0
-				playerSetting.pokemonCatched = accountData.pokemon_catched or 0
-				playerSetting.pokemonKilled = accountData.pokemon_killed or 0
-			else
-				playerSetting.id = "new_id"
-				playerSetting.accountName = accountName
-				playerSetting.password = password
-				playerSetting.player = thePlayer
-				playerSetting.skinID = 258
-				playerSetting.x = nil
-				playerSetting.y = nil
-				playerSetting.z = nil
-				playerSetting.rx = nil
-				playerSetting.ry = nil
-				playerSetting.rz = nil
-				playerSetting.title = "Beginner"
-				playerSetting.playerXP = 0
-				playerSetting.playerLevel = 1
-				playerSetting.money = 0
-				playerSetting.pokemonSeen = 0
-				playerSetting.pokemonCatched = 0
-				playerSetting.pokemonKilled = 0
-			end
-			
-			self.playerInstances[tostring(thePlayer)] = Player_S:new(playerSetting)
+		if (not self.playerInstances[playerSetting.id]) then
+			self.playerInstances[playerSetting.id] = Player_S:new(playerSetting)
 			self.playerCount = self.playerCount + 1
 		end
 	end

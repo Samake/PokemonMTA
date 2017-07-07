@@ -37,6 +37,7 @@ function Core_S:initComponents()
 	FightManager_S:new()
 	ComputerManager_S:new()
 	PokeBallManager_S:new()
+	PathManager_S:new()
 end
 
 
@@ -53,6 +54,7 @@ function Core_S:update()
 		FightManager_S:getSingleton():update()
 		ComputerManager_S:getSingleton():update()
 		PokeBallManager_S:getSingleton():update()
+		PathManager_S:getSingleton():update()
 	end
 end
 
@@ -63,6 +65,7 @@ function Core_S:clear()
 		self.updateTimer = nil
 	end
 	
+	delete(PathManager_S:getSingleton())
 	delete(PokeBallManager_S:getSingleton())
 	delete(ComputerManager_S:getSingleton())
 	delete(FightManager_S:getSingleton())
