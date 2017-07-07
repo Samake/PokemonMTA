@@ -52,10 +52,8 @@ end
 
 function MySQLManager_S:createTables()
     if (self.dbConnection) then
-        if (MySQL.createPlayerTable) then
-            local finalString = self.dbConnection:prepareString(MySQL.createPlayerTable)
-            self.dbConnection:exec(finalString)
-        end
+		local finalString = self.dbConnection:prepareString(MySQL.createAccountTable)
+		self.dbConnection:exec(finalString)
     end
 end
 
