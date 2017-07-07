@@ -1,18 +1,19 @@
 Player_S = inherit(Class)
 
-function Player_S:constructor(id, player)
-	self.id = id
-	self.player = player
+function Player_S:constructor(playerSetting)
+	self.id = playerSetting.id
+	self.accountName = playerSetting.accountName
+	self.password = playerSetting.password
+	self.player = playerSetting.player
+	self.skinID = playerSetting.skinID
+	self.x = playerSetting.x
+	self.y = playerSetting.y
+	self.z = playerSetting.z
+	self.rx = playerSetting.rx
+	self.ry = playerSetting.ry
+	self.rz = playerSetting.rz
 	
-	self.x = 0
-	self.y = 0
-	self.z = 0
-	self.rx = 0
-	self.ry = 0
-	self.rz = 0
-	self.name = removeHEXColorCode(self.player:getName())
-	
-	self.skinID = 258
+	self.playerName = removeHEXColorCode(self.player:getName())
 	
 	self.companion = nil
 	self.pokemons = {}
@@ -45,23 +46,25 @@ end
 
 
 function Player_S:initSpawn()
-	local playerSpawns = getElementsByType("PLAYERSPAWN")
-		
-	if (playerSpawns) then
-		if (#playerSpawns > 0) then
-			local randomSpawn = playerSpawns[math.random(1, #playerSpawns)]
-		
-			if (randomSpawn) then
-				
-				local pos = randomSpawn.position
-				local rot = randomSpawn.rotation
-				
-				self.x = pos.x
-				self.y = pos.y
-				self.z = pos.z
-				self.rx = rot.x
-				self.ry = rot.y
-				self.rz = rot.z
+	if (not self.x) or (not self.y) or (not self.z) or (not self.rx) or (not self.ry) or (not self.rz) then
+		local playerSpawns = getElementsByType("PLAYERSPAWN")
+			
+		if (playerSpawns) then
+			if (#playerSpawns > 0) then
+				local randomSpawn = playerSpawns[math.random(1, #playerSpawns)]
+			
+				if (randomSpawn) then
+					
+					local pos = randomSpawn.position
+					local rot = randomSpawn.rotation
+					
+					self.x = pos.x
+					self.y = pos.y
+					self.z = pos.z
+					self.rx = rot.x
+					self.ry = rot.y
+					self.rz = rot.z
+				end
 			end
 		end
 	end

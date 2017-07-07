@@ -63,18 +63,18 @@ function Core_S:clear()
 		self.updateTimer = nil
 	end
 	
-	delete(MySQLManager_S:getSingleton())
-	delete(PlayerManager_S:getSingleton())
-	delete(ChestManager_S:getSingleton())
-	delete(NPCManager_S:getSingleton())
-	delete(BikeManager_S:getSingleton())
-	delete(PokeSpawnManager_S:getSingleton())
-	delete(PokemonManager_S:getSingleton())
-	delete(ItemManager_S:getSingleton())
-	delete(ArenaManager_S:getSingleton())
-	delete(FightManager_S:getSingleton())
-	delete(ComputerManager_S:getSingleton())
 	delete(PokeBallManager_S:getSingleton())
+	delete(ComputerManager_S:getSingleton())
+	delete(FightManager_S:getSingleton())
+	delete(ArenaManager_S:getSingleton())
+	delete(ItemManager_S:getSingleton())
+	delete(PokemonManager_S:getSingleton())
+	delete(PokeSpawnManager_S:getSingleton())
+	delete(BikeManager_S:getSingleton())
+	delete(NPCManager_S:getSingleton())
+	delete(ChestManager_S:getSingleton())
+	delete(PlayerManager_S:getSingleton())
+	delete(MySQLManager_S:getSingleton())
 end
 
 

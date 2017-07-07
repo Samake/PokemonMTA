@@ -11,12 +11,24 @@ function sendMessage(text)
 	end
 end
 
--- ############# isElementInRange ############## -- 
-function isElementInRange(ele, x, y, z, range)
-   if isElement(ele) and type(x) == "number" and type(y) == "number" and type(z) == "number" and type(range) == "number" then
-      return getDistanceBetweenPoints3D(x, y, z, getElementPosition(ele)) <= range -- returns true if it the range of the element to the main point is smaller than (or as big as) the maximum range.
-   end
-   return false
+----------------------------------------------------------------
+-- String helper functions
+----------------------------------------------------------------
+-- ############# string.split ############## -- 
+function string.split(inputString, seperator)
+	if (inputString) and (seperator) then
+		local result = {}
+		local i = 1
+		
+		for str in string.gmatch(inputString, "([^".. seperator .."]+)") do
+			result[i] = str
+			i = i + 1
+		end
+		
+		return result
+	end
+	
+	return nil
 end
 
 ----------------------------------------------------------------
@@ -45,6 +57,16 @@ function math.unlerpclamped(from, pos, to)
 	return math.clamp(0, math.unlerp(from, pos, to), 1)
 end
 
+----------------------------------------------------------------
+-- Misc helper functions
+----------------------------------------------------------------
+-- ############# isElementInRange ############## -- 
+function isElementInRange(ele, x, y, z, range)
+   if isElement(ele) and type(x) == "number" and type(y) == "number" and type(z) == "number" and type(range) == "number" then
+      return getDistanceBetweenPoints3D(x, y, z, getElementPosition(ele)) <= range -- returns true if it the range of the element to the main point is smaller than (or as big as) the maximum range.
+   end
+   return false
+end
 
 -- ############# getAttachedPosition ############## -- 
 function getAttachedPosition(x, y, z, rx, ry, rz, distance, angleAttached, height)
@@ -218,8 +240,6 @@ function getElementSpeed(theElement, unit)
     return (Vector3(getElementVelocity(theElement)) * mult).length
 end
 
-
--- ############# DOWNLOAD ############## --
 
 -- ############# fileBytes ############## --
 function fileBytes(downloadPath)

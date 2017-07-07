@@ -385,7 +385,7 @@ function NPC_S:onColShapeHit(element)
 										end
 										
 										if (string.find(text, "<<PLAYER>>")) then
-											text = string.gsub(text, "<<PLAYER>>", "#9999FF" .. self.playerClass.name .. "#FFBB66")
+											text = string.gsub(text, "<<PLAYER>>", "#9999FF" .. self.playerClass.playerName .. "#FFBB66")
 										end
 										
 										speechProperties.text = text

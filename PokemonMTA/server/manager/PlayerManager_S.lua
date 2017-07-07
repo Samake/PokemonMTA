@@ -60,7 +60,43 @@ function PlayerManager_S:addPlayer(player)
 		end
 		
 		if (not self.playerInstances[tostring(thePlayer)]) then
-			self.playerInstances[tostring(thePlayer)] = Player_S:new(tostring(thePlayer), thePlayer)
+			local accountName = "samake" -- for test only
+			local password = sha256("testpassword") -- for test only
+			
+			local accountData = MySQLManager_S:getSingleton():getAccountData(accountName)
+
+			local playerSetting = {}
+			
+			if (accountData) then
+				local pos = string.split(accountData.position, "|")
+				local rot = string.split(accountData.rotation, "|")
+				
+				playerSetting.id = accountData.account_id
+				playerSetting.accountName = accountData.account_name
+				playerSetting.password = accountData.password
+				playerSetting.player = thePlayer
+				playerSetting.skinID = accountData.skin_id
+				playerSetting.x = pos[1] or nil
+				playerSetting.y = pos[2] or nil
+				playerSetting.z = pos[3] or nil
+				playerSetting.rx = rot[1] or nil
+				playerSetting.ry = rot[2] or nil
+				playerSetting.rz = rot[3] or nil
+			else
+				playerSetting.id = "new_id"
+				playerSetting.accountName = accountName
+				playerSetting.password = password
+				playerSetting.player = thePlayer
+				playerSetting.skinID = 258
+				playerSetting.x = nil
+				playerSetting.y = nil
+				playerSetting.z = nil
+				playerSetting.rx = nil
+				playerSetting.ry = nil
+				playerSetting.rz = nil
+			end
+			
+			self.playerInstances[tostring(thePlayer)] = Player_S:new(playerSetting)
 			self.playerCount = self.playerCount + 1
 		end
 	end
@@ -97,9 +133,17 @@ function PlayerManager_S:getPlayerClass(player)
 end
 
 
+function PlayerManager_S:savePlayerData(playerClass)
+	if (playerClass) then
+		MySQLManager_S:getSingleton():setAccountData(playerClass)
+	end
+end
+
+
 function PlayerManager_S:clear()
 	for index, instance in pairs(self.playerInstances) do
 		if (instance) then
+			self:savePlayerData(instance)
 			instance:delete()
 			instance = nil
 		end
