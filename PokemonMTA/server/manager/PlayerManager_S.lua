@@ -84,7 +84,7 @@ function PlayerManager_S:addPlayer(player)
 				playerSetting.rz = tonumber(rot[3]) or nil
 				playerSetting.title = accountData.title or "Beginner"
 				playerSetting.playerXP = accountData.player_xp or 0
-				playerSetting.playerLevel = accountData.player_level or 0
+				playerSetting.playerLevel = accountData.player_level or 1
 				playerSetting.money = accountData.money or 0
 				playerSetting.pokemonSeen = accountData.pokemon_seen or 0
 				playerSetting.pokemonCatched = accountData.pokemon_catched or 0
@@ -103,7 +103,7 @@ function PlayerManager_S:addPlayer(player)
 				playerSetting.rz = nil
 				playerSetting.title = "Beginner"
 				playerSetting.playerXP = 0
-				playerSetting.playerLevel = 0
+				playerSetting.playerLevel = 1
 				playerSetting.money = 0
 				playerSetting.pokemonSeen = 0
 				playerSetting.pokemonCatched = 0

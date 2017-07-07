@@ -1,24 +1,24 @@
 Player_S = inherit(Class)
 
-function Player_S:constructor(playerSetting)
-	self.id = playerSetting.id
-	self.accountName = playerSetting.accountName
-	self.password = playerSetting.password
-	self.player = playerSetting.player
-	self.skinID = playerSetting.skinID
-	self.x = playerSetting.x
-	self.y = playerSetting.y
-	self.z = playerSetting.z
-	self.rx = playerSetting.rx
-	self.ry = playerSetting.ry
-	self.rz = playerSetting.rz
-	self.title = playerSetting.title
-	self.playerXP = playerSetting.playerXP
-	self.playerLevel = playerSetting.playerLevel
-	self.money = playerSetting.money
-	self.pokemonSeen = playerSetting.pokemonSeen
-	self.pokemonCatched = playerSetting.pokemonCatched
-	self.pokemonKilled = playerSetting.pokemonKilled
+function Player_S:constructor(playerSettings)
+	self.id = playerSettings.id
+	self.accountName = playerSettings.accountName
+	self.password = playerSettings.password
+	self.player = playerSettings.player
+	self.skinID = playerSettings.skinID
+	self.x = playerSettings.x
+	self.y = playerSettings.y
+	self.z = playerSettings.z
+	self.rx = playerSettings.rx
+	self.ry = playerSettings.ry
+	self.rz = playerSettings.rz
+	self.title = playerSettings.title
+	self.playerXP = playerSettings.playerXP
+	self.playerLevel = playerSettings.playerLevel
+	self.money = playerSettings.money
+	self.pokemonSeen = playerSettings.pokemonSeen
+	self.pokemonCatched = playerSettings.pokemonCatched
+	self.pokemonKilled = playerSettings.pokemonKilled
 	
 	self.playerName = removeHEXColorCode(self.player:getName())
 	
@@ -48,6 +48,8 @@ function Player_S:init()
 	self:initSpawn()
 	self:performSpawn()
 	self:loadInventory()
+	self:loadAchievments()
+	self:loadPokedex()
 	self:loadPokemons()
 end
 
@@ -88,7 +90,21 @@ end
 
 function Player_S:loadInventory()
 	if (not self.inventory) then
-		self.inventory = Inventory_S:new(tostring(self.player))
+		self.inventory = Inventory_S:new(self.id)
+	end
+end
+
+
+function Player_S:loadAchievments()
+	if (not self.achievments) then
+		self.achievments = Achievments_S:new(self.id)
+	end
+end
+
+
+function Player_S:loadPokedex()
+	if (not self.pokedex) then
+		self.pokedex = Pokedex_S:new(self.id)
 	end
 end
 
@@ -109,6 +125,8 @@ function Player_S:update()
 	if (self.player and isElement(self.player)) then
 		self:updateCoords()
 		self:updateInventory()
+		self:updateAchievments()
+		self:updatePokedex()
 		self:syncPokemon()
 		
 		for index, playerPokemon in pairs(self.pokemons) do
@@ -138,6 +156,20 @@ end
 function Player_S:updateInventory()
 	if (self.inventory) then
 		self.inventory:update()
+	end
+end
+
+
+function Player_S:updateAchievments()
+	if (self.achievments) then
+		self.achievments:update()
+	end
+end
+
+
+function Player_S:updatePokedex()
+	if (self.pokedex) then
+		self.pokedex:update()
 	end
 end
 
@@ -214,6 +246,16 @@ function Player_S:clear()
 			PokemonManager_S:getSingleton():deletePokemon(self.companion.pokemon.id)
 			self.companion = nil
 		end
+	end
+	
+	if (self.pokedex) then
+		self.pokedex:delete()
+		self.pokedex = nil
+	end
+	
+	if (self.achievments) then
+		self.achievments:delete()
+		self.achievments = nil
 	end
 	
 	if (self.inventory) then

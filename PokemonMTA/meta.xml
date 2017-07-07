@@ -51,6 +51,8 @@
 	
 	<script src="server/classes/Player_S.lua" type="server"/>
 	<script src="server/classes/Inventory_S.lua" type="server"/>
+	<script src="server/classes/Achievments_S.lua" type="server"/>
+	<script src="server/classes/Pokedex_S.lua" type="server"/>
 	<script src="server/classes/Chest_S.lua" type="server"/>
 	<script src="server/classes/NPC_S.lua" type="server"/>
 	<script src="server/classes/Bike_S.lua" type="server"/>
