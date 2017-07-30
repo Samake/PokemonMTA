@@ -24,3 +24,5 @@ Settings.bikeRespawnDelay = 60000
 
 Settings.shaderPedDrawdistance = 100
 Settings.shaderObjectDrawdistance = 100
+Settings.shaderVehicleDrawdistance = 100
+Settings.shaderNullDrawdistance = 100

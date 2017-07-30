@@ -2,8 +2,8 @@
 #include "mta-helper.hlsl"
 
 float3 lightDirection = float3(0.0, 0.0, 0);
-float reflectionsStrength = 0.4;
-float shininess = 8;
+float reflectionsStrength = 2;
+float shininess = 32;
 
 sampler MainSampler = sampler_state
 {
@@ -53,7 +53,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	output.WorldNormal = MTACalcWorldNormal(input.Normal);
 	
 	float lightIntensity = dot(output.WorldNormal, -lightDirection);
-    output.Diffuse = saturate(MTACalcGTACompleteDiffuse(output.WorldNormal, input.Diffuse) * lightIntensity) + 0.2;
+    output.Diffuse = saturate(MTACalcGTAVehicleDiffuse(output.WorldNormal, input.Diffuse) * lightIntensity) + 0.2;
 	
     return output;
 }
@@ -68,7 +68,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 }
 
 
-technique Peds
+technique Vehicle
 {
     pass Pass0
     {

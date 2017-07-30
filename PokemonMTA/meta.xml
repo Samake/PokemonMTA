@@ -89,6 +89,8 @@
 	
 	<script src="client/classes/ShaderObjects_C.lua" type="client"/>
 	<script src="client/classes/ShaderPeds_C.lua" type="client"/>
+	<script src="client/classes/ShaderVehicles_C.lua" type="client"/>
+	<script src="client/classes/ShaderNull_C.lua" type="client"/>
 	<script src="client/classes/Renderer_C.lua" type="client"/>
 	<script src="client/classes/HUD_C.lua" type="client"/>
 	<script src="client/classes/NameTags_C.lua" type="client"/>
@@ -107,6 +109,8 @@
 	<file src="res/shader/mta-helper.hlsl" type="client"/>
 	<file src="res/shader/shader_peds.hlsl" type="client"/>
 	<file src="res/shader/shader_objects.hlsl" type="client"/>
+	<file src="res/shader/shader_vehicle.hlsl" type="client"/>
+	<file src="res/shader/shader_null.hlsl" type="client"/>
 	<file src="res/shader/shader_pp_render.hlsl" type="client"/>
 	<file src="res/shader/shader_mask.hlsl" type="client"/>
 	

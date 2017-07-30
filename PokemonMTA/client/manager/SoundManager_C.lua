@@ -11,18 +11,18 @@ function SoundManager_C:constructor()
 	self.ambientMusic = nil
 	self.battleMusic = nil
 	
-	self.worldSounds = {}
-	self.worldSounds[1] = {group = 2, index = 2} -- pokeballs collission sounds
-	self.worldSounds[2] = {group = 2, index = 20} -- pokeballs collission sounds
-	self.worldSounds[3] = {group = 2, index = 21} -- pokeballs collission sounds
-	self.worldSounds[4] = {group = 2, index = 22} -- pokeballs collission sounds
-	self.worldSounds[5] = {group = 2, index = 23} -- pokeballs collission sounds
-	self.worldSounds[6] = {group = 2, index = 24} -- pokeballs collission sounds
-	self.worldSounds[7] = {group = 2, index = 25} -- pokeballs collission sounds
-	self.worldSounds[8] = {group = 2, index = 26} -- pokeballs collission sounds
-	self.worldSounds[9] = {group = 2, index = 27} -- pokeballs collission sounds
-	self.worldSounds[10] = {group = 2, index = 28} -- pokeballs collission sounds
-	self.worldSounds[11] = {group = 2, index = 34} -- pokeballs collission sounds
+	self.disabledWorldSounds = {}
+	self.disabledWorldSounds[1] = {group = 2, index = 2} -- pokeballs collission sounds
+	self.disabledWorldSounds[2] = {group = 2, index = 20} -- pokeballs collission sounds
+	self.disabledWorldSounds[3] = {group = 2, index = 21} -- pokeballs collission sounds
+	self.disabledWorldSounds[4] = {group = 2, index = 22} -- pokeballs collission sounds
+	self.disabledWorldSounds[5] = {group = 2, index = 23} -- pokeballs collission sounds
+	self.disabledWorldSounds[6] = {group = 2, index = 24} -- pokeballs collission sounds
+	self.disabledWorldSounds[7] = {group = 2, index = 25} -- pokeballs collission sounds
+	self.disabledWorldSounds[8] = {group = 2, index = 26} -- pokeballs collission sounds
+	self.disabledWorldSounds[9] = {group = 2, index = 27} -- pokeballs collission sounds
+	self.disabledWorldSounds[10] = {group = 2, index = 28} -- pokeballs collission sounds
+	self.disabledWorldSounds[11] = {group = 2, index = 34} -- pokeballs collission sounds
 	
 	self:initManager()
 	
@@ -33,7 +33,7 @@ end
 
 
 function SoundManager_C:initManager()
-	for index, worldsound in pairs(self.worldSounds) do
+	for index, worldsound in pairs(self.disabledWorldSounds) do
 		if (worldsound) then
 			setWorldSoundEnabled(worldsound.group, worldsound.index, false)
 		end
@@ -121,7 +121,7 @@ function SoundManager_C:clear()
 		self.ambientMusic:stop()
 	end
 	
-	for index, worldsound in pairs(self.worldSounds) do
+	for index, worldsound in pairs(self.disabledWorldSounds) do
 		if (worldsound) then
 			setWorldSoundEnabled(worldsound.group, worldsound.index, true)
 		end

@@ -16,9 +16,9 @@ function PokeBall_S:constructor(pokeBallProperties)
 	
 	self.currentCount = 0
 	self.startCount = 0
-	self.lifeTime = 8000
+	self.lifeTime = 4000
 	
-	self.mass = 5
+	self.mass = 1
 	
 	self.pokemon = nil
 	self.pokemonClass = nil
@@ -152,7 +152,7 @@ function PokeBall_S:onColShapeHit(element)
 			if (element:getType() == "player") then
 			
 			elseif (element:getType() == "ped") then
-				if (self.pokemon == nil) and (self.pokemonClass == nil) and (self.tryToCatch == false) then
+				if (self.pokemon == nil) and (self.pokemonClass == nil) and (self.tryToCatch == false) and (isElement(self.player)) then
 					if (element:getData("isPokemon") == true) then
 						self.pokemon = element
 						self.pokemonClass = PokemonManager_S:getSingleton():getPokemonClass(element:getData("POKEMONID"))
@@ -163,6 +163,19 @@ function PokeBall_S:onColShapeHit(element)
 							self.tryToCatch = true
 							self.catchCount = 0
 							self.catchTime = getTickCount()
+							self.startCount = getTickCount()
+							
+							self:updatePosition()
+							
+							local cameraSettings = {}
+							cameraSettings.lookAtX = self.x
+							cameraSettings.lookAtY = self.y
+							cameraSettings.lookAtZ = self.z - 1
+							cameraSettings.distance = 2.5
+							cameraSettings.height = 5.0
+							cameraSettings.speed = 0.15
+							
+							triggerClientEvent(self.player, "CLIENTROTATECAMERA", self.player, cameraSettings)
 						else
 							self.tryToCatch = false
 							self.pokemon = nil
@@ -206,6 +219,12 @@ function PokeBall_S:clear()
 		self.pokemonClass:setCatchMode(false)
 		self.pokemonClass = nil
 		self.pokemon = nil
+	end
+	
+	if (self.tryToCatch == true) then
+		if (isElement(self.player)) then
+			triggerClientEvent(self.player, "CLIENTRESETCAMERA", self.player)
+		end
 	end
 end
 

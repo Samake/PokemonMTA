@@ -82,6 +82,14 @@ function ShaderManager_C:createShaders()
 		self.objectShader = ShaderObjects_C:new()
 	end
 	
+	if (not self.vehicleShader) then
+		self.vehicleShader = ShaderVehicles_C:new()
+	end
+	
+	if (not self.nullShader) then
+		self.nullShader = ShaderNull_C:new()
+	end
+	
 	sendMessage("CLIENT || Shaders enabled.")
 end
 
@@ -97,6 +105,14 @@ function ShaderManager_C:update(delta)
 		
 		if (self.objectShader) then
 			self.objectShader:update(delta)
+		end
+		
+		if (self.vehicleShader) then
+			self.vehicleShader:update(delta)
+		end
+		
+		if (self.nullShader) then
+			self.nullShader:update(delta)
 		end
 		
 		if (self.renderer) then
@@ -125,6 +141,16 @@ function ShaderManager_C:deleteShaders()
 	if (self.objectShader) then
 		self.objectShader:delete()
 		self.objectShader = nil
+	end
+	
+	if (self.vehicleShader) then
+		self.vehicleShader:delete()
+		self.vehicleShader = nil
+	end
+	
+	if (self.nullShader) then
+		self.nullShader:delete()
+		self.nullShader = nil
 	end
 	
 	sendMessage("CLIENT || Shaders disabled.")
