@@ -344,9 +344,10 @@ end
 function NPC_S:onColShapeHit(element)
 	if (element) then
 		if (isElement(element)) then
+
 			if (element:getType() == "player") then
 				if (not self.player) and (self.isInFight == "false") then
-					
+
 					self.playerClass = PlayerManager_S:getSingleton():getPlayerClass(element)
 					
 					if (self.playerClass) then

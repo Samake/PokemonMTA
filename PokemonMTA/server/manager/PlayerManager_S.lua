@@ -124,10 +124,14 @@ function PlayerManager_S:removePlayer(player)
 			thePlayer = source 
 		end
 		
-		if (self.playerInstances[tostring(thePlayer)]) then
-			delete(self.playerInstances[tostring(thePlayer)])
-			self.playerInstances[tostring(thePlayer)] = nil
-			self.playerCount = self.playerCount - 1
+		local playerID = thePlayer:getData("PLAYERID")
+		
+		if (playerID) then
+			if (self.playerInstances[playerID]) then
+				delete(self.playerInstances[playerID])
+				self.playerInstances[playerID] = nil
+				self.playerCount = self.playerCount - 1
+			end
 		end
 	end
 end
@@ -135,8 +139,12 @@ end
 
 function PlayerManager_S:getPlayerClass(player)
 	if (player) then
-		if (self.playerInstances[tostring(player)]) then
-			return self.playerInstances[tostring(player)]
+		local playerID = player:getData("PLAYERID")
+		
+		if (playerID) then
+			if (self.playerInstances[playerID]) then
+				return self.playerInstances[playerID]
+			end
 		end
 	end
 	

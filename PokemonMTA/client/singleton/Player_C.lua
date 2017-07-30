@@ -192,7 +192,7 @@ function Player_C:throwPokeBall()
 		throwDetails.player = self.player
 		throwDetails.x = x
 		throwDetails.y = y 
-		throwDetails.z = z
+		throwDetails.z = z + 0.2
 		throwDetails.power = self.throwPower
 		
 		triggerServerEvent("PLAYERTHROWPOKEBALL", self.player, throwDetails)

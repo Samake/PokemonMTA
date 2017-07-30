@@ -3,9 +3,11 @@ PathManager_S = inherit(Singleton)
 function PathManager_S:constructor()
 
 	self.pathInstances = {}
+
+	self.pathFileStreets = "res/paths/sa_street_nodes.json"
+	self.pathFilePeds = "res/paths/sa_ped_nodes.json"
 	
 	self:initManager()
-	self.pathFile = "res/paths/sa_nodes.json"
 	
 	if (Settings.showManagerDebugInfo == true) then
 		sendMessage("PathManager_S was started.")

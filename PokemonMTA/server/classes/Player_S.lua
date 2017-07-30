@@ -124,6 +124,7 @@ end
 function Player_S:update()
 	if (self.player and isElement(self.player)) then
 		self:updateCoords()
+		self:updateData()
 		self:updateInventory()
 		self:updateAchievments()
 		self:updatePokedex()
@@ -154,6 +155,11 @@ function Player_S:updateCoords()
 	self.rx = rot.x
 	self.ry = rot.y
 	self.rz = rot.z
+end
+
+
+function Player_S:updateData()
+	self.player:setData("PLAYERID", self.id, true)
 end
 
 

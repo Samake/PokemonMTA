@@ -64,25 +64,21 @@ function PokeBall_S:update()
 	end
 	
 	if (isElement(self.model)) then
-		local modelPos = self.model:getPosition()
-		self.x = modelPos.x
-		self.y = modelPos.y
-		self.z = modelPos.z
-		
-		local modelRot = self.model:getRotation()
-		self.rx = modelRot.x
-		self.ry = modelRot.y
-		self.rz = modelRot.z
-		
-		--if (isElement(self.player)) then
-		--	local playerPos = self.player:getPosition()
-		--	local dist = getDistanceBetweenPoints3D(self.x, self.y, self.z, playerPos.x, playerPos.y, playerPos.z)
-			
-		--	if (dist) then
-		--		outputChatBox("Dist: " .. dist)
-		--	end
-		--end
+		self:updatePosition()
 	end
+end
+
+
+function PokeBall_S:updatePosition()
+	local modelPos = self.model:getPosition()
+	self.x = modelPos.x
+	self.y = modelPos.y
+	self.z = modelPos.z
+	
+	local modelRot = self.model:getRotation()
+	self.rx = modelRot.x
+	self.ry = modelRot.y
+	self.rz = modelRot.z
 end
 
 
