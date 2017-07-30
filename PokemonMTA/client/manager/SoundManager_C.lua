@@ -12,7 +12,17 @@ function SoundManager_C:constructor()
 	self.battleMusic = nil
 	
 	self.worldSounds = {}
-	self.worldSounds[1] = {group = 2, index = 2} -- pokeballs collission sound
+	self.worldSounds[1] = {group = 2, index = 2} -- pokeballs collission sounds
+	self.worldSounds[2] = {group = 2, index = 20} -- pokeballs collission sounds
+	self.worldSounds[3] = {group = 2, index = 21} -- pokeballs collission sounds
+	self.worldSounds[4] = {group = 2, index = 22} -- pokeballs collission sounds
+	self.worldSounds[5] = {group = 2, index = 23} -- pokeballs collission sounds
+	self.worldSounds[6] = {group = 2, index = 24} -- pokeballs collission sounds
+	self.worldSounds[7] = {group = 2, index = 25} -- pokeballs collission sounds
+	self.worldSounds[8] = {group = 2, index = 26} -- pokeballs collission sounds
+	self.worldSounds[9] = {group = 2, index = 27} -- pokeballs collission sounds
+	self.worldSounds[10] = {group = 2, index = 28} -- pokeballs collission sounds
+	self.worldSounds[11] = {group = 2, index = 34} -- pokeballs collission sounds
 	
 	self:initManager()
 	

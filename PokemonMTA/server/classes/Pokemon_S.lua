@@ -33,6 +33,8 @@ function Pokemon_S:constructor(pokemonBluePrint)
 	self.jobStartTime = 0
 	
 	self.thinkTime = math.random(500, 6000)
+	
+	self.isInCatchMode = false
 
 	self:init()
 	
@@ -145,12 +147,10 @@ end
 function Pokemon_S:update()
 	self.currentTime = getTickCount()
 	
-	if (self.element) then
-		self.element:setPosition(self.x, self.y, self.z)
-	end
-	
 	if (self.dimension == 0) then
-		self:streamPokemon()
+		if (self.isInCatchMode == false) then
+			self:streamPokemon()
+		end
 	
 		if (isElement(self.model)) then
 			if (self.destX) and (self.destY) then
@@ -194,6 +194,10 @@ function Pokemon_S:updateCoords()
 	self.rx = rot.x
 	self.ry = rot.y
 	self.rz = rot.z
+	
+	if (self.element) then
+		self.element:setPosition(self.x, self.y, self.z)
+	end
 end
 
 
@@ -244,6 +248,7 @@ end
 
 function Pokemon_S:updateData()
 	self.model:setData("isPokemon", true, true)
+	self.model:setData("POKEMONID", self.id, true)
 	self.model:setData("POKEMON:NAME", self.name, true)
 	self.model:setData("POKEMON:LEVEL", self.level, true)
 	self.model:setData("POKEMON:LEGENDARY", self.legendary, true)
@@ -391,7 +396,7 @@ end
 function Pokemon_S:onColShapeHit(element)
 	if (element) then
 		if (isElement(element)) then
-			if (element:getType() == "player") then
+			if (element:getType() == "player") then -- if player
 				if (element == self.owner) then
 					self:job_idle()
 				else
@@ -575,6 +580,16 @@ end
 
 function Pokemon_S:getDimension()
 	return self.dimension
+end
+
+
+function Pokemon_S:setCatchMode(catchMode)
+	self.isInCatchMode = catchMode
+end
+
+
+function Pokemon_S:getCatchMode()
+	return self.isInCatchMode
 end
 
 

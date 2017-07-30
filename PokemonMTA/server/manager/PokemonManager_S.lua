@@ -56,6 +56,17 @@ function PokemonManager_S:addPokemon(pokemonIndex, x, y, z, rot, dimension, radi
 end
 
 
+function PokemonManager_S:getPokemonClass(id)
+	if (id) then
+		if (self.pokemonInstances[id]) then
+			return self.pokemonInstances[id]
+		end
+	end
+	
+	return nil
+end
+
+
 function PokemonManager_S:deletePokemon(id)
 	if (id) then
 		if (self.pokemonInstances[id]) then
