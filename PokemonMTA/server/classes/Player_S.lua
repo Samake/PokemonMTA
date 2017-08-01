@@ -39,6 +39,7 @@ end
 function Player_S:init()
 
 	toggleControl(self.player, "fire", false)
+	self.player:setNametagShowing(false)
 	
 	self.m_ToggleCompanion = bind(self.toggleCompanion, self)
 	
@@ -274,6 +275,7 @@ function Player_S:clear()
 	end
 	
 	toggleControl(self.player, "fire", true)
+	self.player:setNametagShowing(true)
 end
 
 

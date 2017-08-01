@@ -58,7 +58,7 @@ function PokeBall_S:init()
 				addEventHandler("onColShapeLeave", self.actionCol, self.m_OnColShapeLeave)
 			end
 			
-			self:setDimension(self.dimension)
+			self:setDimension()
 		end
 	end
 	
@@ -130,15 +130,13 @@ function PokeBall_S:doCatchProcess()
 			if (self.catchCount < 3) then
 				self.catchCount = self.catchCount + 1
 				self.catchTime = getTickCount()
+				self.startCount = self.startCount + 1250
 				
 				local velocity = self.model:getVelocity()
-				self.model:setVelocity(0, 0, velocity.z + 0.08)
+				self.model:setVelocity(0, 0, velocity.z + 0.1)
+				self.model:setTurnVelocity(0, 0, 0)	
 			else
-				self.tryToCatch = false
 				self.pokemonClass:setCatchMode(false)
-				self.pokemonClass = nil
-				self.pokemon = nil
-				
 				PokeBallManager_S:getSingleton():removePokeBall(self.id)
 			end
 		end
@@ -157,7 +155,7 @@ function PokeBall_S:onColShapeHit(element)
 						self.pokemon = element
 						self.pokemonClass = PokemonManager_S:getSingleton():getPokemonClass(element:getData("POKEMONID"))
 						
-						if (self.pokemon) and (self.pokemonClass) then
+						if (isElement(self.pokemon)) and (self.pokemonClass) then
 							self.pokemonClass:setCatchMode(true)
 							self.pokemonClass:deletePokemon()
 							self.tryToCatch = true
@@ -165,14 +163,15 @@ function PokeBall_S:onColShapeHit(element)
 							self.catchTime = getTickCount()
 							self.startCount = getTickCount()
 							
+							self.model:setPosition(self.pokemonClass.x, self.pokemonClass.y, self.pokemonClass.z + 1)
 							self:updatePosition()
 							
 							local cameraSettings = {}
 							cameraSettings.lookAtX = self.x
 							cameraSettings.lookAtY = self.y
 							cameraSettings.lookAtZ = self.z - 1
-							cameraSettings.distance = 2.5
-							cameraSettings.height = 5.0
+							cameraSettings.distance = 3.0
+							cameraSettings.height = 4.0
 							cameraSettings.speed = 0.15
 							
 							triggerClientEvent(self.player, "CLIENTROTATECAMERA", self.player, cameraSettings)

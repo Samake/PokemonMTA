@@ -14,6 +14,7 @@ end
 
 function Core_C:initClient()
 	setDevelopmentMode(true, true)
+	setPedTargetingMarkerEnabled(false)
 	
 	self.m_ToggleDebug = bind(self.toggleDebug, self)
 	bindKey(Bindings["DEBUG"], "down", self.m_ToggleDebug)
@@ -87,6 +88,7 @@ function Core_C:clear()
 	
 	setDevelopmentMode(false, false)
 	setPlayerHudComponentVisible("all", true)
+	setPedTargetingMarkerEnabled(true)
 end
 
 
